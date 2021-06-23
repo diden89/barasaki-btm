@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /*!
- * @package Iwebebs
- * @copyright PT Iwebe Bangun Solusi
+ * @package Barasaki Semesta
+ * @copyright Barasaki Semesta
  * @author Algaza
  * @version 1.0
  * @access Public
- * @path /iwebebs/application/module_frontend/project/models/project_model.php
+ * @path /barasaki-btm/application/module_frontend/project/models/project_model.php
  */
 
 class Project_model extends CI_Model {

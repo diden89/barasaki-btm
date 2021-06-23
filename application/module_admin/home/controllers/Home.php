@@ -2,12 +2,12 @@
 // echo phpinfo();
 // exit;
 /*!
- * @package Iwebebs
- * @copyright PT Iwebe Bangun Solusi
+ * @package Barasaki Semesta
+ * @copyright Barasaki Semesta
  * @author Sikelopes
  * @version 1.0
  * @access Public
- * @path /iwebebs/application/module_admin/home/controllers/home.php
+ * @path /barasaki-btm/application/module_admin/home/controllers/home.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
