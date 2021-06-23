@@ -27,6 +27,8 @@ class Auth extends MY_Controller {
 
 	public function login()
 	{
+
+		// echo sha1(strtoupper($_POST['txt_username'].':'.$_POST['txt_password']));exit;
 		if (isset($_POST['action']) && $_POST['action'] == 'login')
 		{
 			$post = $this->input->post(NULL, TRUE);
