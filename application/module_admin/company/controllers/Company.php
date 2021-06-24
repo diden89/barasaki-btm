@@ -91,10 +91,11 @@ class Company extends MY_Controller {
 
 	public function input_action()
 	{
+		// print_r($_POST);exit;
 		$upload_dir = str_replace('npanel'.DIRECTORY_SEPARATOR,'' , FCPATH);
-	
+		
 		$config['upload_path'] = $upload_dir."assets".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."compro";
-        // $config['allowed_types'] ='gif|jpg|png';
+        $config['allowed_types'] ='gif|jpg|png|jpeg|ico';
 
         $datas['fullname'] = $this->input->post('txt_fullname');
         $datas['owner'] = $this->input->post('txt_owner');
@@ -136,48 +137,48 @@ class Company extends MY_Controller {
         		}
         	}
         }
-        
+       
 		$this->load->library('upload',$config);
 
 		if( ! empty($this->input->post('id_company')))
 		{
-			$old_img = substr($this->input->post('txt_img_old'), 21);
-			// unlink($config['upload_path'].DIRECTORY_SEPARATOR.$old_img);
 
-			if($this->upload->do_upload('txt_img'))
+			$old_img = ($this->input->post('txt_img_old') !== "") ? substr($this->input->post('txt_img_old'), 21) : "";
+			$old_img_logo = ($this->input->post('txt_img_logo_old') !== "") ? substr($this->input->post('txt_img_logo_old'), 21) : "";
+			
+			if($this->upload->do_upload('txt_fav'))
 			{
-
 				$data = array('upload_data' => $this->upload->data());
 
 	            $image_name	 = $data['upload_data']['file_name']; 
-	            $datas['img'] = 'assets/images/compro/'.$image_name; 
+	            $datas['favicon'] = 'assets/images/compro/'.$image_name; 
 
-	            // $id = $this->input->post('id_company');
-
-	            $result = $this->sm->do_update($datas,$id);
-
-	            if($old_img !== 'favicon-default.ico')
+	            if($old_img !== 'favicon-default.ico' && $old_img !== "")
 	            {
 	            	unlink($config['upload_path'].DIRECTORY_SEPARATOR.$old_img);
 	            }
-	            
-	            echo json_encode(array(
-	            	"status" => $result,
-	            	"url" => base_url('company')
-	            ));
 			}
-			else
+
+			//upload logo
+
+			if($this->upload->do_upload('txt_img_logo'))
 			{
-	            // $id = $this->input->post('id_company');
+				$data_logo = array('upload_data' => $this->upload->data());
 
-	            $result = $this->sm->do_update($datas,$id);
+	            $image_name	 = $data_logo['upload_data']['file_name']; 
+	            $datas['logo'] = 'assets/images/compro/'.$image_name; 
 
-	            // foreach($)
-	            echo json_encode(array(
-	            	"status" => $result,
-	            	"url" => base_url('company')
-	            ));
+	            if($old_img_logo !== 'logo.png' && $old_img_logo !== "")
+	            {
+	            	unlink($config['upload_path'].DIRECTORY_SEPARATOR.$old_img_logo);
+	            }
 			}
+
+			$result = $this->sm->do_update($datas,$id);
+			echo json_encode(array(
+				"status" => $result,
+				"url" => base_url('company')
+			));
 
 		}
   

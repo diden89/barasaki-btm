@@ -40,7 +40,7 @@ function deletedata(id){
 $(document).ready(function() {
 	$('.textarea').wysihtml5();
 	$('#formInputCompany').submit(function(e){
-		$('.company.box').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
+		// $('.company.box').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
             e.preventDefault(); 
                  $.ajax({
                      url: siteUrl+'company/input_action',

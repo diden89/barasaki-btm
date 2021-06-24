@@ -3,32 +3,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
 		<base href="<?php echo base_url(); ?>" />
-		<link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/favicon.ico">
+		<link rel="shortcut icon" href="<?php echo base_url($company->favicon); ?>">
 		<title><?php echo $title; ?></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<!-- Theme Bee -->
-		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-	    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+		<meta name="description" content="Baraski Sinergi Semesta General Supplier and trading">
+	    <meta name="keywords" content="Barasaki,batam,Baraski Sinergi Semesta,coporate,General Supplier and trading">
+	    <meta name="author" content="RDIT-LABS.COM">
+		<!-- Theme Barasaki -->
+		<link href="<?php echo base_url(); ?>assets/templates/barasaki/css/bootstrap.css" rel="stylesheet">
+	    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	    <link href="<?php echo base_url(); ?>assets/templates/barasaki/css/responsiveslides.css" rel="stylesheet">
+	    <link href="<?php echo base_url(); ?>assets/templates/barasaki/css/style.css" rel="stylesheet">
+	    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-	    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/templates/bee/css/open-iconic-bootstrap.min.css">
-	    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/templates/bee/css/animate.css">
-	    
-	    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/templates/bee/css/owl.carousel.min.css">
-	    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/templates/bee/css/owl.theme.default.min.css">
-	    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/templates/bee/css/magnific-popup.css">
-
-	    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/templates/bee/css/aos.css">
-
-	    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/templates/bee/css/ionicons.min.css">
-
-	    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/templates/bee/css/bootstrap-datepicker.css">
-	    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/templates/bee/css/jquery.timepicker.css">
-
-	    
-	    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/templates/bee/css/flaticon.css">
-	    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/templates/bee/css/icomoon.css">
-	    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/templates/bee/css/style.css">
 	    <?php
 		
         if (isset($source_top) && is_array($source_top) && count($source_top) > 0)
@@ -39,6 +27,35 @@
 
 	</head>
 	<body>
+		<div class="wrapper">
+			<div class="container">
+				<nav class="navbar navbar-default">
+					<div class="container-fluid"> 
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+							<a class="navbar-brand" href="<?php echo base_url(); ?>home">
+							<img src="<?php echo base_url($company->logo); ?>" alt="Home"/>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+								<nav id="primary_nav_wrap">
+									<ul>
+										<?php echo $menu; ?>
+										
+									</ul>
+								</nav>
+							</ul>
+						</div>
+						<!-- /.navbar-collapse --> 
+					</div>
+					<!-- /.container-fluid --> 
+				</nav>
+			</div>
+		</div>
+
 		<div class="bg-top navbar-light">
 			<div class="container">
 				<div class="row no-gutters d-flex align-items-center align-items-stretch">
@@ -101,132 +118,82 @@
 		<!-- start Content -->
 		<?php print $body."\n"; ?>
 		<!-- end Content -->
-		<!-- start footer -->
-		<footer class="ftco-footer ftco-bg-dark ftco-section">
-		<div class="container">
-			<div class="row mb-5">
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-5">
-						<h2 class="ftco-heading-2 logo">Ibees</h2>
-						<p>Membangun Bisnis dan Aset Produktif secara terintegrasi guna memberikan Manfaat & Memberikan layanan jasa pemeliharaan yang profesional, handal dan berorientasi pada karakter pelanggan.</p>
-						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-						</ul>
-					</div>
 
+		<div class="footer">
+			<div class="container">
+				<div class="col-sm-4">
+					<h5>Site Map</h5>
+					<ul>
+					<li><a href="<?php echo base_url(); ?>">Home</a></li>
+					<li><a href="<?php echo base_url(); ?>home/aboutus">About Us</a></li>
+					<li><a href="<?php echo base_url(); ?>home/services">Product</a></li>
+					<li><a href="<?php echo base_url(); ?>home/contact">Contact Us</a></li>
+					<li><a href="<?php echo base_url(); ?>home/companyprofile">Company Profile</a></li>
+					</ul>
 				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-5 ml-md-4">
-						<h2 class="ftco-heading-2">Layanan</h2>
-						<ul class="list-unstyled">
-							<?php foreach($services_footer as $v=>$sv) {?>
-								<li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span><?php echo $sv->caption ; ?></a></li>
-							<?php }?>
-							<!-- <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Renovation</a></li>
-							<li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Painting</a></li>
-							<li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Interior Design</a></li>
-							<li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Exterior Design</a></li> -->
-						</ul>
+				<div class="col-sm-4 col-md-4 twitter">
+					<h5>Facebook Page</h5>
+					<div class="fb-page" data-href="https://www.facebook.com/Barasaki-1491198281177819" data-tabs="timeline" data-width="250" data-height="298" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Barasaki-1491198281177819" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Barasaki-1491198281177819">Barasaki</a></blockquote></div>
+				</div>
+					<div class="col-md-4 testimonial">
+					<!-- 
+					<h5>Testimonial</h5>
+					<ul>
+					<li><i class="fa  fa-quote-left"></i>Lorem ipsum dolor sit amet,  adipiscing elit, sed 
+					diam  nibh euismod tincidunt ut laoreet dolore magna erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.  </li>
+
+					</ul>
+					<div class="t-image">
+					<img src="<?php //echo base_url(); ?>assets/img/testimonial.png">
+					<h6>- Michael R. Hanke</h6><br>
+					<p>ceo of sun</p>
+					</div>-->
+				</div> 
+				<div class="col-md-3 contact-footer">
+					<div class="footer-form">
+						<h5>Contact Us</h5>
+						<input type="text" placeholder="Name">
+						<input type="text" placeholder="E-Mail">
+						<textarea placeholder="Message" rows="3"></textarea>
+						<button class="submit-bt">Send</button>
 					</div>
 				</div>
-				<div class="col-md-5">
-					<div class="ftco-footer-widget mb-5">
-						<h2 class="ftco-heading-2">Berita terbaru</h2>
-						<?php foreach($news as $nw => $n){ ?>
-						<div class="block-21 mb-4 d-flex">
-							<a class="blog-img mr-4" style="background-image: url('<?php echo base_url($n->image);?>');"></a>
-							<div class="text">
-								<h3 class="heading"><a href="#"><?php echo $n->title;?></a></h3>
-								<div class="meta">
-									<div><a href="#"><span class="icon-calendar"></span> <?php echo date('M',strtotime($n->date)); ?>. <?php echo date('d',strtotime($n->date)); ?>, <?php echo date('Y',strtotime($n->date)); ?></a></div>
-									<div><a href="#"><span class="icon-person"></span> <?php echo $n->author;?></a></div>
-									<div><a href="#"><span class="icon-eye"></span> <?php echo $n->count_read;?></a></div>
-								</div>
-							</div>
-						</div>
-						<?php }?>
-					  <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
-                        <!-- Histats.com  START  (aync)-->
-                        <script type="text/javascript">var _Hasync= _Hasync|| [];
-                        _Hasync.push(['Histats.start', '1,4438743,4,7,200,30,00010000']);
-                        _Hasync.push(['Histats.fasi', '1']);
-                        _Hasync.push(['Histats.track_hits', '']);
-                        (function() {
-                        var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-                        hs.src = ('//s10.histats.com/js15_as.js');
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-                        })();</script>
-                        <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4438743&101" alt="" border="0"></a></noscript>
-                        <!-- Histats.com  END  -->
-					</div>
-				</div>
-				<!-- <div class="col-md">
-					<div class="ftco-footer-widget mb-5">
-						<h2 class="ftco-heading-2">Newsletter</h2>
-						<form action="#" class="subscribe-form">
-							<div class="form-group">
-								<input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
-								<input type="submit" value="Subscribe" class="form-control submit px-3">
-							</div>
-						</form>
-					</div>
-				</div> -->
 			</div>
-		<div class="row">
-		    
-		  <div class="col-md-12 text-center">
-
-		    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-		Copyright &copy;<script>document.write(new Date().getFullYear());</script> | Design by <a href="https://colorlib.com" target="_blank">Colorlib</a> | Edited by : algazasolution
-		<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-		  </div>
 		</div>
-		</div>
-		</footer>
-		<!-- end footer -->
-		<!-- start loader -->
-		<div id="ftco-loader" class="show fullscreen">
-			<svg class="circular" width="48px" height="48px">
-				<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
-				<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
-			</svg>
-		</div>
-		 <!-- end loader -->
 
-		<script type="text/javascript">
-			var siteUrl = '<?php echo base_url(); ?>';
-			
-		</script>		
-		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/main.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/app-ok.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/project.js"></script>
-		<!-- <script type="text/javascript" src="<?php //echo base_url(); ?>assets/js/frontend/all_cond.js"></script> -->
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.8&appId=629564650514694";
+		fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
 
-		<!-- End Theme Bee -->
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/jquery.min.js"></script>
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/jquery-migrate-3.0.1.min.js"></script>
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/popper.min.js"></script>
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/bootstrap.min.js"></script>
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/jquery.easing.1.3.js"></script>
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/jquery.waypoints.min.js"></script>
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/jquery.stellar.min.js"></script>
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/owl.carousel.min.js"></script>
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/jquery.magnific-popup.min.js"></script>
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/aos.js"></script>
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/jquery.animateNumber.min.js"></script>
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/bootstrap-datepicker.js"></script>
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/jquery.timepicker.min.js"></script>
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/scrollax.min.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/google-map.js"></script>
-		<script src="<?php echo base_url(); ?>assets/templates/bee/js/main.js"></script>
+		<div class="copyright">
+			<div class="container">
+				<p>All Rights Reserved 2017 &copy; barasaki-btm.com</p>
+			</div>
+		</div>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+		<script src="<?php echo base_url(); ?>assets/templates/barasaki/js/jquery.min.js"></script> 
+		<!-- Include all compiled plugins (below), or include individual files as needed --> 
+		<script src="<?php echo base_url(); ?>assets/templates/barasaki/js/bootstrap.js"></script> 
+		<script src="<?php echo base_url(); ?>assets/templates/barasaki/js/responsiveslides.min.js"></script> 
+		<script src="<?php echo base_url(); ?>assets/templates/barasaki/js/response.min.js"></script> 
+		<script>
+		$(function() {
+		$(".rslides").responsiveSlides();
+		});
+		</script>
 		<?php
-        if (isset($source_bot) && is_array($source_bot) && count($source_bot) > 0)
-        {
-            echo implode("\n\t", $source_bot)."\n";
-        }
-        ?>
-      </body>
+		if (isset($source_bot) && is_array($source_bot) && count($source_bot) > 0)
+		{
+		echo implode("\n\t", $source_bot)."\n";
+		}
+		?>
+	</body>
 </html>
+
+
+		

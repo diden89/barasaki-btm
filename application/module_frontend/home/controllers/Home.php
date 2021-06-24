@@ -13,7 +13,7 @@ class Home extends MY_Controller {
 			'slide' => $this->load_slide(),
 			'services' => $this->load_services(),
 			'projects' => $this->load_projects(),
-			'products' => $this->load_products(),
+			// 'products' => $this->load_products(),
 			'get_news' => $this->load_news(),
 			'team' => $this->load_team(),
 			'company_legal' => $this->load_company_legal(),

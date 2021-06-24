@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <h3 class="box-title">Company</h3>
   </div>
   <div class="box-body pad">
-    <form id="formInputCompany">
+    <form id="formInputCompany" enctype='multipart/form-data'>
       <div class="form-group">
         <label for="txtFullname">Company Name:</label>
         <input type="text" class="form-control" id="txtFullname" name="txt_fullname" placeholder="Enter Company Name" value="<?php echo $data->fullname; ?>">
@@ -31,10 +31,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
       <div class="form-group">
         <label for="txtImg">Favicon:</label>
-          <input type="file" id="txtImg" name="txt_img" value='<?php echo (isset($data->favicon)) ? $data->favicon : ""; ?>'>
+          <input type="file" id="txtImg" name="txt_fav" value='<?php echo (isset($data->favicon)) ? $data->favicon : ""; ?>'>
           <img src="<?php echo front_url().$data->favicon;?>" width="300px">
          <input type="hidden" name="txt_img_old" value="<?php echo (isset($data->favicon)) ? $data->favicon : ""; ?>">
       </div>
+        <div class="form-group">
+            <label for="txtImg_logo">Company Logo:</label>
+            <input type="file" id="txtImgLogo" name="txt_img_logo" value='<?php echo (isset($data->logo)) ? $data->logo : ""; ?>'>
+            <img src="<?php echo front_url().$data->logo;?>" width="300px">
+            <input type="hidden" name="txt_img_logo_old" value="<?php echo (isset($data->logo)) ? $data->logo : ""; ?>">
+        </div>
        <div class="container" id="multipleAdd">
           <div>
             <label for="txtImg">Info Contact:</label>
