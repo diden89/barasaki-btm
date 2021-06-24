@@ -182,39 +182,19 @@ class MY_Controller extends CI_Controller {
 
 	private function _menu_build()
 	{
-		$menu_build_raw = $this->_menu_build_raw();
-		$menu_build_style = $this->_menu_build_style($menu_build_raw);
+		$menu_build_raw = $this->db_home->get_menu(array('is_admin' => 'N'));
+		$menu_build_style = $this->_menu_build_style($menu_build_raw->result());
 
-		return $this->menu;
+		return $menu_build_style;
 	}
 
-	private function _menu_build_style($datas = array(), $idx = 0)
+	private function _menu_build_style($datas, $parent_id = NULL, $idx = 0)
 	{
-		foreach ($datas as $data)
+		$str_menu = FALSE;
+
+		if ($parent_id == '' || $parent_id == ' ' || $parent_id == NULL || $parent_id == 0 || empty($parent_id))
 		{
-			if (isset($data->html_start) || isset($data->html_end))
-			{
-				$this->menu .= $data->html_start;
-				$this->_menu_build_style($data->data, $data->idx);
-				$this->menu .= $data->html_end;
-			}
-			else
-			{
-				$this->menu .= $data->html;
-			}
-		}
-	}
-
-	private function _menu_build_raw($datas = array(), $parent_id = NULL, $idx = -1)
-	{
-		$menu = array();
-
-		if (count($datas) < 1)
-		{
-			$get_menu = $this->db_home->get_menu(array('is_admin' => 'N'));
-			$menu_build = $this->_menu_build_raw($get_menu->result());
-
-			return $menu_build;
+			$parent_id = NULL;
 		}
 
 		$idx++;
@@ -223,51 +203,36 @@ class MY_Controller extends CI_Controller {
 		{
 			if ($data->parent_id == $parent_id)
 			{
-				$children = $this->_menu_build_raw($datas, $data->id, $idx);
+				$children = $this->_generate_tree_menu($datas, $data->id, $idx);
 
-				if ($children)
+				if ($children !== FALSE)
 				{
-					if ($idx == 0)
+					$str_menu .= '<li class="treeview"><a href="'.site_url($data->url).'"><i class="'.$data->icon.'"></i> <span>'.$data->caption.'</span><span class="pull-right-container"><b class="caret"></b></span></a>';
+
+					if ($idx > 0)
 					{
-						$html_start = '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="'.$data->url.'" id="menuDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.ucwords(strtolower($data->caption)).'</a><div class="dropdown-menu" aria-labelledby="menuDropdown">';
-						$html_end = '</div></li>';
-					}
-					elseif ($idx > 0)
-					{
-						$html_start = '<div class="dropdown-submenu"><a class="dropdown-item" href="'.$data->url.'">'.ucwords(strtolower($data->caption)).'</a><ul>';
-						$html_end = '</ul></div>';
+						$str_menu .= '<ul class="treeview-menu">';
 					}
 
-					$data->idx = $idx;
-					$data->html_start = $html_start;
-					$data->data = $children;
-					$data->html_end = $html_end;
+					$str_menu .= $children;
+
+					if ($idx > 0)
+					{
+						$str_menu .= '</ul>';
+					}
+
+					$str_menu .= '</li>';
 				}
 				else
 				{
-					if ($idx == 0)
-					{
-						$html = '<li class="nav-item"><a class="nav-link" href="'.$data->url.'">'.ucwords(strtolower($data->caption)).'</a></li>';
-					}
-					elseif ($idx == 1)
-					{
-						$html = '<a class="dropdown-item" href="'.$data->url.'">'.ucwords(strtolower($data->caption)).'</a>';
-					}
-					elseif ($idx > 1)
-					{
-						$html = '<li class="dropdown-subitem"><a class="" href="'.$data->url.'">'.ucwords(strtolower($data->caption)).'</a></li>';
-					}
-
-					$data->idx = $idx;
-					$data->html = $html;
+					$str_menu .= '<li class="'.($this->store_params['page_active'] == $data->caption ? 'active' : '').'"><a href="'.site_url($data->url).'"><i class="'.$data->icon.'"></i> '.$data->caption.'</a></li>';
 				}
-
-				$menu[] = $data;
 			}
 		}
 
-		return $menu;
+		return $str_menu;
 	}
+
 	
 	protected function load_footer()
 	{

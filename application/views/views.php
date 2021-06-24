@@ -55,66 +55,7 @@
 				</nav>
 			</div>
 		</div>
-
-		<div class="bg-top navbar-light">
-			<div class="container">
-				<div class="row no-gutters d-flex align-items-center align-items-stretch">
-					<div class="col-md-3 d-flex align-items-center py-3">
-						<a class="navbar-brand" href="index.html"><img src="<?php echo base_url(); ?>assets/images/compro/logo.png" width="100px" height="50px"/></a>
-					</div>
-					<div class="col-lg-9 d-block">
-						<div class="row d-flex">
-							<div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
-								<div class="icon d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-								<div class="text d-flex align-items-center">
-									<span>iwebebs@gmail.com
-									info.iwebe@yahoo.com</span>
-								</div>
-								
-							</div>
-							<div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
-								<div class="icon d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-								<div class="text d-flex align-items-center">
-								<span>Call : +(021)226 76 044</span>
-								</div>
-							</div>
-							<div class="col-md topper d-flex align-items-center align-items-stretch">
-								<p class="mb-0 d-flex d-block">
-								<a href="#" class="btn btn-primary d-flex align-items-center justify-content-center">
-									<span>Permintaan Penawaran</span>
-								</a>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- start header -->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
-		    <div class="container d-flex align-items-center">
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-		        <span class="oi oi-menu"></span> Menu
-		      </button>
-		      <!-- <form action="#" class="searchform order-lg-last">
-	          <div class="form-group d-flex">
-	            <input type="text" class="form-control pl-3" placeholder="Search">
-	            <button type="submit" placeholder="" class="form-control search"><span class="ion-ios-search"></span></button>
-	          </div>
-	        </form> -->
-		      <div class="collapse navbar-collapse" id="ftco-nav">
-		        <ul class="navbar-nav mr-auto">
-		        	<!-- <li class="nav-item active"><a href="index.html" class="nav-link pl-0">Home</a></li>
-		        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-		        	<li class="nav-item"><a href="project.html" class="nav-link">Project</a></li>
-		        	<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-		          	<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li> -->
-		          	<?php echo $menu; ?>
-		        </ul>
-		      </div>
-		    </div>
-	  	</nav>
-		<!-- end header -->
+		
 		<!-- start Content -->
 		<?php print $body."\n"; ?>
 		<!-- end Content -->
@@ -172,7 +113,7 @@
 
 		<div class="copyright">
 			<div class="container">
-				<p>All Rights Reserved 2017 &copy; barasaki-btm.com</p>
+				<p>All Rights Reserved 2021 &copy; barasaki-btm.com</p>
 			</div>
 		</div>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
