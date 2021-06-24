@@ -8,6 +8,41 @@
   * @path /barasaki-btm/application/module_frontend/project/views/project_view.php
   */
   ?>
+  <?php
+  //print_r($contact);exit; 
+  ?>
+<div class="inner-page contact-us">
+	<div class="container">
+		<div class="header-intro">
+			<h2>Contact Us</h2>
+		</div>
+		<div class="col-lg-12 contact content-header" id="pricing">
+			<div class="col-md-6 no-padding-left">
+				<h5>Contact Us:</h5>
+				<?php foreach($contact as $v=>$k){?>
+					<p><i class="fa fa-map-marker"></i>
+					<?php echo $k->address;?></p>
+					<p><i class="fa fa-envelope"></i>
+						<?php foreach($k->email as $e){
+							echo $e.',';
+						}?>
+						</p>
+					<p><i class="fa fa-phone"></i>+62 812 776 2343, +62 821 7455 1008</p>
+				<?php } ?>
+				<div class="contact-detail"></div>
+			</div>
+			<div class="col-md-6">
+				<input type="text" placeholder="Name">
+				<input type="text" placeholder="E-Mail">
+				<textarea name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
+				<button class="send">Send</button>
+			</div>
+		</div> 
+
+		<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d997.2860435208844!2d103.978088!3d1.053281!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3fa6d03256a6178a!2sBarasaki+Sinergi+Semesta!5e0!3m2!1sen!2sid!4v1484624047661" width="100%" height="355" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+	</div>
+</div>
 <section class="hero-wrap hero-wrap-2" style="background-image: url('<?php echo base_url($header->img);?>');" data-stellar-background-ratio="0.5">
 	<div class="overlay"></div>
 	<div class="container">
