@@ -1,11 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 /*!
-  * @package Iwebebs
-  * @copyright PT Iwebe Bangun Solusi
+  * @package Barasaki Semesta
+  * @copyright Barasaki Semesta
   * @author Algaza
   * @version 1.0
   * @access Public
-  * @path /iwebebs/application/module_frontend/project/views/project_view.php
+  * @path /barasaki-btm/application/module_frontend/project/views/project_view.php
   */
   ?>
 <section class="hero-wrap hero-wrap-2" style="background-image: url('<?php echo base_url($header->img);?>');" data-stellar-background-ratio="0.5">

@@ -1,10 +1,10 @@
 /*!
- * @package Iwebebs
- * @copyright PT Iwebe Bangun Solusi
+ * @package Barasaki Semesta
+ * @copyright Barasaki Semesta
  * @author Sikelopes
  * @version 1.0
  * @access Public
- * @path /iwebebs/assets/js/admin/auth.js
+ * @path /barasaki-btm/assets/js/admin/auth.js
  */
 
 $(document).ready(function() {

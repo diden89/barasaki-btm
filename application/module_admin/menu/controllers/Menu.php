@@ -1,11 +1,11 @@
 <?php
 /*!
- * @package Iwebebs
- * @copyright PT Iwebe Bangun Solusi
+ * @package Barasaki Semesta
+ * @copyright Barasaki Semesta
  * @author Sikelopes
  * @version 1.0
  * @access Public
- * @path /iwebebs/application/module_admin/about_us/controllers/About_us.php
+ * @path /barasaki-btm/application/module_admin/about_us/controllers/About_us.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -24,45 +24,9 @@ class Menu extends MY_Controller {
 
 		if ($get_properties && $get_properties->num_rows() > 0)
 		{	
-			$total_data =  $this->mm->get_data($limit = "",$start = "")->num_rows();
-			//pagination
-			//konfigurasi pagination
 
-	        $config['base_url'] = base_url('menu/index'); //site url
-	        $config['total_rows'] = $total_data; //total row
-	        $config['per_page'] = 10;  //show record per halaman
-	        $config["uri_segment"] = 3;  // uri parameter
-	        $choice = $config["total_rows"] / $config["per_page"];
-	        $config["num_links"] = floor($choice);
-
-	         // Membuat Style pagination untuk BootStrap v4
-	     	$config['first_link']       = 'First';
-	        $config['last_link']        = 'Last';
-	        $config['next_link']        = 'Next';
-	        $config['prev_link']        = 'Prev';
-	        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-	        $config['full_tag_close']   = '</ul></nav></div>';
-	        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-	        $config['num_tag_close']    = '</span></li>';
-	        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
-	        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
-	        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-	        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-	        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-	        $config['prev_tagl_close']  = '</span>Next</li>';
-	        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-	        $config['first_tagl_close'] = '</span></li>';
-	        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-	        $config['last_tagl_close']  = '</span></li>';
-	 
-	        $this->pagination->initialize($config);
-	       	$this->store_params['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-	 		$this->store_params['number_data'] = ($this->uri->segment(3)) ? $this->uri->segment(3)+1 : 1;
-	       
 			$row_properties = $get_properties->row();
-			$get_data = $this->mm->get_data($config['per_page'],$this->store_params['page']);
-
-			$this->store_params['pagination'] = $this->pagination->create_links();
+			$get_data = $this->mm->get_data();
 			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->caption;
 			$this->store_params['page_active'] = $row_properties->caption;
 			$this->store_params['page_icon'] = $row_properties->icon;
@@ -71,8 +35,9 @@ class Menu extends MY_Controller {
 				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">'
 			);
 			$this->store_params['source_bot'] = array(
+				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>',
 				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>',
-				'<script src="'.front_url('assets/js/admin').'/menu.js"></script>'
+				'<script src="'.front_url('assets/js/admin/menu/').'/menu.js"></script>'
 			);
 			$this->view('menu_view');
 		}
@@ -82,6 +47,11 @@ class Menu extends MY_Controller {
 		}
 	}
 
+	public function search_data()
+	{
+		prin_r($_POST);exit;
+		$this->index($_POST);
+	}
 
 	public function cu_action($cond)
 	{
@@ -99,7 +69,7 @@ class Menu extends MY_Controller {
 			);
 			$this->store_params['source_bot'] = array(
 				'<script src="'.front_url('assets/templates/admin').'/plugins/summernote/0.8.12/summernote.min.js"></script>',
-				'<script src="'.front_url('assets/js/admin').'/menu.js"></script>'
+				'<script src="'.front_url('assets/js/admin/menu/').'/menu_form.js"></script>'
 			);
 			
 			$this->store_params['cond'] = ucwords($cond).' Menu';
@@ -150,10 +120,11 @@ class Menu extends MY_Controller {
 
 	public function input_action()
 	{
-		$upload_dir = str_replace('admin'.DIRECTORY_SEPARATOR,'' , FCPATH);
-	
+		// print_r($_FILES['txt_img']);exit;
+		$upload_dir = str_replace('npanel'.DIRECTORY_SEPARATOR,'' , FCPATH);
+		
 		$config['upload_path'] = $upload_dir."assets".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."compro";
-        $config['allowed_types'] ='gif|jpg|png';
+        $config['allowed_types'] ='gif|jpg|png|jpeg';
 
 	    $datas['caption'] = $this->input->post('txt_menu_name');
 	    $datas['is_admin'] = $this->input->post('txt_position');
@@ -164,7 +135,7 @@ class Menu extends MY_Controller {
         $datas['is_active'] = $this->input->post('txt_status');
       	
        	$this->load->library('upload',$config);
-
+       
 		if( ! empty($this->input->post('txt_id_menu')))
 		{
 			$old_img = substr($this->input->post('txt_img_old'), 21);
@@ -180,7 +151,7 @@ class Menu extends MY_Controller {
 
 	            $result = $this->mm->do_update($datas,$id);
 
-	            if($old_img !== 'slider-default.jpg')
+	            if($old_img !== 'slider-default.png')
 	            {
 	            	unlink($config['upload_path'].DIRECTORY_SEPARATOR.$old_img);
 	            }
@@ -192,6 +163,7 @@ class Menu extends MY_Controller {
 			}
 			else
 			{
+				$this->upload->display_errors();
 	            $id = $this->input->post('txt_id_menu');
 
 	            $result = $this->mm->do_update($datas,$id);

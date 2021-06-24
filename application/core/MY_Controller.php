@@ -1,11 +1,11 @@
 <?php
 /*!
- * @package Iwebebs
- * @copyright PT Iwebe Bangun Solusi
+ * @package Barasaki Semesta
+ * @copyright Barasaki Semesta
  * @author Sikelopes
  * @version 1.0
  * @access Public
- * @path /iwebebs/application/core/MY_Controller.php
+ * @path /barasaki-btm/application/core/MY_Controller.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');

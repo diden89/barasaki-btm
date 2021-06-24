@@ -1,11 +1,11 @@
 <?php
 /*!
- * @package Iwebebs
- * @copyright PT Iwebe Bangun Solusi
+ * @package Barasaki Semesta
+ * @copyright Barasaki Semesta
  * @author Sikelopes
  * @version 1.0
  * @access Public
- * @path /iwebebs/application/module_admin/about_us/controllers/About_us.php
+ * @path /barasaki-btm/application/module_admin/about_us/controllers/About_us.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -145,7 +145,7 @@ class Projects extends MY_Controller {
 
 	public function input_action()
 	{
-		$upload_dir = str_replace('admin'.DIRECTORY_SEPARATOR,'' , FCPATH);
+		$upload_dir = str_replace('npanel'.DIRECTORY_SEPARATOR,'' , FCPATH);
 	
 		$config['upload_path'] = $upload_dir."assets".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."projects";
         $config['allowed_types'] ='gif|jpg|png';
@@ -244,7 +244,7 @@ class Projects extends MY_Controller {
 	{
 		$id = $this->uri->segment(3);
 
-		$upload_dir = str_replace('admin'.DIRECTORY_SEPARATOR,'' , FCPATH);
+		$upload_dir = str_replace('npanel'.DIRECTORY_SEPARATOR,'' , FCPATH);
 		$img_path = $upload_dir."assets".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."projects";
 
 		$get_project = $this->pm->get_data_edit($id)->row();

@@ -1,11 +1,11 @@
 <?php
 /*!
- * @package Iwebebs
- * @copyright PT Iwebe Bangun Solusi
+ * @package Barasaki Semesta
+ * @copyright Barasaki Semesta
  * @author Algaza
  * @version 1.0
  * @access Public
- * @path /iwebebs/application/module_admin/home/views/home_view.php
+ * @path /barasaki-btm/application/module_admin/home/views/home_view.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<h3 class="box-title"><?php echo $cond; ?></h3>
 	</div>
 	<div class="box-body pad">
-		<form id="formInputMenu">
+		<form id="formInputMenu" enctype='multipart/form-data'>
 			<div class="form-group">
 				<label for="txtCategory_name">Nama Menu:</label>
 					<input type="text" class="form-control" id="txtMenu_name" name="txt_menu_name" placeholder="Enter Nama Menu" value='<?php echo (isset($data->caption)) ? $data->caption : ""; ?>'>
@@ -28,7 +28,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<option value="">--Please Select Status--</option>
 						
 						<?php 
-						echo $data->is_admin;
 						if(isset($data->is_admin))
 						{
 							if($data->is_admin == 'Y')

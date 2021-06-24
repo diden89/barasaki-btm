@@ -1,5 +1,5 @@
 <?php
-// echo '<pre>'; print_r($_SERVER); exit;
+ // echo '<pre>'; print_r($_SERVER); exit;
 /**
  * CodeIgniter
  *

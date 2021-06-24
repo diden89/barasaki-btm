@@ -1,10 +1,10 @@
-/*!
- * @package Iwebebs
- * @copyright PT Iwebe Bangun Solusi
+ /*!
+ * @package Barasaki Semesta
+ * @copyright Barasaki Semesta
  * @author Algaza
  * @version 1.0
  * @access Public
- * @path /iwebebs/assets/js/admin/about_us.js
+ * @path /barasaki-btm/assets/js/admin/about_us.js
  */
 
 var uploadImage = function(image) {
@@ -33,6 +33,7 @@ var uploadImage = function(image) {
 };
 
 $(document).ready(function() {
+
     if($('#txt_id_menu').val() !== '')
     {
          var id_parent_menu = $('#txt_id_parent').val();
@@ -44,6 +45,7 @@ $(document).ready(function() {
                 url: siteUrl+'menu/get_menu_option',
                 data:{'is_admin':is_admin,'id_parent_menu':id_parent_menu},
                 success:function(html){
+                    console.log(html)
                     $('#txt_parent_id').html(html);
                     
                 }
@@ -73,6 +75,8 @@ $(document).ready(function() {
         }
     });
 
+
+
     $('#is_admin').on('change',function(){
        //  var new_href = window.location.href + "?is_admin="+ $('#is_admin').val();
        location.reload(true);
@@ -90,34 +94,12 @@ $(document).ready(function() {
         }
     });
 
-    // $('.btn.btn-primary').click(function(){
-    //     $('.about_us.box').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
-        
-    //     var form = $('#formAboutUs');
-    //     var data = form.serializeArray();
-        
-    //     $.ajax({
-    //         url: './menu/store_data',
-    //         method: 'POST',
-    //         dataType: 'json',
-    //         data: data,
-    //         success: function(json) {
-    //             $('div.overlay').remove();
-    //             alert('Data successfully saved');
-    //         },
-    //         error: function() {
-    //             $('div.overlay').remove();
-    //             alert('Something wrong, please contact the administrators');
-    //         }
-    //     });
-    // });
-
     $('#formInputMenu').submit(function(e){
-        $('.menu.box').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
+        // $('.menu.box').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
             e.preventDefault(); 
          $.ajax({
              url: siteUrl+'menu/input_action',
-             type:"post",
+             type:'post',
              data :new FormData(this),
              processData:false,
              contentType:false,

@@ -1,25 +1,19 @@
 <?php
 /*!
- * @package Iwebebs
- * @copyright PT Iwebe Bangun Solusi
+ * @package Barasaki Semesta
+ * @copyright Barasaki Semesta
  * @author Sikelopes
  * @version 1.0
  * @access Public
- * @path /iwebebs/application/module_admin/about_us/models/About_us_model.php
+ * @path /barasaki-btm/application/module_admin/about_us/models/About_us_model.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Menu_model extends CI_Model {
-	public function get_data($limit,$start)
+	public function get_data()
 	{
 		$this->db->where('is_active', 'Y');
-
-		if( ! empty($limit))
-		{
-			$this->db->limit($limit,$start);
-		}
-
 		return $this->db->get('menu');
 	}
 
