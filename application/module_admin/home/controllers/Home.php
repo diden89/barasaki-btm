@@ -2,8 +2,8 @@
 // echo phpinfo();
 // exit;
 /*!
- * @package Barasaki Semesta
- * @copyright Barasaki Semesta
+ * @package PT. Barasaki Sinergi Semesta
+ * @copyright PT. Barasaki Sinergi Semesta
  * @author Sikelopes
  * @version 1.0
  * @access Public

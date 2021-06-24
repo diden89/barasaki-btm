@@ -1,6 +1,6 @@
  /*!
- * @package Barasaki Semesta
- * @copyright Barasaki Semesta
+ * @package PT. Barasaki Sinergi Semesta
+ * @copyright PT. Barasaki Sinergi Semesta
  * @author Algaza
  * @version 1.0
  * @access Public

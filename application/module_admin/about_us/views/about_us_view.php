@@ -1,7 +1,7 @@
 <?php
 /*!
- * @package Barasaki Semesta
- * @copyright Barasaki Semesta
+ * @package PT. Barasaki Sinergi Semesta
+ * @copyright PT. Barasaki Sinergi Semesta
  * @author Sikolopes
  * @version 1.0
  * @access Public

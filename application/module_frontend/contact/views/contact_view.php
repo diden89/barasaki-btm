@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 /*!
-  * @package Barasaki Semesta
-  * @copyright Barasaki Semesta
+  * @package PT. Barasaki Sinergi Semesta
+  * @copyright PT. Barasaki Sinergi Semesta
   * @author Algaza
   * @version 1.0
   * @access Public
@@ -43,6 +43,16 @@
 
 	</div>
 </div>
+
+<div class="container">
+   	<div class='row'>
+	    <div class='span 10 offset2 well'>
+		<!-- 	<iframe src="https://docs.google.com/viewer?url=http://infolab.stanford.edu/pub/papers/google.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe> -->
+		<iframe src="https://drive.google.com/viewerng/viewer?url=http://docs.google.com/fileview?id=0B5ImRpiNhCfGZDVhMGEyYmUtZTdmMy00YWEyLWEyMTQtN2E2YzM3MDg3MTZh&hl=en&pid=explorer&efh=false&a=v&chrome=false&embedded=true" frameborder="0"></iframe>
+	    </div>	
+    </div>	
+</div>	
+
 <section class="hero-wrap hero-wrap-2" style="background-image: url('<?php echo base_url($header->img);?>');" data-stellar-background-ratio="0.5">
 	<div class="overlay"></div>
 	<div class="container">
