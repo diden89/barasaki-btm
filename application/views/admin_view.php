@@ -95,7 +95,7 @@
 		</div>
 		<footer class="main-footer">
 			<div class="pull-right hidden-xs">Developed by Al Gaza Solution</div>
-			<strong>Copyright &copy; 2019 <a href="<?php echo front_url(); ?>">Iwebe Bangun Solusi, PT</a>.</strong> All rights reserved.
+			<strong>Copyright &copy; 2019 <a href="<?php echo front_url(); ?>">Barasaki Semesta, PT</a>.</strong> All rights reserved.
 		</footer>
 	</div>
 	<script src="<?php echo front_url('assets/templates/admin'); ?>/bower_components/jquery/dist/jquery.min.js"></script>
