@@ -44,6 +44,16 @@
         <div class="col-md-12">
             <img src="<?php echo base_url(); ?>assets/images/img/partner2.jpg">
         </div>
+        <div class="container" >
+        	<div class="row" >
+        		<?php foreach($customer as $c=>$k){?>
+	        		<div class="col-md-2" style="width: 200px;">
+	        			<img src="<?php echo base_url($k->img); ?>"/>
+	        		</div>
+        		<?php } ?>
+        		
+        	</div>
+        </div>
         
     </div>
 </div>
