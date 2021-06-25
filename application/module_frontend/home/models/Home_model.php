@@ -26,6 +26,13 @@ class Home_model extends CI_Model {
 		return $this->db->get('customer');
 	}
 
+	public function get_distributor()
+	{
+		$this->db->where('is_active', 'Y');
+
+		return $this->db->get('distributor');
+	}
+
 	public function get_email($company_id,$status)
 	{
 		$this->db->where('company_id', $company_id);

@@ -30,31 +30,26 @@
 	<div class="container">
 		<span>Sole Distributor</span>
 		<br>
-		<a  href="http://ae-mic.com/en/" target="__blank">
-			<img src="<?php echo base_url(); ?>assets/images/img/aemiclogo.jpg"/>
-      	</a>
+		<?php foreach($distributor as $d=>$s){?>
+			<a  href="<?php echo $s->url;?>" target="__blank">
+				<img src="<?php echo base_url($s->img); ?>"/ style="width: 250px;height: 250px;">
+	      	</a>
+      	<?php } ?>
    </div>
 </div> 
 <!-- services start -->
 <div class="container">
 	<div class="our-services">
-       <!-- <div class="header-intro">
-        <h2>Currently Partner</h2>
-        </div> -->
-        <div class="col-md-12">
-            <img src="<?php echo base_url(); ?>assets/images/img/partner2.jpg">
-        </div>
-        <div class="container" >
-        	<div class="row" >
-        		<?php foreach($customer as $c=>$k){?>
-	        		<div class="col-md-2" style="width: 200px;">
-	        			<img src="<?php echo base_url($k->img); ?>"/>
-	        		</div>
-        		<?php } ?>
-        		
-        	</div>
-        </div>
-        
+      	<h3>Customer Recently</h3>
+		<br>
+    	<div class="row" >
+    		<?php foreach($customer as $c=>$k){?>
+        		<div class="col-md-4" style="width: 200px;">
+        			<a href="<?php echo $k->url;?>" target="__blank"><img src="<?php echo base_url($k->img); ?>"/></a>
+        		</div>
+    		<?php } ?>
+    		
+    	</div>
     </div>
 </div>
 <!-- services end -->

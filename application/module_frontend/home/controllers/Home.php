@@ -15,6 +15,7 @@ class Home extends MY_Controller {
 			'projects' => $this->load_projects(),
 			// 'products' => $this->load_products(),
 			'customer' => $this->db_home->get_customer()->result(),
+			'distributor' => $this->db_home->get_distributor()->result(),
 			'get_news' => $this->load_news(),
 			'team' => $this->load_team(),
 			'company_legal' => $this->load_company_legal(),
