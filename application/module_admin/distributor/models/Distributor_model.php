@@ -83,11 +83,9 @@ class Distributor_model extends CI_Model {
 
 	public function delete($data=array(),$id)
 	{
-		$this->db->set('is_active','N');
-		$this->db->where('id',$id);
-		$upd = $this->db->update('category');
+		$del = $this->db->delete('distributor', array('id' => $id));
 
-		if($upd)
+		if($del)
 		{
 			$this->db->set($data);
 			$this->db->set('id',$id);
@@ -95,7 +93,7 @@ class Distributor_model extends CI_Model {
 			$this->db->set('log_action', 'delete');
 			$this->db->set('log_created_date', 'NOW()', FALSE);
 
-			return $this->db->insert('log_category');
+			return $this->db->insert('log_distributor');
 		}
 		return FALSE;
 	}

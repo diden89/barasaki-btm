@@ -5,7 +5,7 @@
  * @author Sikelopes
  * @version 1.0
  * @access Public
- * @path /barasaki-btm/application/module_admin/about_us/controllers/About_us.php
+ * @path /barasaki-btm/application/module_admin/projects/controllers/projects.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -15,7 +15,6 @@ class Projects extends MY_Controller {
 	{
 		parent::__construct();
 		$this->load->model('projects_model','pm');
-		$this->load->library('pagination');
 	}
 
 	public function index()
@@ -24,58 +23,21 @@ class Projects extends MY_Controller {
 
 		if ($get_properties && $get_properties->num_rows() > 0)
 		{	
-			$total_data =  $this->pm->get_data($limit = "",$start = "")->num_rows();
-			//pagination
-			//konfigurasi pagination
-
-	        $config['base_url'] = base_url('projects/index'); //site url
-	        $config['total_rows'] = $total_data; //total row
-	        $config['per_page'] = 5;  //show record per halaman
-	        $config["uri_segment"] = 3;  // uri parameter
-	        $choice = $config["total_rows"] / $config["per_page"];
-	        $config["num_links"] = floor($choice);
-
-	         // Membuat Style pagination untuk BootStrap v4
-	     	$config['first_link']       = 'First';
-	        $config['last_link']        = 'Last';
-	        $config['next_link']        = 'Next';
-	        $config['prev_link']        = 'Prev';
-	        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-	        $config['full_tag_close']   = '</ul></nav></div>';
-	        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-	        $config['num_tag_close']    = '</span></li>';
-	        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
-	        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
-	        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-	        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-	        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-	        $config['prev_tagl_close']  = '</span>Next</li>';
-	        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-	        $config['first_tagl_close'] = '</span></li>';
-	        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-	        $config['last_tagl_close']  = '</span></li>';
-	 
-	        $this->pagination->initialize($config);
-	       	$this->store_params['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-	 		$this->store_params['number_data'] = ($this->uri->segment(3)) ? $this->uri->segment(3)+1 : 1;
-	        //panggil function get_mahasiswa_list yang ada pada mmodel mahasiswa_model. 
-
 			$row_properties = $get_properties->row();
-			$get_data = $this->pm->get_data($config['per_page'],$this->store_params['page']);
+			$get_data = $this->pm->get_data();
 
-			$this->store_params['pagination'] = $this->pagination->create_links();
-			// print_r($this->store_params['pagination']);exit;
 			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->caption;
 			$this->store_params['page_active'] = $row_properties->caption;
 			$this->store_params['page_icon'] = $row_properties->icon;
 			$this->store_params['source_top'] = array(
-				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">'
+				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">'
 			);
 			$this->store_params['source_bot'] = array(
-				'<script src="'.front_url('assets/templates/admin').'/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>',
-				'<script src="'.front_url('assets/js/admin').'/projects.js"></script>',
-				'<script> function deleteprojects(delete_url){$("#deleteModal").modal("show", {backdrop: "static"});
-      			document.getElementById("deleteProjects").setAttribute("href" , delete_url);
+				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>',
+				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>',
+				'<script src="'.front_url('assets/js/admin/projects/').'/projects.js"></script>',
+				'<script> function deletedata(delete_url){$("#deleteModal").modal("show", {backdrop: "static"});
+      			document.getElementById("deleteData").setAttribute("href" , delete_url);
     			}</script>',
     			'<script>
     				function showImage(img_src){
@@ -87,7 +49,6 @@ class Projects extends MY_Controller {
 			);
 			$this->store_params['data'] = $get_data->result_array();
 
-			// $this->view('modal_projects');
 			$this->view('projects_view');
 		}
 		else
@@ -109,18 +70,18 @@ class Projects extends MY_Controller {
 			$this->store_params['page_active'] = $row_properties->caption;
 			$this->store_params['page_icon'] = $row_properties->icon;
 			$this->store_params['source_top'] = array(
-				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">'
+				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/plugins/summernote/0.8.12/summernote.css">'
 			);
 			$this->store_params['source_bot'] = array(
-				'<script src="'.front_url('assets/templates/admin').'/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>',
-				'<script src="'.front_url('assets/js/admin').'/projects.js"></script>'
+				'<script src="'.front_url('assets/templates/admin').'/plugins/summernote/0.8.12/summernote.min.js"></script>',
+				'<script src="'.front_url('assets/js/admin/projects/').'/projects_form.js"></script>'
 			);
 			
 			if($cond !== 'add')
 			{
 				$id = $this->uri->segment(4);
 				
-				$this->store_params['category'] = $this->pm->get_category()->result_array();
+				$this->store_params['category'] = $this->pm->get_category()->result();
 
 				$get_data_edit = $this->pm->get_data_edit($id);
 				$this->store_params['data'] = $get_data_edit->row();
@@ -130,10 +91,10 @@ class Projects extends MY_Controller {
 			else
 			{
 				$this->store_params['cond'] = ucwords($cond).' Project';
-				$this->store_params['category'] = $this->pm->get_category()->result_array();
+				$this->store_params['category'] = $this->pm->get_category()->result();
 			}
 
-
+			// print_r($this->store_params['category']);EXIT;
 			$this->view('projects_input_view');
 			
 		}
@@ -148,7 +109,7 @@ class Projects extends MY_Controller {
 		$upload_dir = str_replace('npanel'.DIRECTORY_SEPARATOR,'' , FCPATH);
 	
 		$config['upload_path'] = $upload_dir."assets".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."projects";
-        $config['allowed_types'] ='gif|jpg|png';
+        $config['allowed_types'] ='gif|jpg|png|jpeg';
 		$this->load->library('upload',$config);
 
 		if( ! empty($this->input->post('txt_pro_id')))

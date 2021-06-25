@@ -11,7 +11,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Products_model extends CI_Model {
-	public function get_data($limit,$start)
+	public function get_data()
 	{
 		$this->db->select('*,a.id as products_id');
 		$this->db->from('products a');
@@ -21,12 +21,7 @@ class Products_model extends CI_Model {
 		// $this->db->where('b.is_active', 'Y');
 		// $this->db->where('c.is_active', 'Y');
 		$this->db->order_by('a.id', 'ASC');
-		$this->db->group_by('a.id');
-
-		if( ! empty($limit))
-		{
-			$this->db->limit($limit,$start);
-		}
+		// $this->db->group_by('a.id');
 
 		return $this->db->get();
 	}

@@ -5,7 +5,7 @@
  * @author Algaza
  * @version 1.0
  * @access Public
- * @path /barasaki-btm/application/module_admin/home/views/home_view.php
+ * @path /barasaki-btm/application/module_admin/category/views/category_view.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -20,10 +20,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<label for="txtCategory_name">Category Name:</label>
 					<input type="text" class="form-control" id="txtCategory_name" name="txt_category_name" placeholder="Enter Category Name" value='<?php echo (isset($data->category_name)) ? $data->category_name : ""; ?>'>
 					<input type="hidden" name="txt_id_category" value="<?php echo (isset($data->id)) ? $data->id : ""; ?>">
+					<input type="hidden" id="url_cat" name="url_cat" value="<?php echo $url; ?>">
+			</div>
+			<div class="form-group">
+				<label for="txtUrl">Url:</label>
+					<input type="text" class="form-control" id="txtUrl" name="txt_url" placeholder="Enter URL" value='<?php echo (isset($data->url)) ? $data->url : ""; ?>'>
 			</div>
 			<div class="form-group">
 				<label for="txtType">Type:</label>
-					<select class="form-control select2 select2-hidden-accessible" style="width: 20%;" data-select2-id="1" tabindex="-1" aria-hidden="true" name="txt_type">
+					<select class="form-control select2 select2-hidden-accessible" id="category-id" style="width: 20%;" data-select2-id="1" tabindex="-1" aria-hidden="true" name="txt_type">
 						<option value="">--Please Select Type--</option>
 						<?php if(isset($data->type))
 						{
@@ -66,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						}
 						else
 						{
-							echo '<option value="Y">Enable</option>';
+							echo '<option value="Y" selected>Enable</option>';
 							echo '<option value="N">Disable</option>';
 						}
 						

@@ -5,13 +5,13 @@
  * @author Sikelopes
  * @version 1.0
  * @access Public
- * @path /barasaki-btm/application/module_admin/about_us/models/About_us_model.php
+ * @path /barasaki-btm/application/module_admin/projects/models/projects_model.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Projects_model extends CI_Model {
-	public function get_data($limit,$start)
+	public function get_data()
 	{
 		$this->db->select('*,a.id as projects_id');
 		$this->db->from('projects a');
@@ -19,11 +19,6 @@ class Projects_model extends CI_Model {
 		$this->db->where('a.is_active', 'Y');
 		$this->db->where('b.is_active', 'Y');
 		$this->db->order_by('a.id', 'ASC');
-
-		if( ! empty($limit))
-		{
-			$this->db->limit($limit,$start);
-		}
 
 		return $this->db->get();
 	}
@@ -43,6 +38,7 @@ class Projects_model extends CI_Model {
 	public function get_category()
 	{
 		$this->db->where('is_active', 'Y');
+		$this->db->where('type', 'product');
 		return $this->db->get('category');
 	}
 

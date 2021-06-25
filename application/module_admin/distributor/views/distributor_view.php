@@ -55,6 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </td>
           <td style="text-align:center;"> 
             	<a href="<?php echo base_url('distributor/cu_action/edit/'.$dt["id"].'');?>" class="fa btn btn-success fa-pencil"></a>
+              <button type="button" onclick="deletedata('<?php echo base_url();?>distributor/delete/<?php echo $dt['id'];?>')" class="fa btn btn-danger fa-trash"></button>
           </td>
           </tr>
       	<? } ?>
@@ -68,3 +69,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<a href="<?php echo base_url('distributor/cu_action/add');?>" class="btn btn-primary">Add</a>
 	</div>
 </section>
+
+<!-- delete modal -->
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Data?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Yakin akan menghapus data ini?</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
+        <a class="btn btn-primary" id="deleteData">Ya</a>
+      </div>
+    </div>
+  </div>
+</div>

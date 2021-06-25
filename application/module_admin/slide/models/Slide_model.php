@@ -11,19 +11,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Slide_model extends CI_Model {
-	public function get_data($limit,$start)
+	public function get_data()
 	{
-		$this->db->select('*');
-		$this->db->from('slide');
 		$this->db->where('is_active', 'Y');
 		$this->db->order_by('id', 'ASC');
 
-		if( ! empty($limit))
-		{
-			$this->db->limit($limit,$start);
-		}
-
-		return $this->db->get();
+		return $this->db->get('slide');
 	}
 
 	public function get_data_edit($id)

@@ -3,13 +3,13 @@
 	<div class="rslides_container">
 		<ul class="rslides">
 			<?php foreach ($slide as $k => $v) { ?>
-				<li> <img src="<?php echo base_url($v->img); ?>" data-min-width-1400="<?php echo $v->img; ?>" alt="">
+				<li> <a href="<?php echo $v->url;?>" target="__blank"><img src="<?php echo base_url($v->img); ?>" data-min-width-1400="<?php echo $v->img; ?>" alt="">
 					<div class="container">
 						<div class="caption">
 							<h1><?php echo $v->title; ?></h1>
 							<h1><span><?php echo ucwords($v->description); ?></span></h1>
 						</div>
-					</div>
+					</div></a>
 				</li>
 			<?php } ?>	
 		</ul>

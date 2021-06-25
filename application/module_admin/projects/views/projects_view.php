@@ -5,7 +5,7 @@
  * @author Sikelopes
  * @version 1.0
  * @access Public
- * @path /barasaki-btm/application/module_admin/home/views/home_view.php
+ * @path /barasaki-btm/application/module_admin/projects/views/projects_view.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -18,13 +18,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               
               	<div class="row">
               		<div class="col-sm-12">
-              		<table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">	
+              		<table id="example" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">	
               			<thead>
               				<tr role="row">
-              					<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 20px;" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">
-              						No
-              					</th>
-              					
               					<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 200px;" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">
               						Project Name
               					</th>
@@ -51,13 +47,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                </thead>
 	                <tbody>
 	                	<?php 
-	                		$no = $number_data;
+	                	
 	                		foreach($data as $dt){
 	                		$url_img = $dt['img'];
-	                		$new_url = str_replace('admin/', "", site_url());
+	                		$new_url = str_replace('npanel/', "", site_url());
 	                	 ?>
 	                		<tr role="row" class="odd">
-			                <td><?php echo $no; ?></td>
 			                <td class="sorting_1"><?php echo $dt['project_name']; ?></td>
 			                <td class=""><?php echo $dt['description']; ?></td>
 			                <td class=""><?php echo $dt['location']; ?></td>
@@ -66,20 +61,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<td class=""><?php echo $dt['category_name']; ?></td>
 			                <td>
 			                  	<a href="<?php echo base_url('projects/cu_action/edit/'.$dt["projects_id"].'');?>" class="fa btn btn-success fa-pencil"></a>
-			                  	<button type="button" onclick="deleteprojects('<?php echo base_url();?>projects/delete/<?php echo $dt['projects_id'];?>')" class="fa btn btn-danger fa-trash"></a> 
+			                  	<button type="button" onclick="deletedata('<?php echo base_url();?>projects/delete/<?php echo $dt['projects_id'];?>')" class="fa btn btn-danger fa-trash"></a> 
 			                </td>
 			                </tr>
 	                	<? 
-	                	$no++;
+	                	
 	                } ?>
 	               </tbody>
-	                <!-- <tfoot>
-	                <tr><th rowspan="1" colspan="1">Rendering engine</th><th rowspan="1" colspan="1">Browser</th><th rowspan="1" colspan="1">Platform(s)</th><th rowspan="1" colspan="1">Engine version</th><th rowspan="1" colspan="1">CSS grade</th></tr>
-	                </tfoot> -->
 	              </table>
-	              <nav aria-label="Page navigation">
-	              <?php echo $pagination; ?>
-	          		</nav>
          		</div>
       		</div>
          
@@ -103,7 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="modal-body">Yakin akan menghapus data ini?</div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
-        <a class="btn btn-primary" id="deleteProjects">Ya</a>
+        <a class="btn btn-primary" id="deleteData">Ya</a>
       </div>
     </div>
   </div>

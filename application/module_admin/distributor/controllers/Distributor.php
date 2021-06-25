@@ -36,7 +36,10 @@ class Distributor extends MY_Controller {
 			$this->store_params['source_bot'] = array(
 				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>',
 				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>',
-				'<script src="'.front_url('assets/js/admin/distributor/').'/distributor.js"></script>'
+				'<script src="'.front_url('assets/js/admin/distributor/').'/distributor.js"></script>',
+				'<script> function deletedata(delete_url){$("#deleteModal").modal("show", {backdrop: "static"});
+      			document.getElementById("deleteData").setAttribute("href" , delete_url);
+    			}</script>',
 			);
 			$this->view('distributor_view');
 		}
@@ -107,7 +110,7 @@ class Distributor extends MY_Controller {
        
 		if( ! empty($this->input->post('txt_id_distributor')))
 		{
-			$old_img = substr($this->input->post('txt_img_old'), 23);
+			$old_img = substr($this->input->post('txt_img_old'), 26);
 
 			if($this->upload->do_upload('txt_img'))
 			{
@@ -206,14 +209,24 @@ class Distributor extends MY_Controller {
 	{
 		$id = $this->uri->segment(3);
 
-		$get_category = $this->dm->get_data_edit($id)->row();
+		$dir = str_replace('npanel'.DIRECTORY_SEPARATOR,'' , FCPATH);
 		
-		$datas['id'] = $get_category->id;
-        $datas['category_name'] = $get_category->category_name;
-        $datas['is_active'] = $get_category->is_active;
-        $datas['type'] = $get_category->type;
-      
-		$deletecategory = $this->dm->delete($datas,$id);
-		redirect(base_url('category'), 'refresh');
+		$config_dir = $dir."assets".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."distributor";
+
+		$get_data = $this->dm->get_data_edit($id)->row();
+		
+		$datas['id'] = $get_data->id;
+        $datas['caption'] = $get_data->caption;
+        $datas['description'] = $get_data->description;
+        $datas['url'] = $get_data->url;
+        $datas['img'] = $get_data->img;
+        $datas['is_active'] = $get_data->is_active;
+
+      	$img_url = substr($get_data->img, 26);
+
+		unlink($config_dir.DIRECTORY_SEPARATOR.$img_url);
+
+		$del_data = $this->dm->delete($datas,$id);
+		redirect(base_url('distributor'), 'refresh');
 	}
 }

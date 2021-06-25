@@ -18,13 +18,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               
               	<div class="row">
               		<div class="col-sm-12">
-              		<table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">	
+              		<table id="example" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">	
               			<thead>
-              				<tr role="row">
-              					<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 20px;" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">
-              						No
-              					</th>
-              					
               					<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 200px;" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">
               						Title
               					</th>
@@ -45,34 +40,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                </thead>
 	                <tbody>
 	                	<?php 
-	                		$no = $number_data;
+	                		
 	                		foreach($data as $dt){
-	                		$url_img = $dt['img'];
-	                		$new_url = str_replace('admin/', "", site_url());
-	                	 ?>
-	                		<tr role="row" class="odd">
-			                <td><?php echo $no; ?></td>
-			                <td class="sorting_1"><?php echo $dt['title']; ?></td>
-			                <td class=""><?php echo $dt['description']; ?></td>
-			                <td class=""><?php echo $dt['url']; ?></td>
-			                <td style="text-align: center;"><img onclick="showImage('<?php echo front_url().$url_img;?>')" style="width:100%;max-width:300px" src='<?php echo front_url().$url_img;?>'>
-                      </td> 
-			                <td> 
-			                  	<a href="<?php echo base_url('slide/cu_action/edit/'.$dt["id"].'');?>" class="fa btn btn-success fa-pencil"></a>
-			                  	<button type="button" onclick="deleteslide('<?php echo base_url();?>slide/delete/<?php echo $dt['id'];?>')" class="fa btn btn-danger fa-trash"></a> 
-			                </td>
-			                </tr>
-	                	<? 
-	                	$no++;
-	                } ?>
-	               </tbody>
+    	                		$url_img = $dt['img'];
+    	                		$new_url = str_replace('npanel/', "", site_url());
+    	                	      ?>
+    	                		<tr role="row" class="odd">
+    			                <td class="sorting_1"><?php echo $dt['title']; ?></td>
+    			                <td class=""><?php echo $dt['description']; ?></td>
+    			                <td class=""><?php echo $dt['url']; ?></td>
+    			                <td style="text-align: center;"><img onclick="showImage('<?php echo front_url().$url_img;?>')" style="width:100%;max-width:300px" src='<?php echo front_url().$url_img;?>'>
+                                </td> 
+    			                <td style="text-align: center"> 
+    			                  	<a href="<?php echo base_url('slide/cu_action/edit/'.$dt["id"].'');?>" class="fa btn btn-success fa-pencil"></a>
+    			                  	<button type="button" onclick="deleteslide('<?php echo base_url();?>slide/delete/<?php echo $dt['id'];?>')" class="fa btn btn-danger fa-trash"></button>
+    			                </td>
+    			                </tr>
+            	                	<? 
+            	                	
+        	                } ?>
+	                   </tbody>
 	                <!-- <tfoot>
 	                <tr><th rowspan="1" colspan="1">Rendering engine</th><th rowspan="1" colspan="1">Browser</th><th rowspan="1" colspan="1">Platform(s)</th><th rowspan="1" colspan="1">Engine version</th><th rowspan="1" colspan="1">CSS grade</th></tr>
 	                </tfoot> -->
-	              </table>
-	              <nav aria-label="Page navigation">
-	              <?php echo $pagination; ?>
-	          		</nav>
+	               </table>
          		</div>
       		</div>
          

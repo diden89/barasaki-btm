@@ -5,7 +5,7 @@
  * @author Algaza
  * @version 1.0
  * @access Public
- * @path /barasaki-btm/application/module_admin/home/views/home_view.php
+ * @path /barasaki-btm/application/module_admin/projects/views/projects_view.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -28,24 +28,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="form-group">
 				<label for="txtCatId">Category:</label>
 					<select name="cat_id" id="txtCatId" class="form-control"> 
-						<?php foreach($category as $cat){
+						<option value="">-- Select Category --</option>
+						<?php
+						// echo $data->category_id;exit;
+						 foreach($category as $c=>$k){
 							if(isset($data->category_id))
 							{
-								if($data->category_id == $cat['id'])
+
+								if($data->category_id == $k->id)
 								{
-									echo '<option value="'.$cat["id"].'" selected>'.$cat["category_name"].'</option>';
+									echo '<option value="'.$k->id.'" selected>'.$k->category_name.'</option>';
 								}
 								else
 								{
-									echo '<option value="'.$cat["id"].'">'.$cat["category_name"].'</option>';
+									echo '<option value="'.$k->id.'">'.$k->category_name.'</option>';
 								}
 							}
 							else
 							{
-								if($data->category_id == $cat['id'])
-								{
-									echo '<option value="'.$cat["id"].'">'.$cat["category_name"].'</option>';
-								}
+								
+								echo '<option value="'.$k->id.'">'.$k->category_name.'</option>';
+								
 							}
 						}?>	
 					</select>
@@ -60,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php 
 					if (isset($data->img)) { 
 						$url_img = $data->img;
-	                	$new_url = str_replace('admin/', "", site_url());?>
+	                	$new_url = str_replace('npanel/', "", site_url());?>
 						<img src="<?php echo $new_url.$url_img;?>" width="75px">
 					<?php } ?>
 					<input type="hidden" name="txt_img_old" value="<?php echo (isset($data->img)) ? $data->img : ""; ?>">
@@ -88,6 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 	<div class="box-footer">
 		<button type="submit" class="btn btn-primary" id="submitProject">Submit</button>
+		<a href='<?php echo base_url("projects");?>' class="btn btn-warning" id="submitSlide">Back</a>
 	</div>
 		</form>
 </section>

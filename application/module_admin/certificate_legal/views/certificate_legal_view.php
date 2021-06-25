@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           		$no = 1;
           		foreach($data as $dt){
           		$url_img = $dt['img'];
-          		$new_url = str_replace('admin/', "", site_url());
+          		$new_url = str_replace('npanel/', "", site_url());
           	 ?>
           	<tr role="row" class="odd">
                 <td><?php echo $no; ?></td>

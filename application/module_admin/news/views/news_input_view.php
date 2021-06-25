@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php 
 					if (isset($data->img)) { 
 						$url_img = $data->image;
-	                	$new_url = str_replace('admin/', "", site_url());?>
+	                	$new_url = str_replace('npanel/', "", site_url());?>
 						<img src="<?php echo $new_url.$url_img;?>" width="75px">
 					<?php } ?>
 					<input type="hidden" name="txt_img_old" value="<?php echo (isset($data->image)) ? $data->image : ""; ?>">

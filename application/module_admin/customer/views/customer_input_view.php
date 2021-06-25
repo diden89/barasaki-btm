@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<form id="formInputCustomer" enctype='multipart/form-data'>
 			<div class="form-group">
 				<label for="txtCaption">Caption:</label>
-					<input type="text" class="form-control" id="txtCaption" name="txt_caption" placeholder="Nama Customer" value='<?php echo (isset($data->caption)) ? $data->caption : ""; ?>'>
+					<input type="text" class="form-control" id="txtCaption" name="txt_caption" placeholder="Nama Customer" value='<?php echo (isset($data->caption)) ? $data->caption : ""; ?>' required>
 					<input type="hidden" name="txt_id_customer" id="txt_id_customer" value="<?php echo (isset($data->id)) ? $data->id : ""; ?>">
 			</div>
 			<div class="form-group">
@@ -28,6 +28,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="form-group">
 				<label for="txtDescription">Description:</label>
 				<textarea id="txtDescription" name="txt_desc" class="textarea" placeholder="Enter content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo (isset($data->description)) ? $data->description : ""; ?></textarea>
+			</div>
+			<div class="form-group">
+				<label for="txtImg">Image:</label>
+					<input type="file" id="txtImg" name="txt_img" value='<?php echo (isset($data->img)) ? $data->img : ""; ?>'>
+					<?php 
+					if (isset($data->img)) { 
+						$url_img = $data->img;
+	              		?>
+						<img src="<?php echo front_url().$url_img;?>" width="300px">
+					<?php } ?>
+					<input type="hidden" name="txt_img_old" value="<?php echo (isset($data->img)) ? $data->img : ""; ?>">
 			</div>
 			<div class="form-group">
 				<label for="txtStatus">Status:</label>
@@ -58,17 +69,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						
 						
 					</select>
-			</div>
-			<div class="form-group">
-				<label for="txtImg">Image:</label>
-					<input type="file" id="txtImg" name="txt_img" value='<?php echo (isset($data->img)) ? $data->img : ""; ?>'>
-					<?php 
-					if (isset($data->img)) { 
-						$url_img = $data->img;
-	              		?>
-						<img src="<?php echo front_url().$url_img;?>" width="300px">
-					<?php } ?>
-					<input type="hidden" name="txt_img_old" value="<?php echo (isset($data->img)) ? $data->img : ""; ?>">
 			</div>
 		
 	</div>
