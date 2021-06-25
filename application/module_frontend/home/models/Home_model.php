@@ -19,6 +19,20 @@ class Home_model extends CI_Model {
 		return $this->db->get('company');
 	}
 
+	public function get_customer()
+	{
+		$this->db->where('is_active', 'Y');
+
+		return $this->db->get('customer');
+	}
+
+	public function get_distributor()
+	{
+		$this->db->where('is_active', 'Y');
+
+		return $this->db->get('distributor');
+	}
+
 	public function get_email($company_id,$status)
 	{
 		$this->db->where('company_id', $company_id);
@@ -123,20 +137,7 @@ class Home_model extends CI_Model {
 		return $this->db->get();
 	}
 
-	// public function get_products()
-	// {
-	// 	$this->db->select('p.id,p.products_name,p.products_price,p.products_short_description,p.products_detail_description,p.date,pi.img,pi.url', FALSE);
-	// 	$this->db->from('products p');
-	// 	$this->db->join('products_image pi', 'p.id = pi.products_id');
-	// 	$this->db->where('p.is_active', 'Y');
-	// 	$this->db->where('pi.is_active', 'Y');
-	// 	$this->db->where('p.is_best', 'Y');
-	// 	$this->db->group_by('p.id');
-	// 	$this->db->order_by('p.id', 'ASC');
-
-	// 	return $this->db->get();
-	// }
-
+	
 	public function get_company_legal()
 	{
 		$this->db->where('is_active', 'Y');
