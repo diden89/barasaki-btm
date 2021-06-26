@@ -26,8 +26,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			Nama Menu
 		</th>
 		<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"  aria-label="Browser: activate to sort column ascending">
-			Url
+			URL
 		</th>
+        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"  aria-label="Browser: activate to sort column ascending">
+          URL Target
+        </th>
 		<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"  aria-label="Platform(s): activate to sort column ascending">
 			Description
 				</th>
@@ -57,6 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       		<tr role="row" class="odd">
           <td class=""><?php echo $dt['caption']; ?></td>
           <td><?php echo substr($dt['url'], 0,30); ?></td>
+          <td><?php echo substr($dt['url_target'], 0,30); ?></td>
           <td class=""><?php  echo strip_tags(substr($dt['description'], 0,50)); ?></td>
           <td class=""><img src='<?php echo $img ?>' width="75px"></td>
           <td class=""><?php echo ($dt['is_active'] == 'Y') ? '<span style="color:green;">Enable</span>':'<span style="color:red;">Disable</span>'; ?></td>

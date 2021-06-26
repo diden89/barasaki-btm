@@ -88,7 +88,10 @@ class Articles extends MY_Controller {
 	{
 		if ($this->input->post('action') !== FALSE && $this->input->post('action') == 'store_image')
 		{
-			$config['upload_path'] = UPLOADPATH.'images'.DS.'tmp'.DS;
+			$upload_dir = str_replace('npanel'.DIRECTORY_SEPARATOR,'' , FCPATH);		
+			$config['upload_path'] = $upload_dir."assets".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."tmp";
+
+			// $config['upload_path'] = UPLOADPATH.'images'.DS.'tmp'.DS;
 			$config['allowed_types'] = 'gif|jpg|jpeg|png';
 			$config['remove_spaces']  = TRUE;
 			$config['encrypt_name']  = TRUE;

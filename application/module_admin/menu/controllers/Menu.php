@@ -130,6 +130,7 @@ class Menu extends MY_Controller {
 	    $datas['is_admin'] = $this->input->post('txt_position');
 	    $datas['parent_id'] = ($this->input->post('txt_parent_id') == "") ? NULL : $this->input->post('txt_parent_id');
 	    $datas['url'] = $this->input->post('txt_url');        
+	    $datas['url_target'] = $this->input->post('txt_url_target');        
         $datas['description'] = $this->input->post('txt_desc');
         $datas['icon'] = $this->input->post('txt_icon');
         $datas['is_active'] = $this->input->post('txt_status');

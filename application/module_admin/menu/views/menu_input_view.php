@@ -63,6 +63,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<input type="text" class="form-control" id="txtUrl" name="txt_url" placeholder="Enter URL Menu" value='<?php echo (isset($data->url)) ? $data->url : ""; ?>'>
 			</div>
 			<div class="form-group">
+				<label for="txtUrl">URL Target:</label>
+					<input type="checkbox" id="txtUrlTarget" name="txt_url_target" value="_blank" <?php echo (!empty($data->url_target)) ? "checked" : ""; ?> >
+			</div>
+			<div class="form-group">
 				<label for="txtContent">Description:</label>
 				<textarea id="txtContent" name="txt_desc" class="textarea" placeholder="Enter content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo (isset($data->description)) ? $data->description : ""; ?></textarea>
 			</div>

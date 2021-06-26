@@ -203,11 +203,11 @@ class MY_Controller extends CI_Controller {
 		{
 			if ($data->parent_id == $parent_id)
 			{
-				$children = $this->_generate_tree_menu($datas, $data->id, $idx);
+				$children = $this->_menu_build_style($datas, $data->id, $idx);
 
 				if ($children !== FALSE)
 				{
-					$str_menu .= '<li class="treeview"><a href="'.site_url($data->url).'"><i class="'.$data->icon.'"></i> <span>'.$data->caption.'</span><span class="pull-right-container"><b class="caret"></b></span></a>';
+					$str_menu .= '<li class="treeview"><a href="'.(($data->url_target !== '_blank') ? site_url($data->url) : $data->url ).'" target="'.(!empty($data->url_target) ? $data->url_target : '').'"><i class="'.$data->icon.'"></i> <span>'.$data->caption.'</span><span class="pull-right-container"><b class="caret"></b></span></a>';
 
 					if ($idx > 0)
 					{
@@ -225,7 +225,7 @@ class MY_Controller extends CI_Controller {
 				}
 				else
 				{
-					$str_menu .= '<li class="'.($this->store_params['page_active'] == $data->caption ? 'active' : '').'"><a href="'.site_url($data->url).'"><i class="'.$data->icon.'"></i> '.$data->caption.'</a></li>';
+					$str_menu .= '<li class="'.($this->store_params['page_active'] == $data->caption ? 'active' : '').'"><a href="'.(($data->url_target !== '_blank') ? site_url($data->url) : $data->url ).'" target="'.(!empty($data->url_target) ? $data->url_target : '').'"><i class="'.$data->icon.'"></i> '.$data->caption.'</a></li>';
 				}
 			}
 		}
