@@ -10,17 +10,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 
 class Products_model extends CI_Model {
-	public function load_products($action)
+	public function load_products($id)
 	{
 
-		$this->db->select('a.*,b.*,c.*,a.id as prd_id,b.id as cat_id,c.id as prd_img_id');
+		// $this->db->select('a.*,b.*,c.*,a.id as prd_id,b.id as cat_id,c.id as prd_img_id');
+		$this->db->select('a.*,b.*,a.id as prd_id,b.id as cat_id,(select img from products_image where products_id = a.id limit 1) as img');
 		$this->db->from('products a');
 		$this->db->join('category b', 'a.category_id = b.id');
-		$this->db->join('products_image c', 'a.id = c.products_id');
+		// $this->db->join('products_image c', 'a.id = c.products_id');
 		$this->db->where('a.is_active', 'Y');
-		if($action !== 'show-all')
+		// if($action !== 'show-all')
+		// {
+		// 	$this->db->where('a.category_id', $action);
+		// }
+		if(! empty($id))
 		{
-			$this->db->where('a.category_id', $action);
+			$this->db->where('a.category_id', $id);
 		}
 		$this->db->group_by('a.id');
 		return $this->db->get();

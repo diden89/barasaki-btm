@@ -37,10 +37,10 @@ class Products extends MY_Controller {
 		$this->store_params = array(
 			"category" => $this->load_category(),
 			"slider" => $this->load_slider($url),
-			"products" => $this->load_products($id),
+			"products" => $this->pm->load_products($id)->result(),
 			
 		);
-
+		// print_r($this->store_params);exit;
 		$this->view('category_products_views');
 	}
 

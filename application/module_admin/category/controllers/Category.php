@@ -75,8 +75,9 @@ class Category extends MY_Controller {
 			if($cond !== 'add')
 			{
 				$id = $this->uri->segment(4);
-				$get_data_edit = $this->cm->get_data_edit($id);
-				$this->store_params['data'] = $get_data_edit->row();
+				$get_data_edit = $this->cm->get_data_edit($id)->row();
+				$this->store_params['data'] = $get_data_edit;
+				$this->store_params['url'] = $get_data_edit->url;
 			}
 			else
 			{

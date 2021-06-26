@@ -16,7 +16,7 @@ class Products_model extends CI_Model {
 		$this->db->select('*,a.id as products_id');
 		$this->db->from('products a');
 		$this->db->join('category b','a.category_id = b.id','left');
-		$this->db->join('products_image c','a.id = c.products_id','left');
+		// $this->db->join('products_image c','a.id = c.products_id','left');
 		$this->db->where('a.is_active', 'Y');
 		// $this->db->where('b.is_active', 'Y');
 		// $this->db->where('c.is_active', 'Y');
