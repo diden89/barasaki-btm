@@ -24,6 +24,11 @@ class Pages extends MY_Controller {
 			"slider" => $this->load_slider($link2),
 			"pages" => $this->load_article($menu->id),
 		);
+		if($link == 'about_us')
+		{
+			$this->store_params['customer'] =$this->pam->get_data_customer()->result();
+			$this->store_params['team'] =$this->pam->get_data_employee()->result();
+		}
 
 		$this->view($link.'_view');
 	}

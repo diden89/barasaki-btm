@@ -23,41 +23,30 @@
 
                     </div>
                     <div class="our-team">
-              <div class="col-md-12">
-                  <img src="<?php echo base_url();?>assets/images/img/barasakicustomer.png">
-              </div>
-                        <div class="col-sm-3">
-                            <div class="team-member"><img src="<?php echo base_url(); ?>assets/images/img/team1.jpg" alt="">
-                                <div class="team-name"><h5>Sharon Housley</h5><p>- ceo</p>
-
-                                </div>
-                                <div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>    
+                        <div class="col-md-12">
+                        <?php foreach($customer as $c=>$k){?>
+                            <div class="col-md-2">
+                                <img src="<?php echo base_url($k->img);?>">
                             </div>
+                        <?php }?>
                         </div>
-                        <div class="col-sm-3">
-                            <div class="team-member"><img src="<?php echo base_url(); ?>assets/images/img/team2.jpg" alt="">
-                                <div class="team-name"><h5>Sarah Walls</h5><p>- support head</p>
+                        <div class="col-md-12">
+                            <div class="header-intro">
+                                <h2>Our Teams</h2>
+                                <p>Solid team in my company</p>
 
-                                </div>
-                                <div class="team-social"><a href="#"><i class="fa fa-facebook"></i><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
                             </div>
+                            <?php foreach($team as $t=>$c){?>
+                            <div class="col-sm-3">
+                                <div class="team-member"><img src="<?php echo base_url($c->img); ?>" alt="" style="width:250px;height:250px;">
+                                    <div class="team-name"><h5><?php echo $c->fullname; ?></h5><p>- <?php echo $c->caption; ?></p>
+
+                                    </div>
+                                    <div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>    
+                                </div>
+                            </div>
+                            <?php }?>
                         </div>
-                        <div class="col-sm-3">
-                            <div class="team-member"><img src="<?php echo base_url(); ?>assets/images/img/team3.jpg" alt="">
-                                <div class="team-name"><h5>Betty Covey</h5><p>- finace head</p>
-
-                                </div>
-                                <div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="team-member"><img src="<?php echo base_url(); ?>assets/images/img/team4.jpg" alt="">
-                                <div class="team-name"><h5>Ralph Buchanan</h5><p>- marketing head</p>
-
-                                </div>
-                                <div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
-                            </div>
-                        </div> 
                         <div class="clearfix"></div>
                     </div>
                 </div>

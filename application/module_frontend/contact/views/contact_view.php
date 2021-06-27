@@ -19,6 +19,7 @@
 		<div class="col-lg-12 contact content-header" id="pricing">
 			<div class="col-md-6 no-padding-left">
 				<h5>Contact Us:</h5>
+
 				<?php foreach($contact as $v=>$k){?>
 					<p><i class="fa fa-map-marker"></i>
 					<?php echo $k->address;?></p>
@@ -27,48 +28,110 @@
 							echo $e.',';
 						}?>
 						</p>
-					<p><i class="fa fa-phone"></i>+62 812 776 2343, +62 821 7455 1008</p>
+						<p><i class="fa fa-phone"></i>
 				<?php } ?>
+					<?php 
+					$phone = "";
+					foreach($contact as $c=>$k){
+						$n=0;
+						foreach($k->contact as $ct=>$kt){
+							if($kt['c_type'] == 'p')
+							{
+								if($n == 0)
+								{
+									$phone .= $kt['c_detail'];
+								}
+								else
+								{
+									$phone .= ', '.$kt['c_detail'];
+								}
+								$n++;
+							}
+						}
+					}
+					echo $phone;
+					?>
+
+					</p>
+					<p><i class="fa fa-paper-plane-o"></i>
+						<?php 
+						$wa = "";
+						foreach($contact as $c=>$k){
+							$n=0;
+							foreach($k->contact as $ct=>$kt){
+								if($kt['c_type'] == 'wa')
+								{
+									if($n == 0)
+									{
+										$wa .= '<a href="'.$kt['c_url'].'" target="_blank">'.$kt['c_detail'].'</a>';
+									}
+									else
+									{
+										$wa .= ', <a href="'.$kt['c_url'].'"  target="_blank">'.$kt['c_detail'].'</a>';
+									}
+									$n++;
+								}
+							}
+						}
+						echo $wa;
+						?>
+					</p>
 				<div class="contact-detail"></div>
 			</div>
 			<div class="col-md-6">
 				<form id="comment_form">
 					
-						<div class="col-md-6 ">
-							<input type="text" name="fname" placeholder="Nama Depan"  id="fname" required>
+						<div class="row">
+						<div class="col-md-6 form-group">
+							<input type="text" name="fname" placeholder="Nama Depan" class="form-control form-control-lg" id="fname" required>
 						</div>
-						<div class="col-md-6 ">
-							<input type="text" name="lname" placeholder="Nama Belakang"  id="lname" required>
-						</div>		
-						<div class="col-md-12 ">
-							<input type="text" name="email" placeholder="Email" id="email"  required>
+						<div class="col-md-6 form-group">
+							<input type="text" name="lname" placeholder="Nama Belakang" class="form-control form-control-lg" id="lname" required>
 						</div>
-						<div class="col-md-12 ">
-							<input type="text" name="subject" placeholder="Judul" required id="subject" >
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<input type="email" name="email" placeholder="Email" id="email" class="form-control form-control-lg" required>
 						</div>
-						<div class="col-md-12 ">
-							<textarea name="message" id="message" placeholder="Pesan"  cols="30" rows="8"></textarea>
-						</div>					
-						<div class="col-md-12  captcha-img">
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<input type="text" name="subject" placeholder="Judul" required id="subject" class="form-control form-control-lg">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<textarea name="message" id="message" placeholder="Pesan" class="form-control form-control-lg" cols="30" rows="8"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group captcha-img">
 							<?php echo $captcha->image; ?>
-						<!-- <a href="#" class="reload-captcha refreshCaptcha btn btn-info btn-sm" ><i class="fa fa-refresh"></i></a> 	 -->						
-						<button type="button" class="reload-captcha refreshCaptcha btn btn-info btn-sm icon icon-refresh" ><i class="fa fa-refresh"></i></button>
+						<!-- <a href="#" class="reload-captcha refreshCaptcha btn btn-info btn-sm" ><i class="fa fa-refresh"></i></a> -->							
+						<!--  <button type="button" class="reload-captcha refreshCaptcha btn btn-info btn-sm icon icon-refresh" ></button>
+ -->
 						</div>
-					
-					<div class="">
+					</div>
+					<div class="row">
+						<div class="col-md-2">
+							<button type="button" class="reload-captcha btn btn-info">x</button>
+						</div>
+					</div>
+					<div class="form-group">
 						<input type="hidden" id="capcode" value="<?php echo $captcha->word;?>">
 					</div>
-					
-						<div class="col-md-12 ">
-							<input type="text" id="sec_code" placeholder="Kode Keamanan"  name="security_code">
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<input type="text" id="sec_code" placeholder="Kode Keamanan" class="form-control form-control-lg" name="security_code">
 						</div>
-					
-					
-						<div class="col-md-6 ">
-							<button type="submit" class="send">
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<button type="submit" class="btn btn-primary btn-lg btn-block">
 								Kirim
 							</button>
 						</div>
+					</div>
 					
 				</form>
 			</div>

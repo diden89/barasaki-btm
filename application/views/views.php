@@ -127,6 +127,10 @@
 		$(".rslides").responsiveSlides();
 		});
 		</script>
+		<script type="text/javascript">
+			var siteUrl = '<?php echo base_url(); ?>';
+			var frontUrl = '<?php echo front_url(); ?>';
+		</script>
 		<?php
 		if (isset($source_bot) && is_array($source_bot) && count($source_bot) > 0)
 		{

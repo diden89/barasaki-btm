@@ -78,8 +78,7 @@ class Contact extends MY_Controller {
 
         // create captcha image
         $cap = create_captcha($vals);
-       	
-       if($idx === 'idx')
+       	if($idx === 'idx')
        	{
        		$data = (object)[
 	       		'image' => $cap['image'],

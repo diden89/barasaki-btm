@@ -30,6 +30,20 @@ class Pages_model extends CI_Model {
 		return $this->db->get();
 	}
 
+	public function get_data_customer()
+	{
+		$this->db->where('is_active', 'Y');		
+		return $this->db->get('customer');
+	}
+	public function get_data_employee()
+	{
+		$this->db->select('e.*, p.caption');		
+		$this->db->from('employee e');		
+		$this->db->join('position p','e.position_id = p.id', 'LEFT');		
+		$this->db->where('e.is_active', 'Y');		
+		return $this->db->get();
+	}
+
 	public function get_count_read($url)
 	{
 

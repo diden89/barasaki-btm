@@ -50,8 +50,10 @@ $(document).ready(function() {
          event.preventDefault();
          $.ajax({
              url:siteUrl+'contact/get_captcha',
+             dataType : 'json',
              success:function(data){
-                 $('.captcha-img').replaceWith(data);
+             	console.log(data.image)
+                 $('.captcha-img').html(data.image);
              }
          });            
       });
@@ -90,13 +92,11 @@ $(document).ready(function() {
 		}
 		else
 		{
-			alert('Kode Keamanan Salah');
 			$.ajax({
 				dataType :'json',
-				url:siteUrl+'home/get_captcha',
+				url:siteUrl+'contact/get_captcha',
 				success:function(data){
 				 $('.captcha-img').html(data.image);
-				 $('#capcode').val(data.word);
 				 $('#sec_code').val("");
 				}
 			}); 

@@ -80,6 +80,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<img src="<?php echo front_url().$url_img;?>" width="300px">
 					<?php } ?>
 					<input type="hidden" name="txt_img_old" value="<?php echo (isset($data->img)) ? $data->img : ""; ?>">
+
+			</div>
+			<div class="form-group">
+				<i>*resolution 272px X 272px</i>					
 			</div>
 			
 	</div>
