@@ -139,5 +139,7 @@
 
 		<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d997.2860435208844!2d103.978088!3d1.053281!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3fa6d03256a6178a!2sBarasaki+Sinergi+Semesta!5e0!3m2!1sen!2sid!4v1484624047661" width="100%" height="355" frameborder="0" style="border:0" allowfullscreen></iframe>
 
+
+		<iframe src="https://drive.google.com/file/d/1ZYMDK4-f8XmupBWctH5RKBQGf0Xz0i5H/preview" width="640" height="480" allow="autoplay"></iframe>
 	</div>
 </div>
