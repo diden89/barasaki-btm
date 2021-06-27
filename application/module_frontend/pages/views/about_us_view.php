@@ -11,17 +11,10 @@
 
 <div class="inner-page about-us">
     <div class="container">
-        <div class="">
             <?php foreach ($pages as $au): ?>
-                <div class="row no-gutters">                
-                    <div class="col-md-12">
-                        <div class="">
-                            <?php echo $au['content'];?>
-                        </div>
-                    </div>
-                </div>
+                <?php echo $au['content'];?>
             <?php endforeach; ?>
-        </div>
+        
         <div class="grey-bg">
                 <div class="container">
                     <div class="header-intro">

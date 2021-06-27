@@ -25,7 +25,7 @@ class Pages extends MY_Controller {
 			"pages" => $this->load_article($menu->id),
 		);
 
-		$this->view('pages_view');
+		$this->view($link.'_view');
 	}
 
 	public function detail()
