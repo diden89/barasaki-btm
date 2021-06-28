@@ -105,6 +105,15 @@ class Home_model extends CI_Model {
 		return $this->db->get('employee');
 	}
 
+	public function get_site_map()
+	{
+		$this->db->select('ut.caption as caption_url,ut.id as ut_id,sm.*');
+		$this->db->from('site_map sm');
+		$this->db->join('url_target ut','ut.id = sm.ut_id','LEFT');
+		$this->db->where('sm.is_active', 'Y');
+		return $this->db->get();
+	}
+
 	public function get_team()
 	{
 		$this->db->select('e.id as id_emp,e.fullname, p.caption as position, ed.caption as education, e.img', FALSE);

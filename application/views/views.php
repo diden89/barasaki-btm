@@ -65,11 +65,11 @@
 				<div class="col-sm-4">
 					<h5>Site Map</h5>
 					<ul>
-					<li><a href="<?php echo base_url(); ?>">Home</a></li>
-					<li><a href="<?php echo base_url(); ?>home/aboutus">About Us</a></li>
-					<li><a href="<?php echo base_url(); ?>home/services">Product</a></li>
-					<li><a href="<?php echo base_url(); ?>home/contact">Contact Us</a></li>
-					<li><a href="<?php echo base_url(); ?>home/companyprofile">Company Profile</a></li>
+						<?php foreach($site_map as $s=>$m){
+							$url = ($m->caption_url == '_blank') ? $m->url : base_url($m->url);
+							?>
+							<li><a href="<?php echo $url; ?>" target="<?php echo $m->caption_url;?>"><?php echo $m->caption;?></a></li>
+						<?php }?>
 					</ul>
 				</div>
 				<div class="col-sm-4 col-md-4 twitter">

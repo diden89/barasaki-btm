@@ -94,4 +94,20 @@ class Contact extends MY_Controller {
        	));
        	}
 	}
+
+	function generate_pdf()
+	{
+	    $doc = new Docx_reader();
+	    $doc->setFile('testDoc3.docx');
+
+	    $plain_text = $doc->to_plain_text();
+	    $html = $doc->to_html();
+
+	    $pdf = pdf_create($html, 'testDoc4', false);
+	    $len = strlen($pdf);
+	    header("Content-type: application/pdf");
+	    header("Content-Length:" . $len);
+	    header("Content-Disposition: inline; filename=Resume.pdf");
+	    print $pdf;
+	} 
 }

@@ -110,6 +110,7 @@ class MY_Controller extends CI_Controller {
 			$this->store_params['since_years'] =  $year_now - $company->since_years;
 			$this->store_params['total_projects'] =  $this->db_home->get_total_projects()->row();
 			$this->store_params['total_team'] =  $this->db_home->get_total_team()->row();
+			$this->store_params['site_map'] =  $this->db_home->get_site_map()->result();
 
 			// $year_now = date('Y');
 			// echo $year_now - $company->since_years;exit;
