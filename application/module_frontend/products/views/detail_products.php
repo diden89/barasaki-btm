@@ -192,7 +192,7 @@
 								</li>
 							</ul>
 							<article class="tab-content">
-								<section class="tab-pane met-editor clearfix animation-fade	active" id="product-content0">
+								<section class="tab-pane met-editor clearfix animation-fade	active" id="product-content0">asdasd
 									<?php echo $data->products_detail_description;?>
 								</section>
 								<section class="tab-pane met-editor clearfix animation-fade
@@ -200,7 +200,7 @@
 									<?php echo $data->products_spesification;?>
 								</section>
 								<section class="tab-pane met-editor clearfix animation-fade
-								" id="product-content2"></section>
+								" id="product-content2">asdasdasd</section>
 							</article>
 						</div>
 					</div>

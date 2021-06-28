@@ -105,7 +105,6 @@ class Products extends MY_Controller {
 				        dotsContainer:"#dots-box",
 				        loop:true
 				      });
-				      console.log(owl)
 				      $(".dots-click").click(function(){
 				        var index=$(this).index();
 				        $("#dots-box").find(".owl-dot").eq(index).trigger("click");
@@ -128,7 +127,8 @@ class Products extends MY_Controller {
 				</script>'
 			)
 		);
-		
+		// print_r($this->store_params['data']);
+		// exit;
 		$this->view('detail_products');
 	}
 

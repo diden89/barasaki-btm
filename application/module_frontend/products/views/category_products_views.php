@@ -19,15 +19,17 @@
         foreach ($products as $p => $r) { ?>
             <div class="col-sm-4">
                 <div class="portfolio-img-wrap">
-                  <img src="<?php echo base_url($r->img); ?>">
-                  <div class="caption-container">
-                   <div class="portfolio-caption">
-                    
-                       <h5><?php echo $r->products_name; ?></h5>
-                       <p><?php echo substr(strip_tags($r->products_short_description), 200); ?></p>
-                   </div>
+                    <a href="<?php echo base_url();?>products/detail_products/<?php echo $r->prd_id;?>">
+                        <img src="<?php echo base_url($r->img); ?>">
+                        <div class="caption-container">
+                            <div class="portfolio-caption">
+
+                            <h5><?php echo $r->products_name; ?></h5>
+                            <p><?php echo substr(strip_tags($r->products_short_description), 200); ?></p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-               </div>
            </div>
         <?php  } ?>
    
