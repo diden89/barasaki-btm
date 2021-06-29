@@ -96,13 +96,6 @@ class Products_model extends CI_Model {
 		return $this->db->get();
 	}
 
-	public function get_message()
-	{
-		$this->db->where('is_read','N');   
-		
-		return $this->db->get('message');
-	}
-
 	public function load_image_products($id,$limit = "")
 	{
 		$this->db->where('products_id', $id);

@@ -83,4 +83,78 @@ class Home extends MY_Controller {
 		    </script>');
 		}
 	}
+
+	public function get_new_message()
+	{
+		$view = $this->input->post('view');
+		$output = "";
+		if($view != '')
+		{
+			// $upd = $this->pm->update_message();
+		}
+		else
+		{
+			$get_message = $this->hm->get_message();
+			if($get_message->num_rows() > 0)
+			{
+				$total_new_msg = $get_message->num_rows();
+				$output .= '<li class="header">You have '.$total_new_msg.' messages</li>';
+				foreach($get_message->result() as $g => $m)
+				{
+					date_default_timezone_set("Asia/Jakarta");
+					$awal1  = date('Y-m-d h:i:sa',strtotime($m->date)); //waktu awal
+					$akhir2 = date('Y-m-d h:i:sa',strtotime(date('Y-m-d h:i:sa'))); //waktu akhir
+					$awal = strtotime($awal1);
+					$akhir = strtotime($akhir2);
+					$diff  = $akhir - $awal;
+					$jam   = floor($diff / (60 * 60));
+					$menit = $diff - $jam * (60 * 60);
+					
+					if($jam > 24)
+					{
+						$time = 'Yesterday';
+					}
+					elseif($diff / (60 * 60) > 1)
+					{
+						$time = 'Today';
+					}
+					else
+					{
+						$time = $jam .' jam, ' . floor( $menit / 60 ) . ' menit';
+					}
+					$output .= '
+							   <li>
+							   <ul class="menu">
+							   <li>
+			                    <a href="'.base_url('message/show_msg/'.$m->id).'">
+			                      <div class="pull-left">
+			                        <img src="'.base_url("assets/images/compro/user_message.png").'" class="img-circle" alt="User Image">
+			                      </div>
+			                      <h4>
+			                        '.$m->first_name.' '.$m->last_name.'
+			                        <small><i class="fa fa-clock-o"></i> '.$time.'</small>
+			                      </h4>
+			                      <p>'.$m->subject.'</p>
+			                    </a>
+			                  </li>
+			                  </ul>
+			                  </li>
+							   ';
+				}
+				$output   .= '<li class="footer"><a href="'.base_url('/admin/message').'">See All Messages</a></li>';
+			}
+			else
+			{
+				 $output .= '
+   						  <li class="footer"><a href="#">Tidak ada pesan baru</a></li>';
+			}
+			
+			$data = array(
+			    'notification' => $output,
+			    'unseen_notification'  => $get_message->num_rows()
+			);
+
+			echo json_encode($data);
+		}
+	}
 }

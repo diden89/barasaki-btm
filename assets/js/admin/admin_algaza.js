@@ -14,7 +14,7 @@ $(document).ready(function(){
  function load_unseen_notification(view = '')
  {
   $.ajax({
-   url: frontUrl+'products/get_new_message',
+   url: siteUrl+'home/get_new_message',
    method:"POST",
    data:{view:view},
    dataType:"json",

@@ -12,10 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Company_profile_model extends CI_Model {
 	public function get_data()
 	{
-		$this->db->select('*');
-		$this->db->where('url',$url);
-		
-		return $this->db->get('menu');
+		$this->db->where('is_active','Y');		
+		return $this->db->get('download');
 	}
 	
 	public function input_data($table,$data)

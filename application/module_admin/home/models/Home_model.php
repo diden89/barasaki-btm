@@ -44,4 +44,11 @@ class Home_model extends CI_Model {
 
 		return $this->db->get('message');
 	}
+	
+	public function get_message()
+	{
+		$this->db->where('is_read','N');   
+		
+		return $this->db->get('message');
+	}
 }

@@ -23,6 +23,8 @@ class Message_model extends CI_Model {
 			$this->db->limit($limit,$start);
 		}
 
+		$this->db->order_by('id','DESC');
+
 		return $this->db->get('message');
 	}
 

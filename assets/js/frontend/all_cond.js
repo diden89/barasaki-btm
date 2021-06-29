@@ -58,8 +58,21 @@ $(document).ready(function() {
          });            
       });
 
+	$('.show-data').click(function(event){
+		var url_file = $('.url_file').val();
+		$('#src_file').attr('src', url_file);
+         // event.preventDefault();
+         // $.ajax({
+         //     url:siteUrl+'company_profile/get_captcha',
+         //     dataType : 'json',
+         //     success:function(data){
+         //     	console.log(data.image)
+         //         $('.captcha-img').html(data.image);
+         //     }
+         // });            
+      });
+
 	$('#comment_form').on('submit', function(event){
-		console.log('kacau')
 		event.preventDefault();
 		var form = $(this).serialize();
 			capt = $('#sec_code').val();

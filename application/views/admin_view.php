@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="<?php echo front_url('assets/templates/admin'); ?>/dist/css/skins/skin-blue.min.css">
 	<link rel="stylesheet" href="<?php echo front_url('assets/templates/admin/bower_components/fullcalendar/dist')?>/fullcalendar.min.css">
 	<link rel="stylesheet" href="<?php echo front_url('assets/templates/admin/bower_components/fullcalendar/dist')?>/fullcalendar.print.min.css" media="print">
+	
 	<?php
 		if (isset($source_top) && is_array($source_top) && count($source_top) > 0)
 		{

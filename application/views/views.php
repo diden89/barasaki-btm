@@ -16,7 +16,7 @@
 	    <link href="<?php echo base_url(); ?>assets/templates/barasaki/css/responsiveslides.css" rel="stylesheet">
 	    <link href="<?php echo base_url(); ?>assets/templates/barasaki/css/style.css" rel="stylesheet">
 	    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
+		
 	    <?php
 		
         if (isset($source_top) && is_array($source_top) && count($source_top) > 0)

@@ -1,0 +1,69 @@
+/*Certifications 证书*/
+.Certifications{
+	background-color: #f8f8f8;
+	color:#f8f8f8;
+	padding:66px 70px;
+	overflow: hidden;
+}
+.certifications-box{
+	max-width: 1467px;
+	margin:0 auto;
+	height:424px;
+	position: relative;
+}
+.Certifications h3,.Certifications p{
+	text-align: center;
+	width:100%;
+	color:#000;
+}
+.Certifications .wehave{
+	font-size: 36px;
+	font-weight: bold;
+	line-height: 64px;
+	position: relative;
+}
+.Certifications .wehave::after{
+	content: '';
+	position: absolute;
+	width:40px;
+	height:3px;
+	background: #41463f;
+	left:50%;
+	margin-left: -20px;
+	bottom:0;
+}
+.Certifications .wehavedesc{
+	line-height: 48px;
+	margin-bottom: 47px;
+}
+
+#owl{
+		max-width: 1388px;
+		margin:0 auto;
+	}
+	#owl .item{
+		width:254px;/*348*/
+		height:424px;
+		margin:0 47px;
+	}
+	#owl .owl-prev{
+		position: absolute;
+		left:-58px!important;
+		top:50%;
+		transform: translateY(-50%);
+		background-image:url(images/left-arrow5df2.png?d=2019100802);
+		background-repeat: no-repeat;
+		background-size: 51px 51px;
+		width:51px;
+		height:51px;
+	}
+	#owl .owl-next{
+		position: absolute;
+		right:-58px!important;
+		top:50%;
+		transform: translateY(-50%);
+		background-image:url(images/right-arrow5df2.jpg?d=2019100802);
+		background-size: 51px 51px;
+		width:51px;
+		height:51px;
+	}
