@@ -66,7 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 					</div>
 				</div>	
-				<div class="tab-pane active" id="tab_2">
+				<div class="tab-pane" id="tab_2">
 					<div class="box-body pad">
 						<div class="form-group">
 							<div>
@@ -107,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 							<?php }?>
 								<div class="form-group">
-									<label for="txtFront">Homepage:asdas</label>
+									<label for="txtFront">Homepage:</label>
 									<?php 
 										if(isset($data->is_best))
 										{

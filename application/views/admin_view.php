@@ -111,6 +111,19 @@
 	<script type="text/javascript">
 		var siteUrl = '<?php echo base_url(); ?>';
 		var frontUrl = '<?php echo front_url(); ?>';
+
+		$(document).ready(function () {
+			$('.testing').each(function() {
+				var $this = $(this);
+
+				if ($this.hasClass('active')) {
+					// $this.parent().parent().trigger('click');
+					$this.parent().parent().addClass('menu-open');
+					$this.parent().parent().css('height', 'auto');
+					$this.parent().css('display', 'block');
+				}
+			});
+		});
 	</script>
 	<script src="<?php echo front_url('assets/templates/admin/bower_components/moment')?>/moment.js"></script>
 	<script src="<?php echo front_url('assets/templates/admin/bower_components/fullcalendar/dist')?>/fullcalendar.min.js"></script>

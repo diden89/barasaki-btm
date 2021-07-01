@@ -91,7 +91,7 @@ class MY_Controller extends CI_Controller {
 	}
 
 	protected function view($body)
-	{
+	{	
 		$this->store_params['title'] = isset($this->store_params['title']) ? TITLE.' - '.$this->store_params['title'] : TITLE;
 		$this->store_params['title2'] = isset($this->store_params['title2']) ? TITLE2.' - '.$this->store_params['title2'] : TITLE2;
 		$this->store_params['page_active'] = isset($this->store_params['page_active']) ? $this->store_params['page_active'] : 'Home';
@@ -173,7 +173,7 @@ class MY_Controller extends CI_Controller {
 				}
 				else
 				{
-					$str_menu .= '<li class="'.($this->store_params['page_active'] == $data->caption ? 'active' : '').'"><a href="'.site_url($data->url).'"><i class="'.$data->icon.'"></i> '.$data->caption.'</a></li>';
+					$str_menu .= '<li class="testing '.($this->store_params['page_active'] == $data->caption ? 'active' : '').'"><a href="'.site_url($data->url).'"><i class="'.$data->icon.'"></i> '.$data->caption.'</a></li>'; 
 				}
 			}
 		}
@@ -226,6 +226,7 @@ class MY_Controller extends CI_Controller {
 				}
 				else
 				{
+
 					$str_menu .= '<li class="'.($this->store_params['page_active'] == $data->caption ? 'active' : '').'"><a href="'.(($data->url_target !== '_blank') ? site_url($data->url) : $data->url ).'" target="'.(!empty($data->url_target) ? $data->url_target : '').'"><i class="'.$data->icon.'"></i> '.$data->caption.'</a></li>';
 				}
 			}

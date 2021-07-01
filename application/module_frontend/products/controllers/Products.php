@@ -93,7 +93,9 @@ class Products extends MY_Controller {
 			"image_prod" => $this->pm->load_image_products($data)->result(),
 			"slider" => $this->load_slider($link),
 			"source_top" => array(
-				'<link rel="stylesheet" href="'.base_url('assets/templates/bee/vendors/owl.carousel/owl.carousel.min.v2.css').'">'
+				'<link rel="stylesheet" href="'.base_url('assets/css/other.css').'">',
+				'<link rel="stylesheet" href="'.base_url('assets/templates/other/owl.carousel/assets/owl.carousel.min.css').'">',
+				'<link rel="stylesheet" href="'.base_url('assets/templates/other/aos/assets/aos.css').'">',
 			),
 			"source_bot" => array(
 				'<script>
@@ -124,10 +126,12 @@ class Products extends MY_Controller {
 				        owl.trigger("prev.owl.carousel");
 				      })
 				    });
-				</script>'
+				</script>',
+				 '<script src="'.base_url().'assets/templates/other/owl.carousel/owl.carousel.min.js"></script>',
+				 '<script src="'.base_url().'assets/templates/other/aos/aos.js"></script>'
 			)
 		);
-		// print_r($this->store_params['data']);
+		// print_r($this->store_params);
 		// exit;
 		$this->view('detail_products');
 	}
