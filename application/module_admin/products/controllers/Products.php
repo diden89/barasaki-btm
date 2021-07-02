@@ -119,6 +119,8 @@ class Products extends MY_Controller {
 		$datas['category_id'] = $this->input->post('cat_id');
 		$datas['products_short_description'] = $this->input->post('txt_s_desc');
 		$datas['products_detail_description'] = $this->input->post('txt_desc');
+		$datas['meta_key'] = $this->input->post('txt_meta_key');
+		$datas['meta_desc'] = $this->input->post('txt_meta_desc');
 		$datas['is_best'] = $this->input->post('txt_front');
 		$datas['date'] = date('Y-m-d H:i:s');
 		// echo ( ! empty($_FILES['txt_img']['name'][0])) ? "tidak kososng" : "kosong" ;

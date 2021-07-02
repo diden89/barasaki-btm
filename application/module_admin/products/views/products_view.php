@@ -36,7 +36,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               					<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 200px; " aria-label="Platform(s): activate to sort column ascending">
               						Best Products
               					</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 200px; " aria-label="Platform(s): activate to sort column ascending">
+                          Meta Description
+                        </th>
               					<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 200px; " aria-label="Platform(s): activate to sort column ascending">
+                          Meta Keyword
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 200px; " aria-label="Platform(s): activate to sort column ascending">
               						Category
               					</th>
               					<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 200px; " aria-label="Platform(s): activate to sort column ascending">
@@ -52,11 +58,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                	 ?>
 	                		<tr role="row" class="odd">
 			                <td class="sorting_1"><?php echo $dt['products_name']; ?></td>
-			                <td class=""><?php echo $dt['products_short_description']; ?></td>
-                            <td class=""><?php echo substr(strip_tags($dt['products_detail_description']),0,50); ?></td>
+			                <td class=""><?php echo substr(strip_tags($dt['products_short_description']),0,50); ?></td>
+                             <td class=""><?php echo substr(strip_tags($dt['products_detail_description']),0,50); ?></td>
 			                <td class=""><?php echo $dt['products_price']; ?></td>
-        							<td class=""><?php echo ($dt['is_best'] == 'Y') ? 'Yes' : 'No'; ?></td>
-        							<td class=""><?php echo $dt['category_name']; ?></td>
+        					<td class=""><?php echo ($dt['is_best'] == 'Y') ? 'Yes' : 'No'; ?></td>
+                            <td class=""><?php echo $dt['meta_desc']; ?></td>
+                            <td class=""><?php echo $dt['meta_key']; ?></td>
+        					<td class=""><?php echo $dt['category_name']; ?></td>
 			                <td>
 			                  	<a href="<?php echo base_url('products/cu_action/edit/'.$dt["products_id"].'');?>" class="fa btn btn-success fa-pencil"></a>
 			                  	<button type="button" onclick="deleteproducts('<?php echo base_url();?>products/delete/<?php echo $dt['products_id'];?>')" class="fa btn btn-danger fa-trash"></a> 

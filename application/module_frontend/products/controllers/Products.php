@@ -87,9 +87,12 @@ class Products extends MY_Controller {
 	public function detail_products($data)
 	{
 		$link =  $this->uri->segment(1);
-		
+		$prod = $this->pm->get_products_detail($data)->row();
+
 		$this->store_params = array(
-			"data" => $this->pm->get_products_detail($data)->row(),
+			"data" => $prod,
+			"meta_desc" => $prod->meta_desc,
+			"meta_key" => $prod->meta_key,
 			"image_prod" => $this->pm->load_image_products($data)->result(),
 			"slider" => $this->load_slider($link),
 			"source_top" => array(

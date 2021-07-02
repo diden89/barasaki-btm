@@ -30,6 +30,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <textarea id="txtAddress" name="txt_address" class="textarea" placeholder="Enter content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo $data->address; ?></textarea>
       </div>
       <div class="form-group">
+        <label for="txtMetaDesc">Meta Description:</label>
+        <textarea id="txtMetaDesc" name="txt_meta_desc" class="textarea" placeholder="Enter content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo $data->meta_desc; ?></textarea>
+      </div>
+      <div class="form-group">
+        <label for="txtMetaKey">Meta Keyword:</label>
+        <input type="text" class="form-control" id="txtMetaKey" name="txt_meta_key" placeholder="Enter Keyword" value="<?php echo $data->meta_key; ?>">
+      </div>
+      <div class="form-group">
         <label for="txtImg">Favicon:</label>
           <input type="file" id="txtImg" name="txt_fav" value='<?php echo (isset($data->favicon)) ? $data->favicon : ""; ?>'>
           <img src="<?php echo front_url().$data->favicon;?>" width="300px">

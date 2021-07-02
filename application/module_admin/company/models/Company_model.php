@@ -11,16 +11,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Company_model extends CI_Model {
-	public function get_data($limit,$start)
+	public function get_data()
 	{
 		$this->db->from('company');
 		$this->db->where('is_active', 'Y');
 		$this->db->order_by('id', 'ASC');
-
-		if( ! empty($limit))
-		{
-			$this->db->limit($limit,$start);
-		}
 
 		return $this->db->get();
 	}
