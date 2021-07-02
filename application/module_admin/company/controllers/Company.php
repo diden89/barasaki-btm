@@ -15,7 +15,6 @@ class Company extends MY_Controller {
 	{
 		parent::__construct();
 		$this->load->model('company_model','sm');
-		$this->load->library('pagination');
 	}
 
 	public function index()
@@ -24,47 +23,9 @@ class Company extends MY_Controller {
 
 		if ($get_properties && $get_properties->num_rows() > 0)
 		{	
-			$total_data =  $this->sm->get_data($limit = "",$start = "")->num_rows();
-			//pagination
-			//konfigurasi pagination
-
-	        $config['base_url'] = base_url('company/index'); //site url
-	        $config['total_rows'] = $total_data; //total row
-	        $config['per_page'] = 5;  //show record per halaman
-	        $config["uri_segment"] = 3;  // uri parameter
-	        $choice = $config["total_rows"] / $config["per_page"];
-	        $config["num_links"] = floor($choice);
-
-	         // Membuat Style pagination untuk BootStrap v4
-	     	$config['first_link']       = 'First';
-	        $config['last_link']        = 'Last';
-	        $config['next_link']        = 'Next';
-	        $config['prev_link']        = 'Prev';
-	        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-	        $config['full_tag_close']   = '</ul></nav></div>';
-	        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-	        $config['num_tag_close']    = '</span></li>';
-	        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
-	        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
-	        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-	        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-	        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-	        $config['prev_tagl_close']  = '</span>Next</li>';
-	        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-	        $config['first_tagl_close'] = '</span></li>';
-	        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-	        $config['last_tagl_close']  = '</span></li>';
-	 
-	        $this->pagination->initialize($config);
-	       	$this->store_params['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-	 		$this->store_params['number_data'] = ($this->uri->segment(3)) ? $this->uri->segment(3)+1 : 1;
-	        //panggil function get_mahasiswa_list yang ada pada mmodel mahasiswa_model. 
-
 			$row_properties = $get_properties->row();
-			$get_data = $this->sm->get_data($config['per_page'],$this->store_params['page']);
+			$get_data = $this->sm->get_data();
 
-			$this->store_params['pagination'] = $this->pagination->create_links();
-			// print_r($this->store_params['pagination']);exit;
 			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->caption;
 			$this->store_params['page_active'] = $row_properties->caption;
 			$this->store_params['page_icon'] = $row_properties->icon;
@@ -100,6 +61,8 @@ class Company extends MY_Controller {
         $datas['fullname'] = $this->input->post('txt_fullname');
         $datas['owner'] = $this->input->post('txt_owner');
         $datas['address'] = $this->input->post('txt_address');
+        $datas['meta_desc'] = $this->input->post('txt_meta_desc');
+        $datas['meta_key'] = $this->input->post('txt_meta_key');
         
         $id = $this->input->post('id_company');
 

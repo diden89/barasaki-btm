@@ -63,6 +63,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<label for="txtContent">Description:</label>
 							<textarea id="txtContent2" name="txt_desc" class="textarea" placeholder="Enter content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo (isset($data->products_detail_description)) ? $data->products_detail_description : ""; ?></textarea>
 						</div>
+						<div class="form-group">
+							<label for="txtMetaDesc">Meta Description:</label>
+								<textarea id="txtMetaDesc" name="txt_meta_desc" class="textarea" placeholder="Enter content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo (isset($data->meta_desc)) ? $data->meta_desc : ""; ?></textarea>
+						</div>
+						<div class="form-group">
+							<label for="txtMetaKey">Meta Keyword:</label>
+								<input type="text" class="form-control" id="txtMetaKey" name="txt_meta_key" placeholder="Enter Keyword" value='<?php echo (isset($data->meta_key)) ? $data->meta_key : ""; ?>'>
+						</div>
 
 					</div>
 				</div>	

@@ -7,8 +7,8 @@
 		<title><?php echo $title; ?></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta name="description" content="Baraski Sinergi Semesta General Supplier and trading">
-	    <meta name="keywords" content="Barasaki,batam,Baraski Sinergi Semesta,coporate,General Supplier and trading">
+		<meta name="description" content="<?php echo $meta_desc; ?>">
+	    <meta name="keywords" content="<?php echo $meta_key; ?>">
 	    <meta name="author" content="RDIT-LABS.COM">
 		<!-- Theme Barasaki -->
 		<link href="<?php echo base_url(); ?>assets/templates/barasaki/css/bootstrap.css" rel="stylesheet">
@@ -62,7 +62,24 @@
 
 		<div class="footer">
 			<div class="container">
-				<div class="col-sm-4">
+				<div class="col-sm-3">
+					<h5>BARASAKI SINERGI SEMESTA</h5>
+					<ul>
+						<li><a><?php echo $company->address; ?></a></li>
+						<?php 
+							foreach($footer as $c=>$k){
+								foreach($k->contact as $ct=>$kt){
+									if($kt['c_type'] == 'p')
+									{
+										echo "<li><a>".$kt['c_detail']."</a></li>";
+									}
+								}
+							}
+							
+						?>
+					</ul>
+				</div>
+				<div class="col-sm-3">
 					<h5>Site Map</h5>
 					<ul>
 						<?php foreach($site_map as $s=>$m){
@@ -72,12 +89,12 @@
 						<?php }?>
 					</ul>
 				</div>
-				<div class="col-sm-4 col-md-4 twitter">
+				<div class="col-sm-3 col-md-3 twitter">
 					<h5>Facebook Page</h5>
 					<div class="fb-page" data-href="https://www.facebook.com/Barasaki-1491198281177819" data-tabs="timeline" data-width="250" data-height="298" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Barasaki-1491198281177819" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Barasaki-1491198281177819">Barasaki</a></blockquote></div>
 				</div>
-					<div class="col-md-4 testimonial">
-					<!-- 
+					<div class="col-sm-3 testimonial">
+					 
 					<h5>Testimonial</h5>
 					<ul>
 					<li><i class="fa  fa-quote-left"></i>Lorem ipsum dolor sit amet,  adipiscing elit, sed 
@@ -88,9 +105,9 @@
 					<img src="<?php //echo base_url(); ?>assets/img/testimonial.png">
 					<h6>- Michael R. Hanke</h6><br>
 					<p>ceo of sun</p>
-					</div>-->
+					</div>
 				</div> 
-				<div class="col-md-3 contact-footer">
+				<!-- <div class="col-md-2 contact-footer">
 					<div class="footer-form">
 						<h5>Contact Us</h5>
 						<input type="text" placeholder="Name">
@@ -98,7 +115,7 @@
 						<textarea placeholder="Message" rows="3"></textarea>
 						<button class="submit-bt">Send</button>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 

@@ -111,6 +111,8 @@ class MY_Controller extends CI_Controller {
 			$this->store_params['total_projects'] =  $this->db_home->get_total_projects()->row();
 			$this->store_params['total_team'] =  $this->db_home->get_total_team()->row();
 			$this->store_params['site_map'] =  $this->db_home->get_site_map()->result();
+			$this->store_params['meta_desc'] = isset($this->store_params['meta_desc']) ? $this->store_params['meta_desc'] : $company->meta_desc;
+			$this->store_params['meta_key'] = isset($this->store_params['meta_key']) ? $this->store_params['meta_key'] : $company->meta_key;
 
 			// $year_now = date('Y');
 			// echo $year_now - $company->since_years;exit;
@@ -120,6 +122,7 @@ class MY_Controller extends CI_Controller {
 		{
 			$this->store_params['menu'] = $this->_generate_admin_menu();
 			$this->store_params['message'] = $this->_load_message();
+
 			$view = 'admin_view';
 		}
 
