@@ -51,4 +51,12 @@ class Home_model extends CI_Model {
 		
 		return $this->db->get('message');
 	}
+
+	public function get_company()
+	{
+		$this->db->where('is_active', 'Y');
+
+		return $this->db->get('company');
+	}
+
 }

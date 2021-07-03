@@ -120,8 +120,10 @@ class MY_Controller extends CI_Controller {
 		}
 		elseif (MODULE == 'module_admin')
 		{
+			$company = $this->db_home->get_company()->row();
 			$this->store_params['menu'] = $this->_generate_admin_menu();
 			$this->store_params['message'] = $this->_load_message();
+			$this->store_params['company'] = $company;
 
 			$view = 'admin_view';
 		}

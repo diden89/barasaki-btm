@@ -28,6 +28,9 @@ switch ($_SERVER['SERVER_ADMIN'])
 {
     case 'postmaster@localhost':
 		$config['base_url'] = 'http://localhost/barasaki-btm/'.BASE_URL;
+	break; 
+	case 'webmaster@barasaki-btm.com':
+		$config['base_url'] = 'http://barasaki-btm.com/'.BASE_URL;
 	break;
 	case 'admin@example.com':
 		$config['base_url'] = 'http://localhost/barasaki-btm/'.BASE_URL;

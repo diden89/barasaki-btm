@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="shortcut icon" href="<?php echo front_url(); ?>assets/images/favicon.ico">
+	<link rel="shortcut icon" href="<?php echo front_url($company->favicon); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title><?php echo $title; ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
