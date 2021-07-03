@@ -11,21 +11,16 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Employee_model extends CI_Model {
-	public function get_data($limit,$start)
+	public function get_data()
 	{
 		$this->db->select('e.*,e.id as e_id,ed.caption as e_caption,p.caption as p_caption');
 		$this->db->from('employee e');
 		$this->db->join('education ed','e.education_id = ed.id','left');
 		$this->db->join('position p','e.position_id = p.id','left');
-		// $this->db->where('e.is_active', 'Y');
+		$this->db->where('e.is_active', 'Y');
 		// $this->db->where('ed.is_active', 'Y');
-		$this->db->where('p.is_active', 'Y');
+		// $this->db->where('p.is_active', 'Y');
 		$this->db->order_by('e.id', 'ASC');
-
-		if( ! empty($limit))
-		{
-			$this->db->limit($limit,$start);
-		}
 
 		return $this->db->get();
 	}
