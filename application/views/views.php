@@ -62,7 +62,7 @@
 
 		<div class="footer">
 			<div class="container">
-				<div class="col-sm-3">
+				<div class="col-sm-4">
 					<h5>BARASAKI SINERGI SEMESTA</h5>
 					<ul>
 						<li><a><?php echo $company->address; ?></a></li>
@@ -79,7 +79,7 @@
 						?>
 					</ul>
 				</div>
-				<div class="col-sm-3">
+				<div class="col-sm-4">
 					<h5>Site Map</h5>
 					<ul>
 						<?php foreach($site_map as $s=>$m){
@@ -89,11 +89,7 @@
 						<?php }?>
 					</ul>
 				</div>
-				<div class="col-sm-3 col-md-3 twitter">
-					<h5>Facebook Page</h5>
-					<div class="fb-page" data-href="https://www.facebook.com/Barasaki-1491198281177819" data-tabs="timeline" data-width="250" data-height="298" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Barasaki-1491198281177819" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Barasaki-1491198281177819">Barasaki</a></blockquote></div>
-				</div>
-					<div class="col-sm-3 testimonial">
+				<!-- <div class="col-sm-3 testimonial">
 					 
 					<h5>Testimonial</h5>
 					<ul>
@@ -102,11 +98,15 @@
 
 					</ul>
 					<div class="t-image">
-					<img src="<?php //echo base_url(); ?>assets/img/testimonial.png">
+					<img src="<?php// echo base_url(); ?>assets/images/img/testimonial.png">
 					<h6>- Michael R. Hanke</h6><br>
 					<p>ceo of sun</p>
 					</div>
-				</div> 
+				</div>  -->
+				<div class="col-sm-4 col-md-4 twitter">
+					<h5>Facebook Page</h5>
+					<div class="fb-page" data-href="https://www.facebook.com/Barasaki-1491198281177819" data-tabs="timeline" data-width="250" data-height="298" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Barasaki-1491198281177819" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Barasaki-1491198281177819">Barasaki</a></blockquote></div>
+				</div>
 				<!-- <div class="col-md-2 contact-footer">
 					<div class="footer-form">
 						<h5>Contact Us</h5>
