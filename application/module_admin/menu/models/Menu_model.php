@@ -52,12 +52,22 @@ class Menu_model extends CI_Model {
 
 	public function delete_data($params = array())
 	{
-		$this->table = 'ref_menu';
-		$new_params = array(
-			'rm_is_active' => 'N'
-		);
-		
-		return $this->edit($new_params, "rm_id = {$params['rm_id']}");
+		$this->db->set('rm_is_active','N');
+		$this->db->where('rm_id',$params['rm_id']);
+
+		$update = $this->db->update('ref_menu');
+
+		// if ($update)
+		// {
+		// 	$this->db->set($data);
+		// 	$this->db->set('rm_id',$id);
+		// 	$this->db->set('log_user_id', $this->session->userdata('username'));
+		// 	$this->db->set('log_action', 'insert');
+		// 	$this->db->set('log_datetime', 'NOW()', FALSE);
+
+		// 	return $this->db->insert('log_ref_menu');
+		// }
+		return TRUE;
 	}
 	
 	public function get_menu_utama($id)

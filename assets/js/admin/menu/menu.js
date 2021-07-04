@@ -94,6 +94,7 @@ function show_modal(data,title,mode){
 }
 
 function delete_data(data){
+	is_admin = $('#btnAdd').attr('data-admin');
 	Swal.fire({
 		title: 'Apakah anda yakin?',
 		text: "Data yang sudah di hapus tidak bisa dikembalikan lagi!",
@@ -126,7 +127,8 @@ function delete_data(data){
 						type: 'POST',
 						dataType: 'JSON',
 						data: {
-							action: 'get_menu_data'
+							action: 'get_menu_data',
+							rm_is_admin : is_admin
 						},
 						success: function (result) {
 							if (result.success) {
