@@ -44,13 +44,6 @@
 						<li>
 							<a href="<?php echo front_url(); ?>" target="_blank"><i class="fa fa-home"></i> View Website</a>
 						</li>
-						<!-- <li>
-							<a href="<?php// echo site_url('home/message'); ?>"><i class="fa fa-comment"></i> <?php //echo $message->total;?></a>
-						</li> -->
-					<!-- 	<li class="dropdown">
-					       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count" style="border-radius:10px;"></span> <span class="fa fa-comment" style="font-size:18px;"></span></a>
-					       <ul class="dropdown-menu"></ul>
-					    </li> -->
 
 					     <li class="dropdown messages-menu">
 				            <a href="#" class="dropdown-toggle" data-toggle="dropdown">

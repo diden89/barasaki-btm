@@ -29,17 +29,13 @@ class Menu extends MY_Controller {
 			$get_data = $this->mm->get_data();
 			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->caption;
 			$this->store_params['page_active'] = $row_properties->caption;
-			$this->store_params['header_title'] = 'Menu';
-			$this->store_params['pages_title'] = 'Menu List';
 			$this->store_params['page_icon'] = $row_properties->icon;
 			$this->store_params['data'] = $get_data->result_array();
 			$this->store_params['source_top'] = array(
-				// '<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">'
-				'<link rel="stylesheet" href="'.front_url('assets/css/').'jquerysctipttop.css">'
+				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">'
 			);
 			$this->store_params['source_bot'] = array(
-				// '<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>',
-				'<script src="'.front_url('assets/templates/other').'/jquery_acollapsetable/jquery.aCollapTable.js"></script>',
+				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>',
 				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>',
 				'<script src="'.front_url('assets/js/admin/menu/').'/menu.js"></script>'
 			);
@@ -49,19 +45,6 @@ class Menu extends MY_Controller {
 		{
 			show_404();
 		}
-	}
-
-	public function get_menu_data()
-	{
-		if (isset($_POST['action']) && $_POST['action'] == 'get_menu_data')
-		{
-			$success = FALSE;
-			$rm_is_admin = $this->input->post('rm_is_admin');
-			$get_menu = $this->mm->get_menu(array('rm_is_active' => 'Y','rm_is_admin' => $rm_is_admin));
-
-			if ($get_menu && $get_menu->num_rows() > 0) echo json_encode(array('success' => TRUE, 'data' => $get_menu->result()));
-			else echo json_encode(array('success' => TRUE));
-		} else $this->show_404();
 	}
 
 	public function search_data()

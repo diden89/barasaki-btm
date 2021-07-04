@@ -15,25 +15,25 @@ class Auth_model extends CI_Model {
 	{
 		if (isset($params['txt_username']) && isset($params['txt_password']))
 		{
-			$this->db->select('*,a.id as ud_id,b.id as e_id');
+			$this->db->select('*,a.ud_id as ud_id,b.id as e_id');
 			$this->db->from('user_detail a');
-			$this->db->join('employee b','a.id = b.userid','left');
-			$this->db->where('a.is_active', 'Y');
+			$this->db->join('employee b','a.ud_id = b.userid','left');
+			$this->db->where('a.ud_is_active', 'Y');
 			$this->db->where('b.is_active', 'Y');
-			$this->db->where('a.username', $params['txt_username']);
-			$this->db->where('a.password', sha1(strtoupper($params['txt_username'].':'.$params['txt_password'])));
+			$this->db->where('a.ud_username', $params['txt_username']);
+			$this->db->where('a.ud_password', sha1(strtoupper($params['txt_username'].':'.$params['txt_password'])));
 
 			return $this->db->get();
 		}
 		elseif (isset($params['id']) && isset($params['username']))
 		{
-			$this->db->select('*,a.id as ud_id,b.id as e_id');
+			$this->db->select('*,a.ud_id as ud_id,b.id as e_id');
 			$this->db->from('user_detail a');
-			$this->db->join('employee b','a.id = b.userid','left');
-			$this->db->where('a.is_active', 'Y');
+			$this->db->join('employee b','a.ud_id = b.userid','left');
+			$this->db->where('a.ud_is_active', 'Y');
 			$this->db->where('b.is_active', 'Y');
-			$this->db->where('a.id', $params['id']);
-			$this->db->where('a.username', $params['username']);
+			$this->db->where('a.ud_id', $params['id']);
+			$this->db->where('a.ud_username', $params['username']);
 
 			return $this->db->get();
 		}

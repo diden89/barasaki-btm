@@ -53,10 +53,10 @@ class MY_Controller extends CI_Controller {
 				$row = $validate_login->row();
 
 				$this->session->set_userdata(array(
-					'token' => $this->encryption->encrypt($row->id.':'.$row->username),
-					'username' => $row->username,
-					'fullname' => $row->fullname,
-					'sub_group' => $row->sub_group
+					'token' => $this->encryption->encrypt($row->ud_id.':'.$row->ud_username),
+					'username' => $row->ud_username,
+					'fullname' => $row->ud_fullname,
+					'sub_group' => $row->ud_sub_group
 				));
 
 				$result['success'] = TRUE;

@@ -11,14 +11,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Menu_model extends CI_Model {
-
-	public function get_menu($where=array())
-	{
-		$this->db->where($where);
-		$this->db->order_by('rm_sequence', 'asc');
-		return $this->db->get('ref_menu');
-	}
-	
 	public function get_data()
 	{
 		$this->db->where('is_active', 'Y');
@@ -33,12 +25,12 @@ class Menu_model extends CI_Model {
 		return $this->db->get('menu');
 	}
 	
-	// public function get_menu($cond)
-	// {
-	// 	$this->db->where('is_active', 'Y');
-	// 	$this->db->where('is_admin', $cond);
-	// 	return $this->db->get('menu');
-	// }
+	public function get_menu($cond)
+	{
+		$this->db->where('is_active', 'Y');
+		$this->db->where('is_admin', $cond);
+		return $this->db->get('menu');
+	}
 	
 	public function get_menu_utama($id)
 	{
