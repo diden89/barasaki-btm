@@ -139,6 +139,7 @@
 		<script src="<?php echo base_url(); ?>assets/templates/barasaki/js/bootstrap.js"></script> 
 		<script src="<?php echo base_url(); ?>assets/templates/barasaki/js/responsiveslides.min.js"></script> 
 		<script src="<?php echo base_url(); ?>assets/templates/barasaki/js/response.min.js"></script> 
+		
 		<script>
 		$(function() {
 		$(".rslides").responsiveSlides();

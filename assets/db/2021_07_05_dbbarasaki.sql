@@ -11,7 +11,7 @@
  Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 04/07/2021 07:06:22
+ Date: 05/07/2021 01:31:09
 */
 
 SET NAMES utf8mb4;
@@ -31,7 +31,7 @@ CREATE TABLE `articles`  (
   `img` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `is_active` char(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'Y',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of articles
@@ -78,7 +78,7 @@ CREATE TABLE `category_type`  (
   `category_type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `is_active` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of category_type
@@ -167,7 +167,7 @@ CREATE TABLE `contact_type`  (
   `c_type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contact_type
@@ -235,7 +235,7 @@ CREATE TABLE `download`  (
   `file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `is_active` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of download
@@ -277,7 +277,7 @@ CREATE TABLE `email`  (
   `email` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `is_active` char(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'Y',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of email
@@ -321,7 +321,7 @@ CREATE TABLE `icon`  (
   `icon_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT 'flaticon-',
   `is_active` char(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT 'Y',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of icon
@@ -464,7 +464,7 @@ CREATE TABLE `log_articles`  (
   `log_action` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `log_created_date` datetime(0) NOT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 50 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 51 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_articles
@@ -493,7 +493,7 @@ CREATE TABLE `log_category`  (
   `log_action` varchar(32) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `log_created_date` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_category
@@ -528,7 +528,7 @@ CREATE TABLE `log_company`  (
   `logo` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `favicon` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 43 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_company
@@ -581,7 +581,7 @@ CREATE TABLE `log_company_legal`  (
   `log_action` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `log_created_date` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_company_legal
@@ -604,7 +604,7 @@ CREATE TABLE `log_contact`  (
   `log_action` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `log_created_date` datetime(0) NOT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_contact
@@ -626,7 +626,7 @@ CREATE TABLE `log_customer`  (
   `log_action` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `log_created_date` datetime(0) NOT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_customer
@@ -667,7 +667,7 @@ CREATE TABLE `log_distributor`  (
   `log_action` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `log_created_date` datetime(0) NOT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_distributor
@@ -694,7 +694,7 @@ CREATE TABLE `log_download`  (
   `log_action` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `log_created_date` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_download
@@ -723,7 +723,7 @@ CREATE TABLE `log_education`  (
   `log_action` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `log_created_date` datetime(0) NOT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_education
@@ -743,7 +743,7 @@ CREATE TABLE `log_email`  (
   `log_action` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `log_created_date` datetime(0) NOT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_email
@@ -772,7 +772,7 @@ CREATE TABLE `log_employee`  (
   `log_action` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `log_created_date` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_employee
@@ -798,7 +798,7 @@ CREATE TABLE `log_menu`  (
   `log_action` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `log_created_date` datetime(0) NOT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 92 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 93 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_menu
@@ -1210,7 +1210,7 @@ CREATE TABLE `log_position`  (
   `log_action` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `log_created_date` datetime(0) NOT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_position
@@ -1238,7 +1238,7 @@ CREATE TABLE `log_products`  (
   `log_created_date` datetime(0) NOT NULL,
   `products_spesification` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 67 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of log_products
@@ -1266,7 +1266,7 @@ CREATE TABLE `log_projects`  (
   `log_action` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `log_created_date` datetime(0) NOT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_projects
@@ -1291,6 +1291,7 @@ CREATE TABLE `log_ref_menu`  (
   `rm_icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `rm_sequence` int UNSIGNED NOT NULL DEFAULT 1,
   `rm_is_active` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'Y',
+  `rm_is_admin` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `last_user` int UNSIGNED NOT NULL,
   `last_datetime` datetime(0) NOT NULL,
   `log_user_id` int UNSIGNED NOT NULL,
@@ -1303,34 +1304,37 @@ CREATE TABLE `log_ref_menu`  (
 -- ----------------------------
 -- Records of log_ref_menu
 -- ----------------------------
-INSERT INTO `log_ref_menu` VALUES (1, NULL, 'Findings', 'Findings', 'trademark/invented_brand', 'fas fa-search', 1, 'Y', 1, '2020-10-12 22:32:29', 1, 'edit', '2020-10-12 22:32:29', 7);
-INSERT INTO `log_ref_menu` VALUES (43, 4, 'Similar Letters and/or Numbers', 'Similar Letters and/or Numbers', 'trademark/similar_letters', 'fas fa-font', 4, 'Y', 1, '2020-10-12 22:35:35', 1, 'edit', '2020-10-12 22:35:35', 8);
-INSERT INTO `log_ref_menu` VALUES (48, 4, 'BRM List', 'BRM List', 'trademark/brm_list', 'fas fa-list', 6, 'Y', 1, '2020-10-12 23:06:45', 1, 'add', '2020-10-12 23:06:45', 9);
-INSERT INTO `log_ref_menu` VALUES (49, 2, 'Master Data', 'Master Data', NULL, 'fas fa-table', 3, 'Y', 1, '2020-10-21 23:57:12', 1, 'add', '2020-10-21 23:57:12', 10);
-INSERT INTO `log_ref_menu` VALUES (50, 49, 'Item List', 'Item List', 'settings/item_list', 'fas fa-list', 1, 'Y', 1, '2020-10-21 23:58:26', 1, 'add', '2020-10-21 23:58:26', 11);
-INSERT INTO `log_ref_menu` VALUES (51, 49, 'Item Unit', 'Item Unit', 'settings/item_unit', 'fas fa-boxes', 2, 'Y', 1, '2020-10-22 01:51:26', 1, 'add', '2020-10-22 01:51:26', 12);
-INSERT INTO `log_ref_menu` VALUES (52, NULL, 'PROJECTS', 'DATA PROJECTS', NULL, 'fas fa-briefcase', 1, 'Y', 1, '2020-10-23 11:31:10', 1, 'add', '2020-10-23 11:31:10', 13);
-INSERT INTO `log_ref_menu` VALUES (52, NULL, 'Projects', 'Data Projects', NULL, 'fas fa-briefcase', 1, 'Y', 1, '2020-10-23 11:31:38', 1, 'edit', '2020-10-23 11:31:38', 14);
-INSERT INTO `log_ref_menu` VALUES (52, NULL, 'Master Data', 'Master Data', NULL, 'fas fa-briefcase', 1, 'Y', 1, '2020-10-23 11:40:02', 1, 'edit', '2020-10-23 11:40:02', 15);
-INSERT INTO `log_ref_menu` VALUES (53, 52, 'RAB', 'RAB Data', 'master_data', 'fas fa-building', 1, 'Y', 1, '2020-10-23 11:41:11', 1, 'add', '2020-10-23 11:41:11', 16);
-INSERT INTO `log_ref_menu` VALUES (53, 52, 'RAB', 'RAB Data', 'master_data/rab', 'fas fa-building', 1, 'Y', 1, '2020-10-23 11:43:51', 1, 'edit', '2020-10-23 11:43:51', 17);
-INSERT INTO `log_ref_menu` VALUES (54, 49, 'Template RAB', 'Template RAB', 'settings/rab_template', 'fas fa-ruler-vertical', 3, 'Y', 1, '2020-10-23 12:10:43', 1, 'add', '2020-10-23 12:10:43', 18);
-INSERT INTO `log_ref_menu` VALUES (54, 2, 'Template RAB', 'Template RAB', 'settings/rab_template', 'fas fa-ruler-vertical', 4, 'Y', 1, '2020-10-23 12:15:59', 1, 'edit', '2020-10-23 12:15:59', 19);
-INSERT INTO `log_ref_menu` VALUES (55, 54, 'Item RAB', 'Item Data RAB', 'settings/item_rab', 'fas fa-pencil-ruler', 1, 'Y', 1, '2020-10-23 12:16:39', 1, 'add', '2020-10-23 12:16:39', 20);
-INSERT INTO `log_ref_menu` VALUES (54, 52, 'Template RAB', 'Template RAB', 'settings/rab_template', 'fas fa-ruler-vertical', 4, 'Y', 1, '2020-10-25 08:38:07', 1, 'edit', '2020-10-25 08:38:07', 21);
-INSERT INTO `log_ref_menu` VALUES (49, 2, 'RAB Config', 'Master Data', NULL, 'fas fa-table', 3, 'Y', 1, '2020-10-25 08:38:57', 1, 'edit', '2020-10-25 08:38:57', 22);
-INSERT INTO `log_ref_menu` VALUES (49, 2, 'Master Data', 'Master Data', NULL, 'fas fa-table', 3, 'Y', 1, '2020-10-25 08:40:16', 1, 'edit', '2020-10-25 08:40:16', 23);
-INSERT INTO `log_ref_menu` VALUES (52, NULL, 'RAB Config', 'RAB Config', NULL, 'fas fa-briefcase', 1, 'Y', 1, '2020-10-25 08:40:26', 1, 'edit', '2020-10-25 08:40:26', 24);
-INSERT INTO `log_ref_menu` VALUES (56, 49, 'Building Type', 'Building Type', 'settings/building_type', 'fas fa-building', 3, 'Y', 1, '2020-10-25 08:41:03', 1, 'add', '2020-10-25 08:41:03', 25);
-INSERT INTO `log_ref_menu` VALUES (53, 54, 'RAB', 'RAB Data', 'master_data/rab', 'fas fa-building', 1, 'Y', 1, '2020-10-26 17:38:56', 1, 'edit', '2020-10-26 17:38:56', 26);
-INSERT INTO `log_ref_menu` VALUES (53, 54, 'RAB List Template', 'RAB List Template', 'master_data/rab_list', 'fas fa-building', 1, 'Y', 1, '2020-10-26 18:36:07', 1, 'edit', '2020-10-26 18:36:07', 27);
-INSERT INTO `log_ref_menu` VALUES (53, 54, 'RAB List Template', 'RAB List Template', 'settings/rab_list', 'fas fa-building', 1, 'Y', 1, '2020-10-26 18:36:50', 1, 'edit', '2020-10-26 18:36:50', 28);
-INSERT INTO `log_ref_menu` VALUES (53, 54, 'RAB List Template', 'RAB List Template', 'master_data/rab_list', 'fas fa-building', 1, 'Y', 1, '2020-10-26 18:38:39', 1, 'edit', '2020-10-26 18:38:39', 29);
-INSERT INTO `log_ref_menu` VALUES (55, 54, 'Item RAB', 'Item Data RAB', 'master_data/item_rab', 'fas fa-pencil-ruler', 1, 'Y', 1, '2020-10-26 18:38:50', 1, 'edit', '2020-10-26 18:38:50', 30);
-INSERT INTO `log_ref_menu` VALUES (57, NULL, 'Projects', 'Projects', NULL, 'fas fa-paint-roller', 3, 'Y', 1, '2020-10-27 10:02:22', 1, 'add', '2020-10-27 10:02:22', 31);
-INSERT INTO `log_ref_menu` VALUES (58, 57, 'Projects Data', 'Projects Data', 'projects/projects_data', 'fas fa-hard-hat', 1, 'Y', 1, '2020-10-27 10:08:04', 1, 'add', '2020-10-27 10:08:04', 32);
-INSERT INTO `log_ref_menu` VALUES (59, 52, 'RAB Building', 'RAB Building', 'master_data/rab_building', 'fas fa-ruler-combined', 3, 'Y', 1, '2020-10-27 10:24:24', 1, 'add', '2020-10-27 10:24:24', 33);
-INSERT INTO `log_ref_menu` VALUES (60, 57, 'Material Consumption', 'Material Consumption', 'projects/material_consumption', 'fas fa-pencil-ruler', 2, 'Y', 1, '2020-10-30 01:24:12', 1, 'add', '2020-10-30 01:24:12', 34);
+INSERT INTO `log_ref_menu` VALUES (1, NULL, 'Findings', 'Findings', 'trademark/invented_brand', 'fas fa-search', 1, 'Y', NULL, 1, '2020-10-12 22:32:29', 1, 'edit', '2020-10-12 22:32:29', 7);
+INSERT INTO `log_ref_menu` VALUES (43, 4, 'Similar Letters and/or Numbers', 'Similar Letters and/or Numbers', 'trademark/similar_letters', 'fas fa-font', 4, 'Y', NULL, 1, '2020-10-12 22:35:35', 1, 'edit', '2020-10-12 22:35:35', 8);
+INSERT INTO `log_ref_menu` VALUES (48, 4, 'BRM List', 'BRM List', 'trademark/brm_list', 'fas fa-list', 6, 'Y', NULL, 1, '2020-10-12 23:06:45', 1, 'add', '2020-10-12 23:06:45', 9);
+INSERT INTO `log_ref_menu` VALUES (49, 2, 'Master Data', 'Master Data', NULL, 'fas fa-table', 3, 'Y', NULL, 1, '2020-10-21 23:57:12', 1, 'add', '2020-10-21 23:57:12', 10);
+INSERT INTO `log_ref_menu` VALUES (50, 49, 'Item List', 'Item List', 'settings/item_list', 'fas fa-list', 1, 'Y', NULL, 1, '2020-10-21 23:58:26', 1, 'add', '2020-10-21 23:58:26', 11);
+INSERT INTO `log_ref_menu` VALUES (51, 49, 'Item Unit', 'Item Unit', 'settings/item_unit', 'fas fa-boxes', 2, 'Y', NULL, 1, '2020-10-22 01:51:26', 1, 'add', '2020-10-22 01:51:26', 12);
+INSERT INTO `log_ref_menu` VALUES (52, NULL, 'PROJECTS', 'DATA PROJECTS', NULL, 'fas fa-briefcase', 1, 'Y', NULL, 1, '2020-10-23 11:31:10', 1, 'add', '2020-10-23 11:31:10', 13);
+INSERT INTO `log_ref_menu` VALUES (52, NULL, 'Projects', 'Data Projects', NULL, 'fas fa-briefcase', 1, 'Y', NULL, 1, '2020-10-23 11:31:38', 1, 'edit', '2020-10-23 11:31:38', 14);
+INSERT INTO `log_ref_menu` VALUES (52, NULL, 'Master Data', 'Master Data', NULL, 'fas fa-briefcase', 1, 'Y', NULL, 1, '2020-10-23 11:40:02', 1, 'edit', '2020-10-23 11:40:02', 15);
+INSERT INTO `log_ref_menu` VALUES (53, 52, 'RAB', 'RAB Data', 'master_data', 'fas fa-building', 1, 'Y', NULL, 1, '2020-10-23 11:41:11', 1, 'add', '2020-10-23 11:41:11', 16);
+INSERT INTO `log_ref_menu` VALUES (53, 52, 'RAB', 'RAB Data', 'master_data/rab', 'fas fa-building', 1, 'Y', NULL, 1, '2020-10-23 11:43:51', 1, 'edit', '2020-10-23 11:43:51', 17);
+INSERT INTO `log_ref_menu` VALUES (54, 49, 'Template RAB', 'Template RAB', 'settings/rab_template', 'fas fa-ruler-vertical', 3, 'Y', NULL, 1, '2020-10-23 12:10:43', 1, 'add', '2020-10-23 12:10:43', 18);
+INSERT INTO `log_ref_menu` VALUES (54, 2, 'Template RAB', 'Template RAB', 'settings/rab_template', 'fas fa-ruler-vertical', 4, 'Y', NULL, 1, '2020-10-23 12:15:59', 1, 'edit', '2020-10-23 12:15:59', 19);
+INSERT INTO `log_ref_menu` VALUES (55, 54, 'Item RAB', 'Item Data RAB', 'settings/item_rab', 'fas fa-pencil-ruler', 1, 'Y', NULL, 1, '2020-10-23 12:16:39', 1, 'add', '2020-10-23 12:16:39', 20);
+INSERT INTO `log_ref_menu` VALUES (54, 52, 'Template RAB', 'Template RAB', 'settings/rab_template', 'fas fa-ruler-vertical', 4, 'Y', NULL, 1, '2020-10-25 08:38:07', 1, 'edit', '2020-10-25 08:38:07', 21);
+INSERT INTO `log_ref_menu` VALUES (49, 2, 'RAB Config', 'Master Data', NULL, 'fas fa-table', 3, 'Y', NULL, 1, '2020-10-25 08:38:57', 1, 'edit', '2020-10-25 08:38:57', 22);
+INSERT INTO `log_ref_menu` VALUES (49, 2, 'Master Data', 'Master Data', NULL, 'fas fa-table', 3, 'Y', NULL, 1, '2020-10-25 08:40:16', 1, 'edit', '2020-10-25 08:40:16', 23);
+INSERT INTO `log_ref_menu` VALUES (52, NULL, 'RAB Config', 'RAB Config', NULL, 'fas fa-briefcase', 1, 'Y', NULL, 1, '2020-10-25 08:40:26', 1, 'edit', '2020-10-25 08:40:26', 24);
+INSERT INTO `log_ref_menu` VALUES (56, 49, 'Building Type', 'Building Type', 'settings/building_type', 'fas fa-building', 3, 'Y', NULL, 1, '2020-10-25 08:41:03', 1, 'add', '2020-10-25 08:41:03', 25);
+INSERT INTO `log_ref_menu` VALUES (53, 54, 'RAB', 'RAB Data', 'master_data/rab', 'fas fa-building', 1, 'Y', NULL, 1, '2020-10-26 17:38:56', 1, 'edit', '2020-10-26 17:38:56', 26);
+INSERT INTO `log_ref_menu` VALUES (53, 54, 'RAB List Template', 'RAB List Template', 'master_data/rab_list', 'fas fa-building', 1, 'Y', NULL, 1, '2020-10-26 18:36:07', 1, 'edit', '2020-10-26 18:36:07', 27);
+INSERT INTO `log_ref_menu` VALUES (53, 54, 'RAB List Template', 'RAB List Template', 'settings/rab_list', 'fas fa-building', 1, 'Y', NULL, 1, '2020-10-26 18:36:50', 1, 'edit', '2020-10-26 18:36:50', 28);
+INSERT INTO `log_ref_menu` VALUES (53, 54, 'RAB List Template', 'RAB List Template', 'master_data/rab_list', 'fas fa-building', 1, 'Y', NULL, 1, '2020-10-26 18:38:39', 1, 'edit', '2020-10-26 18:38:39', 29);
+INSERT INTO `log_ref_menu` VALUES (55, 54, 'Item RAB', 'Item Data RAB', 'master_data/item_rab', 'fas fa-pencil-ruler', 1, 'Y', NULL, 1, '2020-10-26 18:38:50', 1, 'edit', '2020-10-26 18:38:50', 30);
+INSERT INTO `log_ref_menu` VALUES (57, NULL, 'Projects', 'Projects', NULL, 'fas fa-paint-roller', 3, 'Y', NULL, 1, '2020-10-27 10:02:22', 1, 'add', '2020-10-27 10:02:22', 31);
+INSERT INTO `log_ref_menu` VALUES (58, 57, 'Projects Data', 'Projects Data', 'projects/projects_data', 'fas fa-hard-hat', 1, 'Y', NULL, 1, '2020-10-27 10:08:04', 1, 'add', '2020-10-27 10:08:04', 32);
+INSERT INTO `log_ref_menu` VALUES (59, 52, 'RAB Building', 'RAB Building', 'master_data/rab_building', 'fas fa-ruler-combined', 3, 'Y', NULL, 1, '2020-10-27 10:24:24', 1, 'add', '2020-10-27 10:24:24', 33);
+INSERT INTO `log_ref_menu` VALUES (60, 57, 'Material Consumption', 'Material Consumption', 'projects/material_consumption', 'fas fa-pencil-ruler', 2, 'Y', NULL, 1, '2020-10-30 01:24:12', 1, 'add', '2020-10-30 01:24:12', 34);
+INSERT INTO `log_ref_menu` VALUES (137, 124, 'asda', 'sdasd', 'asdas', 'dasd', 0, 'Y', 'N', 0, '0000-00-00 00:00:00', 0, 'insert', '2021-07-05 01:26:38', 35);
+INSERT INTO `log_ref_menu` VALUES (138, 124, 'Test', 'Test Menu', 'tes/aja', 'df', 1, 'Y', 'N', 0, '0000-00-00 00:00:00', 0, 'insert', '2021-07-05 01:27:32', 36);
+INSERT INTO `log_ref_menu` VALUES (139, 124, 'tes', 'tes', 'tes', 'te', 2, 'Y', 'N', 0, '0000-00-00 00:00:00', 0, 'insert', '2021-07-05 01:29:50', 37);
 
 -- ----------------------------
 -- Table structure for log_services
@@ -1352,7 +1356,7 @@ CREATE TABLE `log_services`  (
   `log_action` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `log_created_date` datetime(0) NOT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_services
@@ -1373,7 +1377,7 @@ CREATE TABLE `log_site_map`  (
   `log_action` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `log_created_date` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_site_map
@@ -1411,7 +1415,7 @@ CREATE TABLE `log_slide`  (
   `log_action` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `log_created_date` datetime(0) NOT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_slide
@@ -1438,7 +1442,7 @@ CREATE TABLE `log_url_target`  (
   `log_action` varchar(32) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `log_created_date` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of log_url_target
@@ -1785,7 +1789,7 @@ CREATE TABLE `offering`  (
   `is_read` char(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT 'N',
   `date` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of offering
@@ -1847,7 +1851,7 @@ CREATE TABLE `products_image`  (
   `url` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `is_active` char(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT 'Y',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 68 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 69 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of products_image
@@ -1927,6 +1931,8 @@ INSERT INTO `ref_menu` VALUES (130, NULL, 'Contact', NULL, 'contact', NULL, 1, '
 INSERT INTO `ref_menu` VALUES (132, 107, 'Aemic', '', 'http://ae-mic.com/', '', 1, 'Y', 1, '2021-07-04 02:06:19', 'N');
 INSERT INTO `ref_menu` VALUES (133, 107, 'teeeee', '', 'tetete', '', 2, 'Y', 1, '2021-07-04 02:06:19', 'N');
 INSERT INTO `ref_menu` VALUES (134, 107, 'karambiac', '', '', '', 1, 'Y', 1, '2021-07-04 02:06:19', 'N');
+INSERT INTO `ref_menu` VALUES (138, 124, 'Test', 'Test Menu', 'tes/aja', 'df', 1, 'Y', 0, '0000-00-00 00:00:00', 'N');
+INSERT INTO `ref_menu` VALUES (139, 124, 'tes', 'tes', 'tes', 'te', 2, 'Y', 0, '0000-00-00 00:00:00', 'N');
 
 -- ----------------------------
 -- Table structure for services

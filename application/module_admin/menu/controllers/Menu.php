@@ -64,48 +64,116 @@ class Menu extends MY_Controller {
 		} else $this->show_404();
 	}
 
-	public function search_data()
+	public function popup_modal()
 	{
-		prin_r($_POST);exit;
-		$this->index($_POST);
+		$post = $this->input->post(NULL, TRUE);
+
+		if (isset($post['action']) && ! empty($post['action']) && $post['action'] == 'popup_modal')
+		{
+			unset($post['action']);
+			$data = $this->mm->get_menu(array('rm_id' => $post['id'],'rm_is_admin' => $post['is_admin']));			
+
+			if($data->num_rows() > 0)
+			{
+				$data2 = $data->row();
+				$parent_id = ($data2->rm_parent_id !== "") ? $data2->rm_parent_id : "";
+				$post['data'] = $data2;
+			}
+			else
+			{
+				$parent_id = "";
+			}
+			$post['option'] = $this->_build_data($parent_id,$post['is_admin']);
+			
+			$this->load->view('menu_popup_modal_view', $post);
+		}
+		else $this->show_404();
 	}
 
-	public function cu_action($cond)
+	public function _build_data($id = "",$isAdmin = "")
 	{
-		$get_properties = $this->db_home->get_properties($this->uri->segment(1));
+		$get_menu_list = $this->mm->get_menu(array('rm_is_active' => 'Y', 'rm_is_admin' => $isAdmin));
+		$tree_menu_list = $this->_buildTree($get_menu_list->result(),$id);
 
-		if ($get_properties && $get_properties->num_rows() > 0)
-		{	
-			$row_properties = $get_properties->row();
+		return $tree_menu_list;
+	}
 
-			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->caption;
-			$this->store_params['page_active'] = $row_properties->caption;
-			$this->store_params['page_icon'] = $row_properties->icon;
-			$this->store_params['source_top'] = array(
-				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/plugins/summernote/0.8.12/summernote.css">'
-			);
-			$this->store_params['source_bot'] = array(
-				'<script src="'.front_url('assets/templates/admin').'/plugins/summernote/0.8.12/summernote.min.js"></script>',
-				'<script src="'.front_url('assets/js/admin/menu/').'/menu_form.js"></script>'
-			);
-			
-			$this->store_params['cond'] = ucwords($cond).' Menu';
-			// $this->store_params['datamenu'] = $this->mm->get_menu()->result_array();
-			
-			if($cond !== 'add')
-			{
-				$id = $this->uri->segment(4);
-				$get_data_edit = $this->mm->get_data_edit($id);
-				$this->store_params['data'] = $get_data_edit->row();
-			}
-			
-			$this->view('menu_input_view');
-			
-		}
-		else
+	public function _buildTree($datas, $sel_id = "", $parent_id = NULL, $idx = 0) 
+	{
+	    $str_menu = FALSE;
+
+		if ($parent_id == '' || $parent_id == ' ' || $parent_id == NULL || $parent_id == 0 || empty($parent_id))
 		{
-			show_404();
+			$parent_id = NULL;
 		}
+
+		$idx++;
+
+		foreach ($datas as $data)
+		{
+			$dash = ($parent_id !== NULL) ? str_repeat('>', $idx) .' ' :'';
+			$sel = ($data->rm_id == $sel_id) ? 'selected' : '';
+			if ($data->rm_parent_id == $parent_id)
+			{
+				$children = $this->_buildTree($datas, $sel_id, $data->rm_id, $idx);
+
+				if ($children !== FALSE)
+				{
+
+					$str_menu .= '
+							<option value="'.$data->rm_id.'" '.$sel.'>'.$dash.$data->rm_caption.'</option>
+						';	
+
+					if ($idx > 0)
+					{
+						$str_menu .= $children;
+					}
+				
+				}
+				else
+				{
+					
+					if($parent_id != NULL)
+					{
+						$str_menu .= '
+							<option value="'.$data->rm_id.'" '.$sel.'>'.$dash.$data->rm_caption.'</option>
+						';	
+					}
+					else
+					{
+
+						$str_menu .= '
+							<option value="'.$data->rm_id.'" '.$sel.'>'.$data->rm_caption.'</option>
+						';	
+
+					}	
+				}
+			}
+		}
+
+		return $str_menu;
+	}
+
+	public function store_data()
+	{
+
+		$post = $this->input->post(NULL, TRUE);
+
+		if (isset($post['action']) && ! empty($post['action']) && $post['action'] == 'store_data')
+		{
+			unset($post['action']);
+
+			$store_data = $this->mm->store_data($post);
+
+			if ($store_data)
+			{
+				$rm_id = $post['mode'] == 'add' ? $store_data : $post['txt_id_menu'];
+
+			}
+
+			echo json_encode(array('success' => $store_data,'url' => base_url('menu')));
+		}
+		else $this->show_404();
 	}
 
 	public function get_menu_option()
@@ -135,137 +203,18 @@ class Menu extends MY_Controller {
 	    } 
 	}
 
-	public function input_action()
+	public function delete_data()
 	{
-		// print_r($_FILES['txt_img']);exit;
-		$upload_dir = str_replace('npanel'.DIRECTORY_SEPARATOR,'' , FCPATH);
-		
-		$config['upload_path'] = $upload_dir."assets".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."compro";
-        $config['allowed_types'] ='gif|jpg|png|jpeg';
+		$post = $this->input->post(NULL, TRUE);
 
-	    $datas['caption'] = $this->input->post('txt_menu_name');
-	    $datas['is_admin'] = $this->input->post('txt_position');
-	    $datas['parent_id'] = ($this->input->post('txt_parent_id') == "") ? NULL : $this->input->post('txt_parent_id');
-	    $datas['url'] = $this->input->post('txt_url');        
-	    $datas['url_target'] = $this->input->post('txt_url_target');        
-        $datas['description'] = $this->input->post('txt_desc');
-        $datas['icon'] = $this->input->post('txt_icon');
-        $datas['is_active'] = $this->input->post('txt_status');
-      	
-       	$this->load->library('upload',$config);
-       
-		if( ! empty($this->input->post('txt_id_menu')))
+		if (isset($post['action']) && ! empty($post['action']) && $post['action'] == 'delete_data')
 		{
-			$old_img = substr($this->input->post('txt_img_old'), 21);
+			unset($post['action']);
 
-			if($this->upload->do_upload('txt_img'))
-			{
-				$data = array('upload_data' => $this->upload->data());
+			$delete_data = $this->mm->delete_data($post);
 
-	            $image_name	 = $data['upload_data']['file_name']; 
-	            $datas['img'] = 'assets/images/compro/'.$image_name; 
-
-	            $id = $this->input->post('txt_id_menu');
-
-	            $result = $this->mm->do_update($datas,$id);
-
-	            if($old_img !== 'slider-default.png')
-	            {
-	            	unlink($config['upload_path'].DIRECTORY_SEPARATOR.$old_img);
-	            }
-
-	            echo json_encode(array(
-	            	"status" => $result,
-	            	"url" => base_url('menu')
-	            ));
-			}
-			else
-			{
-				$this->upload->display_errors();
-	            $id = $this->input->post('txt_id_menu');
-
-	            $result = $this->mm->do_update($datas,$id);
-
-	            echo json_encode(array(
-	            	"status" => $result,
-	            	"url" => base_url('menu')
-	            ));
-			}
-
+			echo json_encode(array('success' => $delete_data,'url' => base_url('menu')));
 		}
-		else
-		{	        
-	        if($this->upload->do_upload('txt_img')){
-	            $data = array('upload_data' => $this->upload->data());	 
-	            $image_name	 = $data['upload_data']['file_name']; 
-	            $datas['img'] = 'assets/images/compro/'.$image_name; 
-
-	            $result = $this->mm->do_upload($datas);
-
-	            echo json_encode(array(
-	            	"status" => $result,
-	            	"url" => base_url('menu')
-	            ));
-	        }
-	        else
-	        {
-	        
-	            $datas['img'] = 'assets/images/compro/slider-default.jpg';
-
-	            $result = $this->mm->do_upload($datas);
-
-	            echo json_encode(array(
-	            	"status" => $result,
-	            	"url" => base_url('menu')
-	            ));
-	        }
-		}
-  
-	}
-
-	public function store_image()
-	{
-		if ($this->input->post('action') !== FALSE && $this->input->post('action') == 'store_image')
-		{
-			$config['upload_path'] = UPLOADPATH.'images'.DS.'tmp'.DS;
-			$config['allowed_types'] = 'gif|jpg|jpeg|png';
-			$config['remove_spaces']  = TRUE;
-			$config['encrypt_name']  = TRUE;
-
-			$this->load->library('upload', $config);
-
-			if ( ! $this->upload->do_upload('image'))
-			{
-				print(json_encode(array(
-					'success' => false,
-					'msg' => $this->upload->display_errors()
-				)));
-			}
-			else
-			{
-				$data = $this->upload->data();
-
-				print(json_encode(array(
-					'success' => true,
-					'url' => front_url('assets/images/tmp/'.$data['file_name'])
-				)));
-			}
-		}
-		else exit('You can\'t access this page!');
-	}
-	
-	public function delete()
-	{
-		$id = $this->uri->segment(3);
-
-		$get_category = $this->mm->get_data_edit($id)->row();
-		
-		$datas['id'] = $get_category->id;
-        $datas['category_name'] = $get_category->category_name;
-        $datas['is_active'] = $get_category->is_active;
-        $datas['type'] = $get_category->type;
-      
-		$deletecategory = $this->mm->delete($datas,$id);
-		redirect(base_url('category'), 'refresh');
+		else $this->show_404();
 	}
 }

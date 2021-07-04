@@ -18,7 +18,7 @@ class Menu_model extends CI_Model {
 		$this->db->order_by('rm_sequence', 'asc');
 		return $this->db->get('ref_menu');
 	}
-	
+
 	public function get_data()
 	{
 		$this->db->where('is_active', 'Y');
@@ -33,12 +33,32 @@ class Menu_model extends CI_Model {
 		return $this->db->get('menu');
 	}
 	
-	// public function get_menu($cond)
-	// {
-	// 	$this->db->where('is_active', 'Y');
-	// 	$this->db->where('is_admin', $cond);
-	// 	return $this->db->get('menu');
-	// }
+	public function store_data($params = array())
+	{
+		$new_params = array(
+			'rm_caption' => $params['rm_caption'],
+			'rm_description' => $params['rm_description'],
+			'rm_url' => $params['rm_url'],
+			'rm_icon' => $params['rm_icon'],
+			'rm_parent_id' => $params['txt_parent_id'],
+			'rm_sequence' => $params['rm_sequence'],
+			'rm_is_admin' => $params['rm_is_admin'],
+		);
+
+		if ($params['mode'] == 'add') return $this->do_upload($new_params, TRUE);
+		else return $this->do_update($new_params, $params['txt_id_menu']);
+
+	}
+
+	public function delete_data($params = array())
+	{
+		$this->table = 'ref_menu';
+		$new_params = array(
+			'rm_is_active' => 'N'
+		);
+		
+		return $this->edit($new_params, "rm_id = {$params['rm_id']}");
+	}
 	
 	public function get_menu_utama($id)
 	{
@@ -49,19 +69,19 @@ class Menu_model extends CI_Model {
 	
 	public function do_upload($data = array())
 	{
-		$result= $this->db->insert('menu',$data);
+		$result= $this->db->insert('ref_menu',$data);
        	
        	$insert_id = $this->db->insert_id();
 
         if ($result)
 		{
 			$this->db->set($data);
-			$this->db->set('id',$insert_id);
-			$this->db->set('log_userid', $this->session->userdata('username'));
+			$this->db->set('rm_id',$insert_id);
+			$this->db->set('log_user_id', $this->session->userdata('username'));
 			$this->db->set('log_action', 'insert');
-			$this->db->set('log_created_date', 'NOW()', FALSE);
+			$this->db->set('log_datetime', 'NOW()', FALSE);
 
-			return $this->db->insert('log_menu');
+			return $this->db->insert('log_ref_menu');
 		}
 
 		return FALSE;
@@ -71,19 +91,19 @@ class Menu_model extends CI_Model {
 	{
 
 		$this->db->set($data);
-		$this->db->where('id',$id);
+		$this->db->where('rm_id',$id);
 
-		$update = $this->db->update('menu');
+		$update = $this->db->update('ref_menu');
 
 		if ($update)
 		{
 			$this->db->set($data);
-			$this->db->set('id',$id);
-			$this->db->set('log_userid', $this->session->userdata('username'));
-			$this->db->set('log_action', 'update');
-			$this->db->set('log_created_date', 'NOW()', FALSE);
+			$this->db->set('rm_id',$id);
+			$this->db->set('log_user_id', $this->session->userdata('username'));
+			$this->db->set('log_action', 'insert');
+			$this->db->set('log_datetime', 'NOW()', FALSE);
 
-			return $this->db->insert('log_menu');
+			return $this->db->insert('log_ref_menu');
 		}
 		return FALSE;
 	}

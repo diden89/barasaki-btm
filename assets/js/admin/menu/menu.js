@@ -7,6 +7,150 @@
  * @path /barasaki-btm/assets/js/admin/menu.js
  */
 
+function show_modal(data,title,mode){
+	is_admin = $('#btnAdd').attr('data-admin');
+    $.popup({
+		title: title + ' Menu',
+		id: mode + 'MenuPopup',
+		size: 'medium',
+		proxy: {
+			url: siteUrl+'menu/popup_modal',
+			params: {
+				action: 'popup_modal',
+				mode: mode,
+				id: data,
+				is_admin : is_admin
+			}
+		},
+		buttons: [{
+			btnId: 'saveData',
+			btnText:'Save',
+			btnClass: 'info',
+			btnIcon: 'fa fa-check-circle',
+			onclick: function(popup) {
+				console.log('jalan')
+				var form  = popup.find('form');
+				if ($.validation(form)) {
+					var formData = new FormData(form[0]);
+					$.ajax({
+						url: siteUrl+'menu/store_data',
+						type: 'POST',
+						dataType: 'JSON',
+						data: formData,
+						processData: false,
+						contentType: false,
+	     				cache: false,
+	     				enctype: 'multipart/form-data',
+						success: function(result) {
+							if (result.success) {
+								toastr.success(msgSaveOk);
+							} else if (typeof(result.msg) !== 'undefined') {
+								toastr.error(result.msg);
+							} else {
+								toastr.error(msgErr);
+							}
+
+							$.ajax({
+								url: siteUrl+'menu/get_menu_data',
+								type: 'POST',
+								dataType: 'JSON',
+								data: {
+									action: 'get_menu_data',
+									rm_is_admin: is_admin
+								},
+								success: function (result) {
+									if (result.success) {
+										_generate_menu(result.data);
+									} else if (typeof (result.msg) !== 'undefined') {
+										toastr.error(result.msg);
+									} else {
+										toastr.error(msgErr);
+									}
+								},
+								error: function (error) {
+									toastr.error(msgErr);
+								}
+							});
+
+							popup.close();
+
+						},
+						error: function(error) {
+							toastr.error(msgErr);
+						}
+					});
+				}
+			}
+		}, {
+			btnId: 'closePopup',
+			btnText:'Close',
+			btnClass: 'secondary',
+			btnIcon: 'fa fa-times',
+			onclick: function(popup) {
+				popup.close();
+			}
+		}]
+	});
+}
+
+function delete_data(data){
+	Swal.fire({
+		title: 'Apakah anda yakin?',
+		text: "Data yang sudah di hapus tidak bisa dikembalikan lagi!",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#17a2b8',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Iya, Hapus data ini!'
+	}).then((result) => {
+		if (result.value) {
+			$.ajax({
+				url: siteUrl+'menu/delete_data',
+				type: 'POST',
+				dataType: 'JSON',
+				data: {
+					action: 'delete_data',
+					rm_id: data
+				},
+				success: function(result) {
+					if (result.success) {
+						toastr.success("Hapus data sukses dilakukan.");
+					} else if (typeof(result.msg) !== 'undefined') {
+						toastr.error(result.msg);
+					} else {
+						toastr.error(msgErr);
+					}
+
+					$.ajax({
+						url: siteUrl+'menu/get_menu_data',
+						type: 'POST',
+						dataType: 'JSON',
+						data: {
+							action: 'get_menu_data'
+						},
+						success: function (result) {
+							if (result.success) {
+								_generate_menu(result.data);
+							} else if (typeof (result.msg) !== 'undefined') {
+								toastr.error(result.msg);
+							} else {
+								toastr.error(msgErr);
+							}
+						},
+						error: function (error) {
+							toastr.error(msgErr);
+						}
+					});
+				},
+				error: function(error) {
+					toastr.error(msgErr);
+				}
+			});
+		}
+	});
+}
+
+
 const _generate_menu = (data) => {
 	let treeMenu = _generate_tree_menu(data, null, 0);
 
@@ -131,8 +275,9 @@ $(document).ready(function() {
 			if (result.success) {
 				$('#listGroup a').on('click', function (e) {
 					e.preventDefault();
-					$('#btnSave').attr('disabled', false);
+					$('#btnAdd').attr('disabled', false);
 					is_admin = $(this).attr('data-id');
+					$('#btnAdd').attr('data-admin', is_admin);
 					loadTreeMenuData(is_admin);
 				});
 				// _generate_menu(result.data);

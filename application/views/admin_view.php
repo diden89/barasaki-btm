@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="<?php echo front_url('assets/templates/admin'); ?>/dist/css/skins/skin-blue.min.css">
 	<link rel="stylesheet" href="<?php echo front_url('assets/templates/admin/bower_components/fullcalendar/dist')?>/fullcalendar.min.css">
 	<link rel="stylesheet" href="<?php echo front_url('assets/templates/admin/bower_components/fullcalendar/dist')?>/fullcalendar.print.min.css" media="print">
+	<link rel="stylesheet" href="<?php echo front_url('assets/templates/other')?>/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+	<link rel="stylesheet" href="<?php echo front_url('assets/templates/other')?>/jquery_waitme/waitMe.css">
 	
 	<?php
 		if (isset($source_top) && is_array($source_top) && count($source_top) > 0)
@@ -95,6 +97,12 @@
 	<script src="<?php echo front_url('assets/templates/admin'); ?>/bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="<?php echo front_url('assets/templates/admin'); ?>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="<?php echo front_url('assets/templates/admin'); ?>/dist/js/adminlte.min.js"></script>
+	<script src="<?php echo front_url('assets/templates/admin'); ?>/plugins/toastr/toastr.min.js"></script>
+	<script src="<?php echo front_url(); ?>assets/templates/other/jquery_popup/js/popup.js"></script> 
+	<script src="<?php echo front_url(); ?>assets/templates/other/sweetalert2/sweetalert2.min.js"></script> 
+	<script src="<?php echo front_url(); ?>assets/templates/other/jquery_waitme/waitMe.js"></script> 
+	<script src="<?php echo front_url(); ?>assets/templates/other/jquery_validation/js/validation.js"></script> 
+	<script src="<?php echo front_url(); ?>assets/js/scripts.js"></script> 
 	<?php
 		if (isset($source_bot) && is_array($source_bot) && count($source_bot) > 0)
 		{

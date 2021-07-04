@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="col-md-8">
                         <table class="collaptable table table-striped" id="example1">
-                            <thead>
+                            <thead style="background-color: #3c8dbc;">
                                 <th scope="col"><a href="javascript:void(0);" class="act-button-expand" style="color: white;"><i class="fa fa-angle-double-down"></i></a></th>
                                 <th scope="col">Caption</th>
                                 <th scope="col">URL</th>
@@ -39,7 +39,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <tbody></tbody>
                             <tfoot>
                                 <tr>
-                                    <td><a href="<?php echo base_url('menu/cu_action/add');?>" class="btn btn-primary">Add</a>
+                                    <td>
+                                        <button type="button" id="btnAdd" class="btn btn-primary" data-admin="" onClick="show_modal(data = false, title= 'Add', mode = 'add')" disabled=""><i class="fa fa-plus"></i> Add</button>                        
                                     </td>
                                 </tr>
                             </tfoot>
