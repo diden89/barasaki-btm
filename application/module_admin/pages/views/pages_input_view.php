@@ -111,7 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 	<div class="box-footer">
 		<button type="submit" class="btn btn-primary" id="submitcategory">Submit</button>
-		<a href='<?php echo base_url("articles");?>' class="btn btn-warning" id="submitcategory">Back</a>
+		<a href='<?php echo base_url("pages");?>' class="btn btn-warning" id="submitcategory">Back</a>
 	</div>
 		</form>
 </section>

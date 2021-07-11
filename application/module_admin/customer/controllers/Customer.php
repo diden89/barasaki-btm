@@ -35,6 +35,7 @@ class Customer extends MY_Controller {
 			);
 			$this->store_params['source_bot'] = array(
 				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>',
+				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>',
 				'<script src="'.front_url('assets/js/admin/customer/').'/customer.js"></script>',
 				'<script> function deletedata(delete_url){$("#deleteModal").modal("show", {backdrop: "static"});
       			document.getElementById("deleteData").setAttribute("href" , delete_url);
