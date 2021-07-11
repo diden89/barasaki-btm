@@ -15,7 +15,6 @@ class Users extends MY_Controller {
 	{
 		parent::__construct();
 		$this->load->model('users_model','um');
-		$this->load->library('pagination');
 	}
 
 	public function index()
@@ -24,53 +23,19 @@ class Users extends MY_Controller {
 
 		if ($get_properties && $get_properties->num_rows() > 0)
 		{	
-			$total_data =  $this->um->get_data($limit = "",$start = "")->num_rows();
-			//pagination
-			//konfigurasi pagination
+	       	$row_properties = $get_properties->row();
+			$get_data = $this->um->get_data();
 
-	        $config['base_url'] = base_url('users/index'); //site url
-	        $config['total_rows'] = $total_data; //total row
-	        $config['per_page'] = 10;  //show record per halaman
-	        $config["uri_segment"] = 3;  // uri parameter
-	        $choice = $config["total_rows"] / $config["per_page"];
-	        $config["num_links"] = floor($choice);
-
-	         // Membuat Style pagination untuk BootStrap v4
-	     	$config['first_link']       = 'First';
-	        $config['last_link']        = 'Last';
-	        $config['next_link']        = 'Next';
-	        $config['prev_link']        = 'Prev';
-	        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-	        $config['full_tag_close']   = '</ul></nav></div>';
-	        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-	        $config['num_tag_close']    = '</span></li>';
-	        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
-	        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
-	        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-	        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-	        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-	        $config['prev_tagl_close']  = '</span>Next</li>';
-	        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-	        $config['first_tagl_close'] = '</span></li>';
-	        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-	        $config['last_tagl_close']  = '</span></li>';
-	 
-	        $this->pagination->initialize($config);
-	       	$this->store_params['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-	 		$this->store_params['number_data'] = ($this->uri->segment(3)) ? $this->uri->segment(3)+1 : 1;
-	       
-			$row_properties = $get_properties->row();
-			$get_data = $this->um->get_data($config['per_page'],$this->store_params['page']);
-
-			$this->store_params['pagination'] = $this->pagination->create_links();
 			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->rm_caption;
 			$this->store_params['page_active'] = $row_properties->rm_caption;
 			$this->store_params['page_icon'] = $row_properties->rm_icon;
 			$this->store_params['source_top'] = array(
-				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">'
+				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">'
 			);
 			$this->store_params['source_bot'] = array(
-				'<script src="'.front_url('assets/js/admin').'/users.js"></script>',
+				'<script src="'.front_url('assets/js/admin/users').'/users.js"></script>',
+				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>',
+				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>',
 				'<script> function delete_data(delete_url){$("#deleteModal").modal("show", {backdrop: "static"});
       			document.getElementById("deleteusers").setAttribute("href" , delete_url);
     			}</script>',
@@ -110,11 +75,11 @@ class Users extends MY_Controller {
 			);
 			$this->store_params['source_bot'] = array(
 				'<script src="'.front_url('assets/templates/admin').'/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>',
-				'<script src="'.front_url('assets/js/admin').'/users.js"></script>'
+				'<script src="'.front_url('assets/js/admin/users/').'/users_form.js"></script>'
 			);
 			
 			$this->store_params['sub_group'] = $this->um->get_data_for_select('user_sub_group')->result_array();
-			$this->store_params['cond'] = ucwords($cond).' users';
+			$this->store_params['cond'] = ucwords($cond);
 			// print_r($this->store_params['employee']);
 			// exit;
 			if($cond !== 'add')
@@ -142,11 +107,11 @@ class Users extends MY_Controller {
 	public function input_action()
 	{
 	    $datas['fullname'] = $this->input->post('txt_fullname');
-	    $datas['username'] = $this->input->post('txt_username');
-        $datas['password'] = sha1(strtoupper($this->input->post('txt_username').':'.$this->input->post('txt_password')));
-        $datas['ori_password'] = $this->input->post('txt_password');
-       	$datas['sub_group'] = $this->input->post('txt_sub_group');
-      	$datas['is_active'] = $this->input->post('txt_status');
+	    $datas['ud_username'] = $this->input->post('txt_username');
+        $datas['ud_password'] = sha1(strtoupper($this->input->post('txt_username').':'.$this->input->post('txt_password')));
+        // $datas['ori_password'] = $this->input->post('txt_password');
+       	$datas['ud_sub_group'] = $this->input->post('txt_sub_group');
+      	$datas['ud_is_active'] = $this->input->post('txt_status');
       	
        	$user_id = $this->input->post('txt_user_id');
        

@@ -11,19 +11,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Users_model extends CI_Model {
-	public function get_data($limit,$start)
+	public function get_data()
 	{
-		$this->db->select('*,ud.id as ud_id,usg.id as usg_id,ug.id as ug_id,usg.caption as usg_caption,ug.caption as ug_caption');
 		$this->db->from('user_detail ud');
-		$this->db->join('user_sub_group usg','ud.sub_group = usg.id','left');
-		$this->db->join('user_group ug','usg.group_id = ug.id','left');
+		$this->db->join('user_sub_group usg','ud.ud_sub_group = usg.usg_id','left');
+		$this->db->join('user_group ug','usg.usg_group = ug.ug_id','left');
 		// $this->db->where('ud.is_active', 'Y');
-		$this->db->order_by('ud.id', 'ASC');
-
-		if( ! empty($limit))
-		{
-			$this->db->limit($limit,$start);
-		}
+		$this->db->order_by('ud.ud_id', 'ASC');
 
 		return $this->db->get();
 	}
@@ -31,22 +25,25 @@ class Users_model extends CI_Model {
 	public function get_data_edit($id)
 	{
 		
-		$this->db->select('*,ud.id as ud_id,usg.id as usg_id,ug.id as ug_id,usg.caption as usg_caption,ug.caption as ug_caption');
 		$this->db->from('user_detail ud');
-		$this->db->join('user_sub_group usg','ud.sub_group = usg.id','left');
-		$this->db->join('user_group ug','usg.group_id = ug.id','left');
-		$this->db->where('ud.id',$id);
+		$this->db->join('user_sub_group usg','ud.ud_sub_group = usg.usg_id','left');
+		$this->db->join('user_group ug','usg.usg_group = ug.ug_id','left');
+		$this->db->where('ud.ud_id',$id);
 
 		return $this->db->get();
 	}
 
 	public function get_data_for_select($table)
 	{
-		$this->db->where('is_active', 'Y');
 		if($table == 'employee')
 		{
+			$this->db->where('is_active', 'Y');
 			$this->db->where('userid is null');
 			$this->db->or_where('userid = ""');
+		}
+		else
+		{
+			$this->db->where('usg_is_active', 'Y');
 		}
 		return $this->db->get($table);
 	}
@@ -61,11 +58,11 @@ class Users_model extends CI_Model {
 
 	public function do_upload($data = array())
 	{
-		$datas['username'] = $data['username'];
-		$datas['password'] = $data['password'];
-		$datas['ori_password'] = $data['ori_password'];
-		$datas['sub_group'] = $data['sub_group'];
-		$datas['is_active'] = $data['is_active'];
+		$datas['ud_username'] = $data['ud_username'];
+		$datas['ud_password'] = $data['ud_password'];
+		// $datas['ori_password'] = $data['ori_password'];
+		$datas['ud_sub_group'] = $data['ud_sub_group'];
+		$datas['ud_is_active'] = $data['ud_is_active'];
 	  
 		$result= $this->db->insert('user_detail',$datas);
        	
@@ -78,10 +75,10 @@ class Users_model extends CI_Model {
         if ($update)
 		{
 			$this->db->set($datas);
-			$this->db->set('id',$insert_id);
-			$this->db->set('log_userid', $this->session->userdata('username'));
+			$this->db->set('ud_id',$insert_id);
+			$this->db->set('log_user_id', $this->session->userdata('username'));
 			$this->db->set('log_action', 'insert');
-			$this->db->set('log_created_date', 'NOW()', FALSE);
+			$this->db->set('log_datetime', 'NOW()', FALSE);
 
 			return $this->db->insert('log_user_detail');
 		}
@@ -91,24 +88,24 @@ class Users_model extends CI_Model {
 
 	public function do_update($data = array(),$id)
 	{
-		$datas['username'] = $data['username'];
-		$datas['password'] = $data['password'];
-		$datas['ori_password'] = $data['ori_password'];
-		$datas['sub_group'] = $data['sub_group'];
-		$datas['is_active'] = $data['is_active'];
+		$datas['ud_username'] = $data['ud_username'];
+		$datas['ud_password'] = $data['ud_password'];
+		// $datas['ori_password'] = $data['ori_password'];
+		$datas['ud_sub_group'] = $data['ud_sub_group'];
+		$datas['ud_is_active'] = $data['ud_is_active'];
 
 		$this->db->set($datas);
-		$this->db->where('id',$id);
+		$this->db->where('ud_id',$id);
 
 		$update = $this->db->update('user_detail');
 
 		if ($update)
 		{
 			$this->db->set($datas);
-			$this->db->set('id',$id);
-			$this->db->set('log_userid', $this->session->userdata('username'));
+			$this->db->set('ud_id',$id);
+			$this->db->set('log_user_id', $this->session->userdata('username'));
 			$this->db->set('log_action', 'update');
-			$this->db->set('log_created_date', 'NOW()', FALSE);
+			$this->db->set('log_datetime', 'NOW()', FALSE);
 
 			return $this->db->insert('log_user_detail');
 		}

@@ -116,9 +116,10 @@
 		$(document).ready(function () {
 			$('.testing').each(function() {
 				var $this = $(this);
-
+				
 				if ($this.hasClass('active')) {
 					// $this.parent().parent().trigger('click');
+					// $this.parent().parent().parent().addClass('active menu-open');
 					$this.parent().parent().addClass('menu-open');
 					$this.parent().parent().css('height', 'auto');
 					$this.parent().css('display', 'block');

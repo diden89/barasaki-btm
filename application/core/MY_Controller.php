@@ -55,7 +55,7 @@ class MY_Controller extends CI_Controller {
 				$this->session->set_userdata(array(
 					'token' => $this->encryption->encrypt($row->ud_id.':'.$row->ud_username),
 					'username' => $row->ud_username,
-					'fullname' => $row->ud_fullname,
+					'fullname' => $row->fullname,
 					'sub_group' => $row->ud_sub_group
 				));
 
@@ -181,7 +181,7 @@ class MY_Controller extends CI_Controller {
 				}
 				else
 				{
-					$str_menu .= '<li class=" '.($this->store_params['page_active'] == $data->rm_caption ? 'active' : '').'"><a href="'.site_url($data->rm_url).'"><i class="'.$data->rm_icon.'"></i> '.$data->rm_caption.'</a></li>'; 
+					$str_menu .= '<li class="testing '.($this->store_params['page_active'] == $data->rm_caption ? 'active' : '').'"><a href="'.site_url($data->rm_url).'"><i class="'.$data->rm_icon.'"></i> '.$data->rm_caption.'</a></li>'; 
 				}
 			}
 		}

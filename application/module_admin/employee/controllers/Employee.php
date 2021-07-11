@@ -35,6 +35,7 @@ class Employee extends MY_Controller {
 			$this->store_params['source_bot'] = array(
 				'<script src="'.front_url('assets/js/admin/employee').'/employee.js"></script>',
 				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>',
+				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>',
 				'<script> function delete_data(delete_url){$("#deleteModal").modal("show", {backdrop: "static"});
       			document.getElementById("deleteemployee").setAttribute("href" , delete_url);
     			}</script>',
@@ -70,16 +71,16 @@ class Employee extends MY_Controller {
 			$this->store_params['page_active'] = $row_properties->rm_caption;
 			$this->store_params['page_icon'] = $row_properties->rm_icon;
 			$this->store_params['source_top'] = array(
-				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">',
+				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/plugins/summernote/0.8.12/summernote.css">',
 				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">',
 				'<style>
 					.datepicker{z-index:1151;}
 				</style>'
 			);
 			$this->store_params['source_bot'] = array(
-				'<script src="'.front_url('assets/templates/admin').'/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>',
+				'<script src="'.front_url('assets/templates/admin').'/plugins/summernote/0.8.12/summernote.min.js"></script>',
 				'<script src="'.front_url('assets/templates/admin').'/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>',
-				'<script src="'.front_url('assets/js/admin').'/employee.js"></script>',
+				'<script src="'.front_url('assets/js/admin/employee').'/employee_form.js"></script>',
 				'<script type="text/javascript">
 				 $(function(){
 				  $(".datepicker").datepicker({

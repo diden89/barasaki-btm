@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<h3 class="box-title"><?php echo $cond; ?></h3>
 	</div>
 	<div class="box-body pad">
-		<form id="formInputEmployee">
+		<form id="formInputEmployee" enctype='multipart/form-data'>
 			<div class="form-group">
 				<label for="txtTitle">Fullname:</label>
 					<input type="text" class="form-control" id="txtFullname" name="txt_fullname" placeholder="Enter Fullname" value='<?php echo (isset($data->fullname)) ? $data->fullname : ""; ?>'>

@@ -42,6 +42,12 @@ $(document).ready(function() {
         }
     });
 
+    $('#txtTitle').on('keyup change',function(){
+        var link = $('#txtTitle').val();
+            rep = link.replace(/ /g,"_");
+        $('#txtUrl').val('pages/detail/'+rep);
+    });
+
     $('#formInputCustomer').submit(function(e){
         $('.customer.box').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
             e.preventDefault(); 

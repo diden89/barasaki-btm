@@ -40,7 +40,7 @@ class Company extends MY_Controller {
 			$this->store_params['data'] = $get_data->row();
 			$this->store_params['contact'] = $this->sm->get_contact($company->id)->result();
 			$this->store_params['contact_type'] = $this->sm->get_contact_type()->result();
-
+			// print_r($this->store_params);exit;
 			// $this->view('modal_projects');
 			$this->view('company_view');
 		}

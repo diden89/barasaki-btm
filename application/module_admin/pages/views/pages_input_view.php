@@ -10,64 +10,16 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<section class="articles box">
+<section class="pages box">
 	<div class="box-header">
 		<h3 class="box-title"><?php echo $cond; ?></h3>
 	</div>
 	<div class="box-body pad">
-		<form id="formInputArticles">
+		<form id="formInputPages">
 			<div class="form-group">
 				<label for="txtTitle">Title:</label>
-					<input type="text" class="form-control" id="txtTitle" name="txt_title" placeholder="Enter Title Articles" value='<?php echo (isset($data->title)) ? $data->title : ""; ?>'>
-					<input type="hidden" name="txt_id_articles" value="<?php echo (isset($data->id)) ? $data->id : ""; ?>">
-			</div>
-			<div class="form-group">
-				<label for="txtCategory">Category:</label>
-					<select class="form-control select2 select2-hidden-accessible" style="width: 20%;" data-select2-id="1" tabindex="-1" aria-hidden="true" name="txt_category">
-						<option value="">--Please Select Category--</option>
-						<?php if(isset($data->category_id))
-						{
-							foreach($category as $cat)
-							{
-								$sel = ($data->category_id == $cat['id']) ? 'selected' : "";
-								echo '<option value="'.$cat['id'].'" '.$sel.'>'.$cat['category_name'].'</option>';
-							}
-						}
-						else
-						{
-							foreach($category as $cat)
-							{
-								echo '<option value="'.$cat['id'].'">'.$cat['category_name'].'</option>';		
-							}				
-						}
-							?>
-						
-						
-					</select>
-			</div>
-			<div class="form-group">
-				<label for="txtMenu">Menu:</label>
-					<select class="form-control select2 select2-hidden-accessible" style="width: 20%;" data-select2-id="1" tabindex="-1" aria-hidden="true" name="txt_menu">
-						<option value="">--Please Select Menu--</option>
-						<?php if(isset($data->menu_id))
-						{
-							foreach($datamenu as $mn)
-							{
-								$sel = ($data->menu_id == $mn['id']) ? 'selected' : "";
-								echo '<option value="'.$mn['id'].'" '.$sel.'>'.$mn['caption'].'</option>';
-							}
-						}
-						else
-						{
-							foreach($datamenu as $mn)
-							{
-								echo '<option value="'.$mn['id'].'">'.$mn['caption'].'</option>';		
-							}				
-						}
-							?>
-						
-						
-					</select>
+					<input type="text" class="form-control" id="txtTitle" name="txt_title" placeholder="Enter Caption" value='<?php echo (isset($data->title)) ? $data->title : ""; ?>'>
+					<input type="hidden" name="txt_id_pages" value="<?php echo (isset($data->id)) ? $data->id : ""; ?>">
 			</div>
 			<div class="form-group">
 				<label for="txtContent">Content:</label>
@@ -75,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 			<div class="form-group">
 				<label for="txtUrl">URL:</label>
-					<input type="text" class="form-control" id="txtUrl" name="txt_url" placeholder="Enter URL" value='<?php echo (isset($data->url)) ? $data->url : ""; ?>'>
+					<input type="text" class="form-control" id="txtUrl" name="txt_url" placeholder="Enter URL" value='<?php echo (isset($data->url)) ? $data->url : ""; ?>' disabled>
 			</div>
 			<div class="form-group">
 				<label for="txtStatus">Status:</label>
@@ -98,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						}
 						else
 						{
-							echo '<option value="Y">Enable</option>';
+							echo '<option value="Y" selected>Enable</option>';
 							echo '<option value="N">Disable</option>';
 						}
 						

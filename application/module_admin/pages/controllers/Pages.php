@@ -102,7 +102,7 @@ class Pages extends MY_Controller {
 			);
 			$this->store_params['source_bot'] = array(
 				'<script src="'.front_url('assets/templates/admin').'/plugins/summernote/0.8.12/summernote.min.js"></script>',
-				'<script src="'.front_url('assets/js/admin').'/pages.js"></script>'
+				'<script src="'.front_url('assets/js/admin/pages').'/pages_form.js"></script>'
 			);
 			
 			$this->store_params['cond'] = ucwords($cond).' Pages';

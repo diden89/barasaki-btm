@@ -10,7 +10,14 @@
 
 
 $(document).ready(function() {
-	$('.textarea').wysihtml5();
+	$('.textarea').summernote({
+        callbacks: {
+            onImageUpload: function (image) {
+                uploadImage(image[0]);
+            }
+        }
+    });
+
 	$('#formInputEmployee').submit(function(e){
 		$('.project.box').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
             e.preventDefault(); 

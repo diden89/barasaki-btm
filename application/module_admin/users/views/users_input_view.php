@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <section class="project box">
 	<div class="box-header">
-		<h3 class="box-title"><?php echo $cond; ?></h3>
+		<h3 class="box-title"><?php echo $cond.' Users'; ?></h3>
 	</div>
 	<div class="box-body pad">
 		<form id="formInputUsers">
@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php if(isset($data->ud_id) && $data->ud_id == $employee->userid){
 						echo '<input type="text" class="form-control" id="txtFullname" name="txt_fullname" value="'.$employee->fullname.'" disabled="disabled">';
 					}else{?>
-					<select class="form-control select2 select2-hidden-accessible" style="width: 20%;" data-select2-id="1" tabindex="-1" aria-hidden="true" name="txt_fullname">
+					<select class="form-control select2 select2-hidden-accessible" style="width: 20%;" data-select2-id="1" tabindex="-1" aria-hidden="true" name="txt_fullname" id="selectFullname">
 						<option value="">--Please Select Employee--</option>
 						<?php 
 						foreach($employee as $emp)
@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 			<div class="form-group">
 				<label for="txtTitle">Username:</label>
-					<input type="text" class="form-control" id="txtUsername" name="txt_username" placeholder="Enter Username" value='<?php echo (isset($data->username)) ? $data->username : ""; ?>'>
+					<input type="text" class="form-control" id="txtUsername" name="txt_username" placeholder="Enter Username" value='<?php echo (isset($data->ud_username)) ? $data->ud_username : ""; ?>'>
 					<input type="hidden" name="txt_user_id" value="<?php echo (isset($data->ud_id)) ? $data->ud_id : ""; ?>">
 			</div>
 			<div class="form-group">
@@ -46,11 +46,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div> -->
 				<label>Password</label>
 			    <div class="input-group" id="show_hide_password">
-			      <input class="form-control" type="password" name="txt_password" value='<?php echo (isset($data->ori_password)) ? $data->ori_password : ""; ?>'>
+			      <input class="form-control" type="password" name="txt_password">
 			      <div class="input-group-addon">
 			        <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
 			      </div>
 			    </div>
+			      <div>
+			      	<?php if(strtolower($cond) == strtolower('edit')){?>
+			      	<small class="form-text text-success help-block">*Biarkan kosong jika tidak ada perubahan</small>
+			      	<?php }?>
+			      </div>
 			</div>
 			<div class="form-group">
 				<label for="txturl">Sub Group:</label>
@@ -60,8 +65,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						$selected = "";
 						foreach($sub_group as $ug)
 						{
-							$selected = (isset($data->sub_group) && $data->sub_group == $ug['id']) ? "selected" : "";
-							echo '<option value="'.$ug['id'].'"'.$selected.'>'.$ug['caption'].'</option>';
+							$selected = (isset($data->ud_sub_group) && $data->ud_sub_group == $ug['usg_id']) ? "selected" : "";
+							echo '<option value="'.$ug['usg_id'].'"'.$selected.'>'.$ug['usg_caption'].'</option>';
 						}
 						?>
 					</select>
@@ -70,7 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<label for="txtStatus">Status:</label>
 					<select class="form-control select2 select2-hidden-accessible" style="width: 20%;" data-select2-id="1" tabindex="-1" aria-hidden="true" name="txt_status">
 						<option value="">--Please Select Status--</option>
-						<?php if($data->is_active == 'Y')
+						<?php if($data->ud_is_active == 'Y')
 						{
 							echo '<option value="Y" selected>Enable</option>';
 							echo '<option value="N">Disable</option>';
