@@ -128,12 +128,12 @@ class Pages extends MY_Controller {
 	public function input_action()
 	{
 	    $datas['title'] = $this->input->post('txt_title');
-	    $datas['category_id'] = $this->input->post('txt_category');
-	    $datas['menu_id'] = $this->input->post('txt_menu');
+	    // $datas['category_id'] = $this->input->post('txt_category');
+	    // $datas['menu_id'] = $this->input->post('txt_menu');
 	    $datas['content'] = $this->input->post('txt_content');
 	    $datas['url'] = $this->input->post('txt_url');
         $datas['is_active'] = $this->input->post('txt_status');
-      	
+      	// print_r($datas);exit;
        	$id = $this->input->post('txt_id_pages');
        
        	if( ! empty($id))

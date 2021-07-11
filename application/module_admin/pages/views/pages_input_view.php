@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 			<div class="form-group">
 				<label for="txtUrl">URL:</label>
-					<input type="text" class="form-control" id="txtUrl" name="txt_url" placeholder="Enter URL" value='<?php echo (isset($data->url)) ? $data->url : ""; ?>' disabled>
+					<input type="text" class="form-control" id="txtUrl" name="txt_url" placeholder="Enter URL" value='<?php echo (isset($data->url)) ? $data->url : ""; ?>'>
 			</div>
 			<div class="form-group">
 				<label for="txtStatus">Status:</label>

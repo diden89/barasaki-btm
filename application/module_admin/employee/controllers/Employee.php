@@ -99,11 +99,12 @@ class Employee extends MY_Controller {
 			if($cond !== 'add')
 			{
 				$id = $this->uri->segment(4);
+
 				$get_data_edit = $this->em->get_data_edit($id);
 				$this->store_params['data'] = $get_data_edit->row();
 			}
 
-
+			// print_r($this->store_params);exit;
 			$this->view('employee_input_view');
 			
 		}

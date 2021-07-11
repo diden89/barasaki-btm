@@ -19,14 +19,9 @@ class Pages_model extends CI_Model {
 	public function get_data_edit($id)
 	{
 		
-		$this->db->select('a.*,c.category_name,m.caption');
-		$this->db->from('articles a');
-		$this->db->join('category c','a.category_id = c.id','left');
-		$this->db->join('menu m','a.menu_id = m.id','left');
-		$this->db->where('a.is_active', 'Y');
-		$this->db->where('a.id',$id);
+		$this->db->where('id',$id);
 
-		return $this->db->get();
+		return $this->db->get('pages');
 	}
 
 	public function get_category()
@@ -46,7 +41,7 @@ class Pages_model extends CI_Model {
 	
 	public function do_upload($data = array())
 	{
-		$result= $this->db->insert('articles',$data);
+		$result= $this->db->insert('pages',$data);
        	
        	$insert_id = $this->db->insert_id();
 
@@ -58,7 +53,7 @@ class Pages_model extends CI_Model {
 			$this->db->set('log_action', 'insert');
 			$this->db->set('log_created_date', 'NOW()', FALSE);
 
-			return $this->db->insert('log_articles');
+			return $this->db->insert('log_pages');
 		}
 
 		return FALSE;
@@ -70,7 +65,7 @@ class Pages_model extends CI_Model {
 		$this->db->set($data);
 		$this->db->where('id',$id);
 
-		$update = $this->db->update('articles');
+		$update = $this->db->update('pages');
 
 		if ($update)
 		{
@@ -80,7 +75,7 @@ class Pages_model extends CI_Model {
 			$this->db->set('log_action', 'update');
 			$this->db->set('log_created_date', 'NOW()', FALSE);
 
-			return $this->db->insert('log_articles');
+			return $this->db->insert('log_pages');
 		}
 		return FALSE;
 	}
@@ -88,7 +83,7 @@ class Pages_model extends CI_Model {
 	public function delete($data=array(),$id)
 	{
 		$this->db->where('id',$id);
-		$del = $this->db->delete('articles');
+		$del = $this->db->delete('pages');
 
 		if($del)
 		{
@@ -98,7 +93,7 @@ class Pages_model extends CI_Model {
 			$this->db->set('log_action', 'delete');
 			$this->db->set('log_created_date', 'NOW()', FALSE);
 
-			return $this->db->insert('log_articles');
+			return $this->db->insert('log_pages');
 		}
 		return FALSE;
 	}

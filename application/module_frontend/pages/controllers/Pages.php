@@ -16,13 +16,9 @@ class Pages extends MY_Controller {
 		$this->load->model("pages_model","pam");
 	}
 
-	public function index($link="",$link2="")
+	public function index($url = "")
 	{
-		$menu = $this->load_slider($link2);
-
-		$uri2 = $this->uri->segment(1).'/'.$this->uri->segment(2).'/'.$this->uri->segment(3);
-
-		$get_properties = $this->db_home->get_properties($uri2);
+		$get_properties = $this->db_home->get_properties($url);
 
 		if ($get_properties && $get_properties->num_rows() > 0)
 		{			
@@ -31,15 +27,12 @@ class Pages extends MY_Controller {
 			$this->store_params = array(
 				"title" => $this->store_params['title2'] = $row_properties->rm_caption,
 				"page_active" => $row_properties->rm_caption,
-				"slider" => $this->load_slider($link2),
-				"pages" => $this->load_article($menu->id),
+				"pages" => $this->load_pages(array('url' => $url)),
 			);
-			if($link == 'about_us')
-			{
-				$this->store_params['customer'] =$this->pam->get_data_customer()->result();
-				$this->store_params['team'] =$this->pam->get_data_employee()->result();
-			}
-
+			
+			$this->store_params['customer'] =$this->pam->get_data_customer()->result();
+			$this->store_params['team'] =$this->pam->get_data_employee()->result();
+			
 			$this->view('pages_view');
 		}
 		else
@@ -50,15 +43,14 @@ class Pages extends MY_Controller {
 
 	public function detail()
 	{
-		$link = $this->uri->segment(3);
-		$linkslider = $this->uri->segment(1).'/'.$this->uri->segment(2).'/'.$this->uri->segment(3);
+		$url = $this->uri->segment(1).'/'.$this->uri->segment(2).'/'.$this->uri->segment(3);
 	
-		$this->index($link,$linkslider);
+		$this->index($url);
 	}
 
-	public function load_article($id)
+	public function load_pages($id)
 	{
-		$article = $this->pam->load_article($id)->result_array();
+		$article = $this->pam->load_pages($id)->result_array();
 		// print_r($news);exit;
 		return $article;
 	}

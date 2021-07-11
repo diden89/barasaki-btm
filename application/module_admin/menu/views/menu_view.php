@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <th scope="col">Icon</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Seq</th>
-                                <th scope="col" style="text-align:center;">Action</th>
+                                <th scope="col" style="text-align:center;width: 100px;">Action</th>
                             </thead>
                             <tbody></tbody>
                             <tfoot>

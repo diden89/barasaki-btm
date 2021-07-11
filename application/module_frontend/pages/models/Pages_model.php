@@ -11,13 +11,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pages_model extends CI_Model {
 	
-	public function load_article($id)
+	public function load_pages($where = array())
 	{
-		$this->db->from('articles');
 		$this->db->where('is_active', 'Y');
-		$this->db->where('menu_id', $id);
+		$this->db->where($where);
 		
-		return $this->db->get();
+		return $this->db->get('pages');
 	}
 
 	public function load_slider($table,$url)

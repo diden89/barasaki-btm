@@ -33,8 +33,6 @@ class Employee_model extends CI_Model {
 		$this->db->join('education ed','e.education_id = ed.id','left');
 		$this->db->join('position p','e.position_id = p.id','left');
 		$this->db->where('e.is_active', 'Y');
-		$this->db->where('ed.is_active', 'Y');
-		$this->db->where('p.is_active', 'Y');
 		$this->db->where('e.id',$id);
 
 		return $this->db->get();

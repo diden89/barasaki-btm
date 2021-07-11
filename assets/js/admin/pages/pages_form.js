@@ -13,7 +13,7 @@ var uploadImage = function(image) {
     data.append("image", image);
     data.append('action', 'store_image');
     $.ajax({
-        url: './customer/store_image',
+        url: './pages/store_image',
         cache: false,
         contentType: false,
         processData: false,
@@ -49,11 +49,11 @@ $(document).ready(function() {
         $('#txtUrl').val('pages/detail/'+rep);
     });
 
-    $('#formInputCustomer').submit(function(e){
+    $('#formInputPages').submit(function(e){
         $('.customer.box').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
             e.preventDefault(); 
          $.ajax({
-             url: siteUrl+'customer/input_action',
+             url: siteUrl+'pages/input_action',
              type:'post',
              data :new FormData(this),
              processData:false,

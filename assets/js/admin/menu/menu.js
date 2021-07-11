@@ -189,8 +189,8 @@ const _generate_tree_menu = (datas, parentId, idx) => {
 					strMenu += '<td>' + v.rm_sequence + '</td>';
 					strMenu += '<td style="text-align:center;">';
 						strMenu += '<div class="btn-group" role="group" aria-label="RAB Button Group">'; 
-							strMenu += '<button id="btnEdit" class="btn merekdagang-grid-btn btn-success btn-sm" onClick=show_modal(' + v.rm_id +',"Edit","edit")><i class="fa fa-edit"></i> Edit</button>';
-							strMenu += '<button id="btnDelete" class="btn merekdagang-grid-btn btn-danger btn-sm " onClick=delete_data(' + v.rm_id +') ><i class="fa fa-trash-alt"></i> Delete</button >';
+							strMenu += '<button id="btnEdit" class="btn merekdagang-grid-btn btn-success btn-sm" onClick=show_modal(' + v.rm_id +',"Edit","edit")><i class="fa fa-edit"></i></button>';
+							strMenu += '<button id="btnDelete" class="btn merekdagang-grid-btn btn-danger btn-sm " onClick=delete_data(' + v.rm_id +') ><i class="fa fa-trash"></i></button >';
 						strMenu += '</div>';
 						strMenu += '</td >';
 				strMenu += '</tr>';
@@ -209,8 +209,8 @@ const _generate_tree_menu = (datas, parentId, idx) => {
 						strMenu += '<td>' + v.rm_sequence + '</td>';
 						strMenu += '<td style="text-align:center;">';
 						strMenu += '<div class="btn-group" role="group" aria-label="RAB Button Group">'; 
-							strMenu += '<button id="btnEdit" class="btn merekdagang-grid-btn btn-success btn-sm" onClick=show_modal(' + v.rm_id +',"Edit","edit")><i class="fa fa-edit"></i> Edit</button>';
-							strMenu += '<button id="btnDelete" class="btn merekdagang-grid-btn btn-danger btn-sm" onClick=delete_data(' + v.rm_id +') ><i class="fa fa-trash-alt"></i> Delete</button >';
+							strMenu += '<button id="btnEdit" class="btn merekdagang-grid-btn btn-success btn-sm" onClick=show_modal(' + v.rm_id +',"Edit","edit")><i class="fa fa-edit"></i></button>';
+							strMenu += '<button id="btnDelete" class="btn merekdagang-grid-btn btn-danger btn-sm" onClick=delete_data(' + v.rm_id +') ><i class="fa fa-trash"></i></button >';
 						strMenu += '</div>';
 						strMenu += '</td >';
 					strMenu += '</tr >';
@@ -224,8 +224,8 @@ const _generate_tree_menu = (datas, parentId, idx) => {
 						strMenu += '<td>' + v.rm_sequence + '</td>';
 						strMenu += '<td style="text-align:center;">';
 						strMenu += '<div class="btn-group" role="group" aria-label="RAB Button Group">'; 
-							strMenu += '<button id="btnEdit" class="btn merekdagang-grid-btn btn-success btn-sm" onClick=show_modal(' + v.rm_id +',"Edit","edit")><i class="fa fa-edit"></i> Edit</button>';
-							strMenu += '<button id="btnDelete" class="btn merekdagang-grid-btn btn-danger btn-sm" onClick=delete_data(' + v.rm_id +') ><i class="fa fa-trash-alt"></i> Delete</button >';
+							strMenu += '<button id="btnEdit" class="btn merekdagang-grid-btn btn-success btn-sm" onClick=show_modal(' + v.rm_id +',"Edit","edit")><i class="fa fa-edit"></i></button>';
+							strMenu += '<button id="btnDelete" class="btn merekdagang-grid-btn btn-danger btn-sm" onClick=delete_data(' + v.rm_id +') ><i class="fa fa-trash"></i></button >';
 						strMenu += '</div>';
 						strMenu += '</td >';
 					strMenu += '</tr >';
