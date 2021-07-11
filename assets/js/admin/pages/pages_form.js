@@ -44,7 +44,8 @@ $(document).ready(function() {
 
     $('#txtTitle').on('keyup change',function(){
         var link = $('#txtTitle').val();
-            rep = link.replace(/ /g,"_");
+            rep = link.replace(/[^\w\s]/gi,'_').replace(/ /g,"").toLowerCase();
+           
         $('#txtUrl').val('pages/detail/'+rep);
     });
 
