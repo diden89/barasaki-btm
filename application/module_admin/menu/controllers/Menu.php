@@ -84,6 +84,7 @@ class Menu extends MY_Controller {
 				$parent_id = "";
 			}
 			$post['option'] = $this->_build_data($parent_id,$post['is_admin']);
+			$post['url_target'] = $this->_url_target_option($post['id']);
 			
 			$this->load->view('menu_popup_modal_view', $post);
 		}
@@ -149,6 +150,36 @@ class Menu extends MY_Controller {
 					}	
 				}
 			}
+		}
+
+		return $str_menu;
+	}
+
+	public function _url_target_option($rm_id = '')
+	{
+		$str_menu = FALSE;
+
+		$get_menu = $this->mm->get_menu(array('rm_id' => $rm_id));
+
+		if($get_menu->num_rows() > 0)
+		{
+
+			$get_menu = $get_menu->row();
+			$str_menu .= '
+				<option value="_blank" '.(($get_menu->rm_url_target == '_blank') ? 'selected' : '').'>_blank</option>
+				<option value="_top" '.(($get_menu->rm_url_target == '_top') ? 'selected' : '').'>_top</option>
+				<option value="_self" '.(($get_menu->rm_url_target == '_self') ? 'selected' : '').'>_self</option>
+				<option value="_parent" '.(($get_menu->rm_url_target == '_parent') ? 'selected' : '').'>_parent</option>
+			';				
+		}
+		else
+		{
+			$str_menu .= '
+				<option value="_blank">_blank</option>
+				<option value="_top" >_top</option>
+				<option value="_self">_self</option>
+				<option value="_parent">_parent</option>
+			';		
 		}
 
 		return $str_menu;

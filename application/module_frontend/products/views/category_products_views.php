@@ -11,8 +11,8 @@
 <div class="container">
     <div class="our-works">
         <div class="header-intro">
-            <h2>Heaters and Thermocouples</h2>
-            <p>Below our list product.</p>
+            <h2><?=$properties->rm_caption?></h2>
+            <p><?=$properties->rm_description?></p>
         </div>
         <?php  
         // print_r($products);exit;

@@ -97,6 +97,7 @@ class MY_Controller extends CI_Controller {
 		$this->store_params['page_active'] = isset($this->store_params['page_active']) ? $this->store_params['page_active'] : 'Home';
 		$this->store_params['page_icon'] = isset($this->store_params['page_icon']) ? $this->store_params['page_icon'] : 'fa fa-home';
 
+
 		if (MODULE == 'module_frontend')
 		{
 			$company = $this->db_home->get_company()->row();
@@ -113,6 +114,8 @@ class MY_Controller extends CI_Controller {
 			$this->store_params['site_map'] =  $this->db_home->get_site_map()->result();
 			$this->store_params['meta_desc'] = isset($this->store_params['meta_desc']) ? $this->store_params['meta_desc'] : $company->meta_desc;
 			$this->store_params['meta_key'] = isset($this->store_params['meta_key']) ? $this->store_params['meta_key'] : $company->meta_key;
+
+			// print_r($this->store_params);exit;
 
 			// $year_now = date('Y');
 			// echo $year_now - $company->since_years;exit;
@@ -135,7 +138,7 @@ class MY_Controller extends CI_Controller {
 
 	private function _generate_admin_menu()
 	{
-		$get_menu = $this->db_home->get_menu(array('is_admin' => 'Y'));
+		$get_menu = $this->db_home->get_menu(array('rm_is_admin' => 'Y'));
 		$tree_menu = $this->_generate_tree_menu($get_menu->result());
 
 		return $tree_menu;
@@ -154,13 +157,13 @@ class MY_Controller extends CI_Controller {
 
 		foreach ($datas as $data)
 		{
-			if ($data->parent_id == $parent_id)
+			if ($data->rm_parent_id == $parent_id)
 			{
-				$children = $this->_generate_tree_menu($datas, $data->id, $idx);
+				$children = $this->_generate_tree_menu($datas, $data->rm_id, $idx);
 
 				if ($children !== FALSE)
 				{
-					$str_menu .= '<li class="treeview"><a href="'.site_url($data->url).'"><i class="'.$data->icon.'"></i> <span>'.$data->caption.'</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>';
+					$str_menu .= '<li class="treeview"><a href="'.site_url($data->rm_url).'"><i class="'.$data->rm_icon.'"></i> <span>'.$data->rm_caption.'</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>';
 
 					if ($idx > 0)
 					{
@@ -178,7 +181,7 @@ class MY_Controller extends CI_Controller {
 				}
 				else
 				{
-					$str_menu .= '<li class="testing '.($this->store_params['page_active'] == $data->caption ? 'active' : '').'"><a href="'.site_url($data->url).'"><i class="'.$data->icon.'"></i> '.$data->caption.'</a></li>'; 
+					$str_menu .= '<li class=" '.($this->store_params['page_active'] == $data->rm_caption ? 'active' : '').'"><a href="'.site_url($data->rm_url).'"><i class="'.$data->rm_icon.'"></i> '.$data->rm_caption.'</a></li>'; 
 				}
 			}
 		}
@@ -188,7 +191,7 @@ class MY_Controller extends CI_Controller {
 
 	private function _menu_build()
 	{
-		$menu_build_raw = $this->db_home->get_menu(array('is_admin' => 'N'));
+		$menu_build_raw = $this->db_home->get_menu(array('rm_is_admin' => 'N','rm_is_active' => 'Y'));
 		$menu_build_style = $this->_menu_build_style($menu_build_raw->result());
 
 		return $menu_build_style;
@@ -207,13 +210,13 @@ class MY_Controller extends CI_Controller {
 
 		foreach ($datas as $data)
 		{
-			if ($data->parent_id == $parent_id)
+			if ($data->rm_parent_id == $parent_id)
 			{
-				$children = $this->_menu_build_style($datas, $data->id, $idx);
+				$children = $this->_menu_build_style($datas, $data->rm_id, $idx);
 
 				if ($children !== FALSE)
 				{
-					$str_menu .= '<li class="treeview"><a href="'.(($data->url_target !== '_blank') ? site_url($data->url) : $data->url ).'" target="'.(!empty($data->url_target) ? $data->url_target : '').'"><i class="'.$data->icon.'"></i> <span>'.$data->caption.'</span><span class="pull-right-container"><b class="caret"></b></span></a>';
+					$str_menu .= '<li class="treeview '.($this->store_params['page_active'] == $data->rm_caption ? 'active' : '').'"><a href="'.(($data->rm_url_target !== '_blank') ? site_url($data->rm_url) : $data->rm_url ).'" target="'.(!empty($data->rm_url_target) ? $data->rm_url_target : '').'"><span>'.$data->rm_caption.'</span><span class="pull-right-container"><b class="caret"></b></span></a>';
 
 					if ($idx > 0)
 					{
@@ -232,7 +235,7 @@ class MY_Controller extends CI_Controller {
 				else
 				{
 
-					$str_menu .= '<li class="'.($this->store_params['page_active'] == $data->caption ? 'active' : '').'"><a href="'.(($data->url_target !== '_blank') ? site_url($data->url) : $data->url ).'" target="'.(!empty($data->url_target) ? $data->url_target : '').'"><i class="'.$data->icon.'"></i> '.$data->caption.'</a></li>';
+					$str_menu .= '<li class="'.($this->store_params['page_active'] == $data->rm_caption ? 'active' : '').'"><a href="'.(($data->rm_url_target !== '_blank') ? site_url($data->rm_url) : $data->rm_url ).'" target="'.(!empty($data->rm_url_target) ? $data->rm_url_target : '').'">'.$data->rm_caption.'</a></li>';
 				}
 			}
 		}

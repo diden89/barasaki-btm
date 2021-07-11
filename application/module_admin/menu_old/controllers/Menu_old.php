@@ -10,11 +10,11 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Menu extends MY_Controller {
+class Menu_old extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Menu_model','mm');
+		$this->load->model('Menu_old_model','mm');
 		$this->load->library('pagination');
 	}
 
@@ -39,7 +39,7 @@ class Menu extends MY_Controller {
 				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>',
 				'<script src="'.front_url('assets/js/admin/menu/').'/menu.js"></script>'
 			);
-			$this->view('menu_view');
+			$this->view('menu_old_view');
 		}
 		else
 		{
@@ -82,7 +82,7 @@ class Menu extends MY_Controller {
 				$this->store_params['data'] = $get_data_edit->row();
 			}
 			
-			$this->view('menu_input_view');
+			$this->view('menu_old_input_view');
 			
 		}
 		else
@@ -171,7 +171,7 @@ class Menu extends MY_Controller {
 
 	            echo json_encode(array(
 	            	"status" => $result,
-	            	"url" => base_url('menu')
+	            	"url" => base_url('menu_old')
 	            ));
 			}
 
@@ -187,7 +187,7 @@ class Menu extends MY_Controller {
 
 	            echo json_encode(array(
 	            	"status" => $result,
-	            	"url" => base_url('menu')
+	            	"url" => base_url('menu_old')
 	            ));
 	        }
 	        else
@@ -199,7 +199,7 @@ class Menu extends MY_Controller {
 
 	            echo json_encode(array(
 	            	"status" => $result,
-	            	"url" => base_url('menu')
+	            	"url" => base_url('menu_old')
 	            ));
 	        }
 		}
@@ -249,6 +249,6 @@ class Menu extends MY_Controller {
         $datas['type'] = $get_category->type;
       
 		$deletecategory = $this->mm->delete($datas,$id);
-		redirect(base_url('category'), 'refresh');
+		redirect(base_url('menu_old'), 'refresh');
 	}
 }

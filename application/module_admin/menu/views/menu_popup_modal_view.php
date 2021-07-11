@@ -33,13 +33,22 @@
 				<div class="col-sm-8">
 					<input type="text" name="rm_url" class="form-control" id="url" value="<?php echo $mode == 'edit' && $data !== FALSE ? $data->rm_url : '' ?>" <?php echo $mode == 'edit' ? '' : ''; ?>>
 				</div>
+			</div>	
+			<div class="form-group row">
+				<label for="url" class="col-sm-4 col-form-label">URL Target</label>
+				<div class="col-sm-8">
+					<select class="form-control select2 "  name="txt_url_target" id="txt_url_target">
+						<option value="">--Please Select URL Target--</option>
+						<?=$url_target?>
+					</select>
+				</div>
 			</div>		
 		</div>
 		<div class="col-md-6">
 			<div class="form-group row">
 				<label for="icon" class="col-sm-4 col-form-label">Icon</label>
 				<div class="col-sm-8">
-					<input type="text" name="rm_icon" class="form-control" id="icon" value="<?php echo $mode == 'edit' && $data !== FALSE ? $data->rm_icon : '' ?>" required="required" <?php echo $mode == 'edit' ? '' : ''; ?>>
+					<input type="text" name="rm_icon" class="form-control" id="icon" value="<?php echo $mode == 'edit' && $data !== FALSE ? $data->rm_icon : '' ?>"<?php echo $mode == 'edit' ? '' : ''; ?>>
 				</div>
 			</div>
 			<div class="form-group row">

@@ -40,7 +40,7 @@ class Menu_model extends CI_Model {
 			'rm_description' => $params['rm_description'],
 			'rm_url' => $params['rm_url'],
 			'rm_icon' => $params['rm_icon'],
-			'rm_parent_id' => $params['txt_parent_id'],
+			'rm_parent_id' => (!empty($params['txt_parent_id']) ? $params['txt_parent_id'] : NULL),
 			'rm_sequence' => $params['rm_sequence'],
 			'rm_is_admin' => $params['rm_is_admin'],
 		);

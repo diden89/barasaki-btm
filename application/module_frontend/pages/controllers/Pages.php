@@ -20,17 +20,32 @@ class Pages extends MY_Controller {
 	{
 		$menu = $this->load_slider($link2);
 
-		$this->store_params = array(
-			"slider" => $this->load_slider($link2),
-			"pages" => $this->load_article($menu->id),
-		);
-		if($link == 'about_us')
-		{
-			$this->store_params['customer'] =$this->pam->get_data_customer()->result();
-			$this->store_params['team'] =$this->pam->get_data_employee()->result();
-		}
+		$uri2 = $this->uri->segment(1).'/'.$this->uri->segment(2).'/'.$this->uri->segment(3);
 
-		$this->view($link.'_view');
+		$get_properties = $this->db_home->get_properties($uri2);
+
+		if ($get_properties && $get_properties->num_rows() > 0)
+		{			
+			$row_properties = $get_properties->row();
+
+			$this->store_params = array(
+				"title" => $this->store_params['title2'] = $row_properties->rm_caption,
+				"page_active" => $row_properties->rm_caption,
+				"slider" => $this->load_slider($link2),
+				"pages" => $this->load_article($menu->id),
+			);
+			if($link == 'about_us')
+			{
+				$this->store_params['customer'] =$this->pam->get_data_customer()->result();
+				$this->store_params['team'] =$this->pam->get_data_employee()->result();
+			}
+
+			$this->view($link.'_view');
+		}
+		else
+		{
+			show_404();
+		}
 	}
 
 	public function detail()

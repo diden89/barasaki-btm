@@ -11,12 +11,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home_model extends CI_Model {
-	public function get_menu()
+	public function get_menu($where=array())
 	{
-		$this->db->where('is_active', 'Y');
-		$this->db->where('is_admin', 'Y');
+		$this->db->where('rm_is_active', 'Y');
+		$this->db->where($where);
+		$this->db->order_by('rm_sequence', 'asc');
 		
-		return $this->db->get('menu');
+		return $this->db->get('ref_menu');
 	}
 
 	public function get_total($table)

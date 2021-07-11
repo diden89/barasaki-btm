@@ -34,14 +34,28 @@ class Products extends MY_Controller {
 	{
 		$url = $this->uri->segment(1);
 
-		$this->store_params = array(
-			"category" => $this->load_category(),
-			"slider" => $this->load_slider($url),
-			"products" => $this->pm->load_products($id)->result(),
-			
-		);
-		// print_r($this->store_params);exit;
-		$this->view('category_products_views');
+		$link = $this->uri->segment(1).'/'.$this->uri->segment(2).'/'.$this->uri->segment(3);
+		$get_properties = $this->db_home->get_properties($link);
+
+		if ($get_properties && $get_properties->num_rows() > 0)
+		{			
+			$row_properties = $get_properties->row();
+
+			$this->store_params = array(
+				"title" => $this->store_params['title2'] = $row_properties->rm_caption,
+				"page_active" => $row_properties->rm_caption,
+				"category" => $this->load_category(),
+				"properties" => $row_properties,
+				"products" => $this->pm->load_products($id)->result(),
+				
+			);
+			// print_r($this->store_params);exit;
+			$this->view('category_products_views');
+		}
+		else
+		{
+			show_404();
+		}
 	}
 
 	public function filter_data()
@@ -89,54 +103,66 @@ class Products extends MY_Controller {
 		$link =  $this->uri->segment(1);
 		$prod = $this->pm->get_products_detail($data)->row();
 
-		$this->store_params = array(
-			"data" => $prod,
-			"meta_desc" => $prod->meta_desc,
-			"meta_key" => $prod->meta_key,
-			"image_prod" => $this->pm->load_image_products($data)->result(),
-			"slider" => $this->load_slider($link),
-			"source_top" => array(
-				'<link rel="stylesheet" href="'.base_url('assets/css/other.css').'">',
-				'<link rel="stylesheet" href="'.base_url('assets/templates/other/owl.carousel/assets/owl.carousel.min.css').'">',
-				'<link rel="stylesheet" href="'.base_url('assets/templates/other/aos/assets/aos.css').'">',
-			),
-			"source_bot" => array(
-				'<script>
-				    $(document).ready(function(){
+		$get_properties = $this->db_home->get_properties($prod->url);
+
+		if ($get_properties && $get_properties->num_rows() > 0)
+		{			
+			$row_properties = $get_properties->row();
+
+			$this->store_params = array(
+				"title" => $this->store_params['title2'] = $row_properties->rm_caption,
+				"page_active" => $row_properties->rm_caption,
+				"data" => $prod,
+				"meta_desc" => $prod->meta_desc,
+				"meta_key" => $prod->meta_key,
+				"image_prod" => $this->pm->load_image_products($data)->result(),
+				"slider" => $this->load_slider($link),
+				"source_top" => array(
+					'<link rel="stylesheet" href="'.base_url('assets/css/other.css').'">',
+					'<link rel="stylesheet" href="'.base_url('assets/templates/other/owl.carousel/assets/owl.carousel.min.css').'">',
+					'<link rel="stylesheet" href="'.base_url('assets/templates/other/aos/assets/aos.css').'">',
+				),
+				"source_bot" => array(
+					'<script>
+					    $(document).ready(function(){
 
 
-				      var owl=$(".owl-carousel").owlCarousel({
-				        items:1,
-				        dotsContainer:"#dots-box",
-				        loop:true
-				      });
-				      $(".dots-click").click(function(){
-				        var index=$(this).index();
-				        $("#dots-box").find(".owl-dot").eq(index).trigger("click");
-				      })
+					      var owl=$(".owl-carousel").owlCarousel({
+					        items:1,
+					        dotsContainer:"#dots-box",
+					        loop:true
+					      });
+					      $(".dots-click").click(function(){
+					        var index=$(this).index();
+					        $("#dots-box").find(".owl-dot").eq(index).trigger("click");
+					      })
 
-				      owl.on("changed.owl.carousel",function(){
-				        var index=$("#dots-box").find(".active").index();
-				        $(".dots-click").removeClass("active");
-				        $(".dots-click").eq(index).addClass("active");
-				      })
+					      owl.on("changed.owl.carousel",function(){
+					        var index=$("#dots-box").find(".active").index();
+					        $(".dots-click").removeClass("active");
+					        $(".dots-click").eq(index).addClass("active");
+					      })
 
-				      $(".am-next").click(function(){
-				        owl.trigger("next.owl.carousel");
-				      })
+					      $(".am-next").click(function(){
+					        owl.trigger("next.owl.carousel");
+					      })
 
-				      $(".am-prev").click(function(){
-				        owl.trigger("prev.owl.carousel");
-				      })
-				    });
-				</script>',
-				 '<script src="'.base_url().'assets/templates/other/owl.carousel/owl.carousel.min.js"></script>',
-				 '<script src="'.base_url().'assets/templates/other/aos/aos.js"></script>'
-			)
-		);
-		// print_r($this->store_params);
-		// exit;
-		$this->view('detail_products');
+					      $(".am-prev").click(function(){
+					        owl.trigger("prev.owl.carousel");
+					      })
+					    });
+					</script>',
+					 '<script src="'.base_url().'assets/templates/other/owl.carousel/owl.carousel.min.js"></script>',
+					 '<script src="'.base_url().'assets/templates/other/aos/aos.js"></script>'
+				)
+			);
+			
+			$this->view('detail_products');
+		}
+		else
+		{
+			show_404();
+		}
 	}
 
 	public function load_slider($link)

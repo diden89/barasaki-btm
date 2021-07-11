@@ -10,7 +10,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Menu_model extends CI_Model {
+class Menu_old_model extends CI_Model {
 	public function get_data()
 	{
 		$this->db->where('is_active', 'Y');

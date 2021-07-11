@@ -2,14 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home_model extends CI_Model {
-	public function get_menu($wh = array())
+	public function get_menu($where = array())
 	{
-		$this->db->where('is_active', 'Y');
-		$this->db->where($wh);
-		$this->db->order_by('parent_id', 'asc');
-		$this->db->order_by('id', 'asc');
-
-		return $this->db->get('menu');
+		$this->db->where($where);
+		$this->db->order_by('rm_sequence', 'asc');
+		return $this->db->get('ref_menu');
 	}
 	
 	public function get_company()
@@ -167,5 +164,14 @@ class Home_model extends CI_Model {
 	public function input_data($table,$data)
 	{
 		return $this->db->insert($table,$data);
+	}
+
+	public function get_properties($url = '')
+	{
+		$this->db->where('rm_url', $url);
+		$this->db->where('rm_is_active', 'Y');
+		$this->db->where('rm_is_admin', 'N');
+
+		return $this->db->get('ref_menu');
 	}
 }

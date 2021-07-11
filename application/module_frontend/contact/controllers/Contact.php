@@ -21,17 +21,29 @@ class Contact extends MY_Controller {
 	{
 		$url =  $this->uri->segment(1);		
 
-		$this->store_params = array(
-			"contact" => $this->load_footer(),
-			"header" => $this->db_home->load_header_page($url)->row(),
-			"captcha" => $this->get_captcha("idx"),
-			'source_bot' => array(
-				'<script type="text/javascript" src="'.base_url().'assets/js/frontend/all_cond.js"></script>',
-				
-			)
-		);
+		$get_properties = $this->db_home->get_properties($url);
 
-		$this->view('contact_view');
+		if ($get_properties && $get_properties->num_rows() > 0)
+		{			
+			$row_properties = $get_properties->row();
+			$this->store_params = array(
+				"title" => $this->store_params['title2'] = $row_properties->rm_caption,
+				"page_active" => $row_properties->rm_caption,
+				"contact" => $this->load_footer(),
+				"header" => $this->db_home->load_header_page($url)->row(),
+				"captcha" => $this->get_captcha("idx"),
+				'source_bot' => array(
+					'<script type="text/javascript" src="'.base_url().'assets/js/frontend/all_cond.js"></script>',
+					
+				)
+			);
+
+			$this->view('contact_view');
+		}
+		else
+		{
+			show_404();
+		}
 	}
 
 	public function send_message()
