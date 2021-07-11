@@ -26,9 +26,9 @@ class Download extends MY_Controller {
 
 			$row_properties = $get_properties->row();
 			$get_data = $this->dm->get_data();
-			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->caption;
-			$this->store_params['page_active'] = $row_properties->caption;
-			$this->store_params['page_icon'] = $row_properties->icon;
+			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->rm_caption;
+			$this->store_params['page_active'] = $row_properties->rm_caption;
+			$this->store_params['page_icon'] = $row_properties->rm_icon;
 			$this->store_params['data'] = $get_data->result_array();
 			$this->store_params['source_top'] = array(
 				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">'
@@ -62,9 +62,9 @@ class Download extends MY_Controller {
 		{	
 			$row_properties = $get_properties->row();
 
-			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->caption;
-			$this->store_params['page_active'] = $row_properties->caption;
-			$this->store_params['page_icon'] = $row_properties->icon;
+			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->rm_caption;
+			$this->store_params['page_active'] = $row_properties->rm_caption;
+			$this->store_params['page_icon'] = $row_properties->rm_icon;
 			$this->store_params['source_top'] = array(
 				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/plugins/summernote/0.8.12/summernote.css">'
 			);

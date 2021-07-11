@@ -5,78 +5,45 @@
  * @author Sikelopes
  * @version 1.0
  * @access Public
- * @path /barasaki-btm/application/module_admin/about_us/controllers/About_us.php
+ * @path /barasaki-btm/application/module_admin/Pages/controllers/Pages.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Articles extends MY_Controller {
+class Pages extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('articles_model','am');
-		$this->load->library('pagination');
+		$this->load->model('Pages_model','am');
 	}
 
 	public function index()
 	{
 		$get_properties = $this->db_home->get_properties($this->uri->segment(1));
-
+		// print_r($get_properties->row());exit;
 		if ($get_properties && $get_properties->num_rows() > 0)
 		{	
-			$total_data =  $this->am->get_data($limit = "",$start = "")->num_rows();
-			//pagination
-			//konfigurasi pagination
 
-	        $config['base_url'] = base_url('category/index'); //site url
-	        $config['total_rows'] = $total_data; //total row
-	        $config['per_page'] = 10;  //show record per halaman
-	        $config["uri_segment"] = 3;  // uri parameter
-	        $choice = $config["total_rows"] / $config["per_page"];
-	        $config["num_links"] = floor($choice);
-
-	         // Membuat Style pagination untuk BootStrap v4
-	     	$config['first_link']       = 'First';
-	        $config['last_link']        = 'Last';
-	        $config['next_link']        = 'Next';
-	        $config['prev_link']        = 'Prev';
-	        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-	        $config['full_tag_close']   = '</ul></nav></div>';
-	        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-	        $config['num_tag_close']    = '</span></li>';
-	        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
-	        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
-	        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-	        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-	        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-	        $config['prev_tagl_close']  = '</span>Next</li>';
-	        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-	        $config['first_tagl_close'] = '</span></li>';
-	        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-	        $config['last_tagl_close']  = '</span></li>';
-	 
-	        $this->pagination->initialize($config);
-	       	$this->store_params['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-	 		$this->store_params['number_data'] = ($this->uri->segment(3)) ? $this->uri->segment(3)+1 : 1;
-	       
 			$row_properties = $get_properties->row();
-			$get_data = $this->am->get_data($config['per_page'],$this->store_params['page']);
+			$get_data = $this->am->get_data();
 
-			$this->store_params['pagination'] = $this->pagination->create_links();
 			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->rm_caption;
 			$this->store_params['page_active'] = $row_properties->rm_caption;
 			$this->store_params['page_icon'] = $row_properties->rm_icon;
 			$this->store_params['data'] = $get_data->result_array();
-
+			$this->store_params['source_top'] = array(
+				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">'
+			);
 			$this->store_params['source_bot'] = array(
-				'<script src="'.front_url('assets/js/admin').'/articles.js"></script>',
+				'<script src="'.front_url('assets/templates/admin').'/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>',
+				'<script src="'.front_url('assets/js/admin/pages').'/pages.js"></script>',
 				'<script> function delete_data(delete_url){$("#deleteModal").modal("show", {backdrop: "static"});
-      			document.getElementById("deleteArticles").setAttribute("href" , delete_url);
+      			document.getElementById("deletePages").setAttribute("href" , delete_url);
     			}</script>'
 			);
 
 			// $this->view('modal_projects');
-			$this->view('articles_view');
+			$this->view('pages_view');
 		}
 		else
 		{
@@ -134,10 +101,10 @@ class Articles extends MY_Controller {
 			);
 			$this->store_params['source_bot'] = array(
 				'<script src="'.front_url('assets/templates/admin').'/plugins/summernote/0.8.12/summernote.min.js"></script>',
-				'<script src="'.front_url('assets/js/admin').'/articles.js"></script>'
+				'<script src="'.front_url('assets/js/admin').'/pages.js"></script>'
 			);
 			
-			$this->store_params['cond'] = ucwords($cond).' Articles';
+			$this->store_params['cond'] = ucwords($cond).' Pages';
 			$this->store_params['category'] = $this->am->get_category()->result_array();
 			$this->store_params['datamenu'] = $this->am->get_menu('N')->result_array();
 			// print_r($this->store_params['datamenu']);exit;
@@ -148,7 +115,7 @@ class Articles extends MY_Controller {
 				$this->store_params['data'] = $get_data_edit->row();
 			}
 			
-			$this->view('articles_input_view');
+			$this->view('pages_input_view');
 			
 		}
 		else
@@ -166,7 +133,7 @@ class Articles extends MY_Controller {
 	    $datas['url'] = $this->input->post('txt_url');
         $datas['is_active'] = $this->input->post('txt_status');
       	
-       	$id = $this->input->post('txt_id_articles');
+       	$id = $this->input->post('txt_id_pages');
        
        	if( ! empty($id))
        	{
@@ -174,7 +141,7 @@ class Articles extends MY_Controller {
 
    		  	echo json_encode(array(
             	"status" => $result,
-            	"url" => base_url('articles')
+            	"url" => base_url('pages')
             ));
        	}
        	else
@@ -182,7 +149,7 @@ class Articles extends MY_Controller {
        		$result = $this->am->do_upload($datas);
             echo json_encode(array(
             	"status" => $result,
-            	"url" => base_url('articles')
+            	"url" => base_url('pages')
             ));
        	}
   

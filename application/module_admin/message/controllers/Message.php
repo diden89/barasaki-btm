@@ -64,9 +64,9 @@ class Message extends MY_Controller {
 			$get_data = $this->mm->get_data($config['per_page'],$this->store_params['page'],$id_msg);
 
 			$this->store_params['pagination'] = $this->pagination->create_links();
-			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->caption;
-			$this->store_params['page_active'] = $row_properties->caption;
-			$this->store_params['page_icon'] = $row_properties->icon;
+			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->rm_caption;
+			$this->store_params['page_active'] = $row_properties->rm_caption;
+			$this->store_params['page_icon'] = $row_properties->rm_icon;
 			$this->store_params['data'] = $get_data->result_array();
 
 			$this->store_params['source_bot'] = array(
@@ -125,9 +125,9 @@ class Message extends MY_Controller {
 		{	
 			$row_properties = $get_properties->row();
 
-			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->caption;
-			$this->store_params['page_active'] = $row_properties->caption;
-			$this->store_params['page_icon'] = $row_properties->icon;
+			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->rm_caption;
+			$this->store_params['page_active'] = $row_properties->rm_caption;
+			$this->store_params['page_icon'] = $row_properties->rm_icon;
 			$this->store_params['source_top'] = array(
 				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/plugins/summernote/0.8.12/summernote.css">'
 			);

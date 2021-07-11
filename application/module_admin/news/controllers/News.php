@@ -65,9 +65,9 @@ class News extends MY_Controller {
 
 			$this->store_params['pagination'] = $this->pagination->create_links();
 			// print_r($this->store_params['pagination']);exit;
-			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->caption;
-			$this->store_params['page_active'] = $row_properties->caption;
-			$this->store_params['page_icon'] = $row_properties->icon;
+			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->rm_caption;
+			$this->store_params['page_active'] = $row_properties->rm_caption;
+			$this->store_params['page_icon'] = $row_properties->rm_icon;
 			$this->store_params['source_bot'] = array(
 				'<script src="'.front_url('assets/js/admin').'/news.js"></script>',
 				'<script> function deletenews(delete_url){$("#deleteModal").modal("show", {backdrop: "static"});
@@ -94,9 +94,9 @@ class News extends MY_Controller {
 		{	
 			$row_properties = $get_properties->row();
 
-			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->caption;
-			$this->store_params['page_active'] = $row_properties->caption;
-			$this->store_params['page_icon'] = $row_properties->icon;
+			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->rm_caption;
+			$this->store_params['page_active'] = $row_properties->rm_caption;
+			$this->store_params['page_icon'] = $row_properties->rm_icon;
 			$this->store_params['source_top'] = array(
 				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">'
 			);

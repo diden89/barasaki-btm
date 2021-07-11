@@ -40,7 +40,7 @@ class Pages extends MY_Controller {
 				$this->store_params['team'] =$this->pam->get_data_employee()->result();
 			}
 
-			$this->view($link.'_view');
+			$this->view('pages_view');
 		}
 		else
 		{

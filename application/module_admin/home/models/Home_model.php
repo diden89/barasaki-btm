@@ -31,11 +31,11 @@ class Home_model extends CI_Model {
 
 	public function get_properties($url = '')
 	{
-		$this->db->where('url', $url);
-		$this->db->where('is_active', 'Y');
-		$this->db->where('is_admin', 'Y');
+		$this->db->where('rm_url', $url);
+		$this->db->where('rm_is_active', 'Y');
+		$this->db->where('rm_is_admin', 'Y');
 
-		return $this->db->get('menu');
+		return $this->db->get('ref_menu');
 	}
 
 	public function get_total_message($wh)

@@ -26,9 +26,9 @@ class Employee extends MY_Controller {
 	 		$row_properties = $get_properties->row();
 			$get_data = $this->em->get_data();
 
-			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->caption;
-			$this->store_params['page_active'] = $row_properties->caption;
-			$this->store_params['page_icon'] = $row_properties->icon;
+			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->rm_caption;
+			$this->store_params['page_active'] = $row_properties->rm_caption;
+			$this->store_params['page_icon'] = $row_properties->rm_icon;
 			$this->store_params['source_top'] = array(
 				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">'
 			);
@@ -66,9 +66,9 @@ class Employee extends MY_Controller {
 		{	
 			$row_properties = $get_properties->row();
 
-			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->caption;
-			$this->store_params['page_active'] = $row_properties->caption;
-			$this->store_params['page_icon'] = $row_properties->icon;
+			$this->store_params['title'] = $this->store_params['title2'] = $row_properties->rm_caption;
+			$this->store_params['page_active'] = $row_properties->rm_caption;
+			$this->store_params['page_icon'] = $row_properties->rm_icon;
 			$this->store_params['source_top'] = array(
 				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">',
 				'<link rel="stylesheet" href="'.front_url('assets/templates/admin').'/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">',
