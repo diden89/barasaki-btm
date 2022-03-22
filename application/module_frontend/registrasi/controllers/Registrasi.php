@@ -72,57 +72,69 @@ class Registrasi extends MY_Controller {
         $datas['ur_phone'] = $post['phone'];
         $datas['ur_email'] = $post['email'];
         
-        $cek_no_reg = $this->rm->cek_no_reg();
+        $cek_duplikat_data = $this->rm->cek_duplikat_data($datas);
 
-		if($cek_no_reg->num_rows() > 0)
-		{
-			$notrx = $cek_no_reg->row();
-			$last_notrx = $notrx->notrx + 1;
-		}
-		else
-		{
-			$last_notrx = 1;
-		}
+        if($cek_duplikat_data->num_rows() > 0)
+        {
+        	echo json_encode(array(
+				"status" => FALSE,
+				"url" => base_url('registrasi')
+			));   
+        }
+        else
+        {
+	        $cek_no_reg = $this->rm->cek_no_reg();
 
-		$datas['ur_no_reg'] = sprintf('%08d',$last_notrx);
+			if($cek_no_reg->num_rows() > 0)
+			{
+				$notrx = $cek_no_reg->row();
+				$last_notrx = $notrx->notrx + 1;
+			}
+			else
+			{
+				$last_notrx = 1;
+			}
 
-		$this->load->library('upload',$config);
+			$datas['ur_no_reg'] = sprintf('%08d',$last_notrx);
 
-			// upload KTP
-		if($this->upload->do_upload('upload_ktp'))
-		{
-			$data_ktp = array('upload_data' => $this->upload->data());
+			$this->load->library('upload',$config);
 
-            $image_name	 = md5($data_ktp['upload_data']['file_name']); 
-            $datas['ur_url_ktp'] = 'assets/images/registrasi/'.$image_name; 
-		}
+				// upload KTP
+			if($this->upload->do_upload('upload_ktp'))
+			{
+				$data_ktp = array('upload_data' => $this->upload->data());
 
-		//upload selfie
+	            $image_name	 = md5($data_ktp['upload_data']['file_name']); 
+	            $datas['ur_url_ktp'] = 'assets/images/registrasi/'.$image_name; 
+			}
 
-		if($this->upload->do_upload('upload_selfie'))
-		{
-			$data_selfie = array('upload_data' => $this->upload->data());
+			//upload selfie
 
-            $image_name	 = md5($data_selfie['upload_data']['file_name']); 
-            $datas['ur_url_selfie'] = 'assets/images/registrasi/'.$image_name; 
-		}
+			if($this->upload->do_upload('upload_selfie'))
+			{
+				$data_selfie = array('upload_data' => $this->upload->data());
 
-		//upload kartu keluarga
+	            $image_name	 = md5($data_selfie['upload_data']['file_name']); 
+	            $datas['ur_url_selfie'] = 'assets/images/registrasi/'.$image_name; 
+			}
 
-		if($this->upload->do_upload('upload_kk'))
-		{
-			$data_kk = array('upload_data' => $this->upload->data());
+			//upload kartu keluarga
 
-            $image_name	 = md5($data_kk['upload_data']['file_name']); 
-            $datas['ur_url_kk'] = 'assets/images/registrasi/'.$image_name;
-		}
+			if($this->upload->do_upload('upload_kk'))
+			{
+				$data_kk = array('upload_data' => $this->upload->data());
 
-		$result = $this->rm->do_upload($datas);
+	            $image_name	 = md5($data_kk['upload_data']['file_name']); 
+	            $datas['ur_url_kk'] = 'assets/images/registrasi/'.$image_name;
+			}
 
-		echo json_encode(array(
-			"status" => $result,
-			"url" => base_url('registrasi/daftar_anggota')
-		));
+			$result = $this->rm->do_upload($datas);
+
+			echo json_encode(array(
+				"status" => $result,
+				"url" => base_url('registrasi/daftar_anggota')
+			));        	
+        }
   
 	}
 

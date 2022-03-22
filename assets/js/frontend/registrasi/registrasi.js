@@ -8,7 +8,9 @@
  */
 
 $(document).ready(function() {
-    $('#example').DataTable();
+    $('#example').DataTable({
+        "scrollX": true
+    });
 	 $('#birthdate').noobsdaterangepicker({
         // parentEl: "#" + popup[0].id + " .modal-body",
         showDropdowns: true,
@@ -30,16 +32,16 @@ $(document).ready(function() {
                      async:false,
                      dataType :'json',
                      success: function(response){
-                     	if(response.status)
+                     	if(response.status == true)
                      	{
                      		$('div.overlay').remove();
                           alert("Input Data Berhasil.");
                           window.location.replace(response.url);
                      	}
-                     	else
+                     	else if(response.status == false)
                      	{
                      		$('div.overlay').remove();
-                     		alert("Input Data Gagal.");
+                     		alert("Maaf, NIK Atau Email Anda Sudah Terdaftar!!!");
                      	}
 
                    }

@@ -16,7 +16,7 @@
 		<div class="container">
 
 			<div class="d-flex justify-content-between align-items-center">
-				<h2>Daftar Anggota Koperasi Bintang tanjuang Madani</h2>
+				<h2>Daftar Anggota Koperasi Bintang Tanjuang Madani</h2>
 				<ol>
 					<li><a href="index.html">Home</a></li>
 					<li>Registrasi</li>

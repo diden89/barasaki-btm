@@ -40,6 +40,14 @@ class Registrasi_model extends CI_Model {
 		return FALSE;
 	}
  	
+	public function cek_duplikat_data($params)
+	{
+		$this->db->where('ur_nik',$params['ur_nik']);
+		$this->db->or_where('ur_email',$params['ur_email']);
+		
+		return $this->db->get('user_registration');
+	}
+
 	public function get_data_anggota()
 	{
 		$this->db->where('ur_is_active','Y');
