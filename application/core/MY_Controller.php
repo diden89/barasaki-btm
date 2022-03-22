@@ -1,11 +1,11 @@
 <?php
 /*!
- * @package PT. Barasaki Sinergi Semesta
- * @copyright PT. Barasaki Sinergi Semesta
+ * @package Koperasi Bintang Tanjung Madani
+ * @copyright Koperasi Bintang Tanjung Madani
  * @author Sikelopes
  * @version 1.0
  * @access Public
- * @path /barasaki-btm/application/core/MY_Controller.php
+ * @path /bintangtanjungmadani/application/core/MY_Controller.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');

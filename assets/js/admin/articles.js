@@ -1,10 +1,10 @@
 /*!
- * @package PT. Barasaki Sinergi Semesta
- * @copyright PT. Barasaki Sinergi Semesta
+ * @package Koperasi Bintang Tanjung Madani
+ * @copyright Koperasi Bintang Tanjung Madani
  * @author Sikelopes
  * @version 1.0
  * @access Public
- * @path /barasaki-btm/assets/js/admin/about_us.js
+ * @path /bintangtanjungmadani/assets/js/admin/about_us.js
  */
 
 var uploadImage = function(image) {

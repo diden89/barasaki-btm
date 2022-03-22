@@ -55,10 +55,10 @@
  * NOTE: If you change these, also change the error_reporting() code below
  */
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-	define('TITLE', 'Barasaki Semesta');
-	define('TITLE2', '<b>Barasaki Semesta</b>');
+	define('TITLE', 'Koperasi Bintang Tanjung Madani');
+	define('TITLE2', '<b>Koperasi Bintang Tanjung Madani</b>');
 	define('MODULE', 'module_frontend');
-	define('BASE_URL', '');
+	define('BASE_URL', '/');
 
 /*
  *---------------------------------------------------------------

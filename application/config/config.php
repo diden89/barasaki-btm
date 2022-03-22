@@ -27,16 +27,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 switch ($_SERVER['SERVER_ADMIN'])
 {
     case 'postmaster@localhost':
-		$config['base_url'] = 'http://localhost/barasaki-btm/'.BASE_URL;
+		$config['base_url'] = 'http://localhost/bintangtanjungmadani/'.BASE_URL;
 	break; 
-	case 'webmaster@barasaki-btm.com':
-		$config['base_url'] = 'http://barasaki-btm.com/'.BASE_URL;
+	case 'webmaster@bintangtanjungmadani.com':
+		$config['base_url'] = 'http://bintangtanjungmadani.com/'.BASE_URL;
 	break;
 	case 'admin@example.com':
-		$config['base_url'] = 'http://localhost/barasaki-btm/'.BASE_URL;
+		$config['base_url'] = 'http://localhost/bintangtanjungmadani/'.BASE_URL;
 	break;
 	case 'webmaster@algazasolution.com':
-		$config['base_url'] = 'https://barasaki-btm.com/'.BASE_URL;
+		$config['base_url'] = 'https://bintangtanjungmadani.com/'.BASE_URL;
 	break;
     
 	default:

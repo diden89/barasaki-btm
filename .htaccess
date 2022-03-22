@@ -1,10 +1,10 @@
 ##
  # @package Barasaki-btm
- # @copyright PT. Barasaki Sinergi Semesta
+ # @copyright Koperasi Bintang Tanjung Madani
  # @author Sikelopes
  # @version 1.0
  # @access Public
- # @path /barasaki-btm/.htaccess
+ # @path /bintangtanjungmadani/.htaccess
  ##
  
 <IfModule mod_rewrite.c>

@@ -2,12 +2,12 @@
 // echo phpinfo();
 // exit;
 /*!
- * @package PT. Barasaki Sinergi Semesta
- * @copyright PT. Barasaki Sinergi Semesta
+ * @package Koperasi Bintang Tanjung Madani
+ * @copyright Koperasi Bintang Tanjung Madani
  * @author Sikelopes
  * @version 1.0
  * @access Public
- * @path /barasaki-btm/application/module_admin/home/controllers/home.php
+ * @path /bintangtanjungmadani/application/module_admin/home/controllers/home.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');

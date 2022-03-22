@@ -1,10 +1,10 @@
 /*!
- * @package PT. Barasaki Sinergi Semesta
- * @copyright PT. Barasaki Sinergi Semesta
+ * @package Koperasi Bintang Tanjung Madani
+ * @copyright Koperasi Bintang Tanjung Madani
  * @author Algaza
  * @version 1.0
  * @access Public
- * @path /barasaki-btm/assets/js/admin/projects.js
+ * @path /bintangtanjungmadani/assets/js/admin/projects.js
  */
 
 

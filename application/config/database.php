@@ -82,7 +82,7 @@ switch ($_SERVER['SERVER_ADMIN'])
 			'hostname' => 'localhost',
 			'username' => 'root',
 			'password' => 'apolokoa',
-			'database' => 'dbbarasaki',
+			'database' => 'db_btm',
 			'dbdriver' => 'mysqli',
 			'dbprefix' => '',
 			'pconnect' => FALSE,

@@ -1,11 +1,11 @@
 <?php
 /*!
- * @package PT. Barasaki Sinergi Semesta
- * @copyright PT. Barasaki Sinergi Semesta
+ * @package Koperasi Bintang Tanjung Madani
+ * @copyright Koperasi Bintang Tanjung Madani
  * @author Sikelopes
  * @version 1.0
  * @access Public
- * @path /barasaki-btm/application/module_admin/download/models/download_model.php
+ * @path /bintangtanjungmadani/application/module_admin/download/models/download_model.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
