@@ -1,11 +1,11 @@
 <?php
 /*!
- * @package Koperasi Bintang Tanjung Madani
- * @copyright Koperasi Bintang Tanjung Madani
+ * @package Koperasi Bintang tanjuang Madani
+ * @copyright Koperasi Bintang tanjuang Madani
  * @author Sikelopes
  * @version 1.0
  * @access Public
- * @path /bintangtanjungmadani/application/module_admin/projects/views/projects_view.php
+ * @path /bintangtanjuangmadani/application/module_admin/projects/views/projects_view.php
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');

@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /*!
- * @package Koperasi Bintang Tanjung Madani
- * @copyright Koperasi Bintang Tanjung Madani
+ * @package Koperasi Bintang tanjuang Madani
+ * @copyright Koperasi Bintang tanjuang Madani
  * @author Algaza
  * @version 1.0
  * @access Public
- * @path /bintangtanjungmadani/application/module_frontend/project/models/project_model.php
+ * @path /bintangtanjuangmadani/application/module_frontend/project/models/project_model.php
  */
 
 class Project_model extends CI_Model {

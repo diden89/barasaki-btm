@@ -1,10 +1,10 @@
 /*!
- * @package Koperasi Bintang Tanjung Madani
- * @copyright Koperasi Bintang Tanjung Madani
+ * @package Koperasi Bintang tanjuang Madani
+ * @copyright Koperasi Bintang tanjuang Madani
  * @author Algaza
  * @version 1.0
  * @access Public
- * @path /bintangtanjungmadani/assets/js/admin/menu.js
+ * @path /bintangtanjuangmadani/assets/js/admin/menu.js
  */
 
 function show_modal(data,title,mode){

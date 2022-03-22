@@ -109,7 +109,7 @@ CREATE TABLE `company`  (
 -- ----------------------------
 -- Records of company
 -- ----------------------------
-INSERT INTO `company` VALUES (1, 'Koperasi Bintang Tanjuang Madani', 'Koperasi Bintang Tanjung Madani', 'rey', 'Koperasi Bintang Tanjung Madani', 'bintang,tanjuang,madani,koperasi,indonesia,serba,usaha', 'Y', 'assets/images/compro/logo_koperasi.ico', 'assets/images/compro/kop_btm.PNG', 2017);
+INSERT INTO `company` VALUES (1, 'Koperasi Bintang Tanjuang Madani', 'Koperasi Bintang tanjuang Madani', 'rey', 'Koperasi Bintang tanjuang Madani', 'bintang,tanjuang,madani,koperasi,indonesia,serba,usaha', 'Y', 'assets/images/compro/logo_koperasi.ico', 'assets/images/compro/kop_btm.PNG', 2017);
 
 -- ----------------------------
 -- Table structure for company_legal
@@ -569,8 +569,8 @@ INSERT INTO `log_company` VALUES (1, 'PT. Barasaki Semesta', 'PT. Barasaki Siner
 INSERT INTO `log_company` VALUES (1, 'PT. Barasaki Semesta', 'PT. Barasaki Sinergi Semesta\r\n				Griya Pratama Blok CC No. 13\r\n				Batu Aji, Batam. 29428', 'Ilfan Taufik', '<p>Baraski Sinergi Semesta General Supplier and trading</p>', 'Barasaki,batam,Baraski Sinergi Semesta,coporate,General Supplier and trading', 'Y', 45, 'admin', 'update', '2022-03-17 22:05:49', 'assets/images/compro/logo_BTM.png', NULL);
 INSERT INTO `log_company` VALUES (1, 'PT. Barasaki Semesta', 'PT. Barasaki Sinergi Semesta\r\n				Griya Pratama Blok CC No. 13\r\n				Batu Aji, Batam. 29428', 'Ilfan Taufik', '<p>Baraski Sinergi Semesta General Supplier and trading</p>', 'Barasaki,batam,Baraski Sinergi Semesta,coporate,General Supplier and trading', 'Y', 46, 'admin', 'update', '2022-03-19 06:41:10', 'assets/images/compro/WhatsApp_Image_2022-03-18_at_13_35_50.jpeg', NULL);
 INSERT INTO `log_company` VALUES (1, 'PT. Barasaki Semesta', 'PT. Barasaki Sinergi Semesta\r\n				Griya Pratama Blok CC No. 13\r\n				Batu Aji, Batam. 29428', 'Ilfan Taufik', '<p>Baraski Sinergi Semesta General Supplier and trading</p>', 'Barasaki,batam,Baraski Sinergi Semesta,coporate,General Supplier and trading', 'Y', 47, 'admin', 'update', '2022-03-19 06:44:40', 'assets/images/compro/kop_btm.PNG', NULL);
-INSERT INTO `log_company` VALUES (1, 'Koperasi Bintang Tanjuang Madani', 'Koperasi Bintang Tanjung Madani', 'rey', 'Koperasi Bintang Tanjung Madani', 'bintang,tanjuang,madani,koperasi,indonesia,serba,usaha', 'Y', 48, 'admin', 'update', '2022-03-19 08:56:18', NULL, NULL);
-INSERT INTO `log_company` VALUES (1, 'Koperasi Bintang Tanjuang Madani', 'Koperasi Bintang Tanjung Madani', 'rey', 'Koperasi Bintang Tanjung Madani', 'bintang,tanjuang,madani,koperasi,indonesia,serba,usaha', 'Y', 49, 'admin', 'update', '2022-03-19 08:56:24', NULL, NULL);
+INSERT INTO `log_company` VALUES (1, 'Koperasi Bintang Tanjuang Madani', 'Koperasi Bintang tanjuang Madani', 'rey', 'Koperasi Bintang tanjuang Madani', 'bintang,tanjuang,madani,koperasi,indonesia,serba,usaha', 'Y', 48, 'admin', 'update', '2022-03-19 08:56:18', NULL, NULL);
+INSERT INTO `log_company` VALUES (1, 'Koperasi Bintang Tanjuang Madani', 'Koperasi Bintang tanjuang Madani', 'rey', 'Koperasi Bintang tanjuang Madani', 'bintang,tanjuang,madani,koperasi,indonesia,serba,usaha', 'Y', 49, 'admin', 'update', '2022-03-19 08:56:24', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for log_company_legal

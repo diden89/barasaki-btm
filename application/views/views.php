@@ -9,8 +9,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="<?php echo $meta_desc; ?>">
 	    <meta name="keywords" content="<?php echo $meta_key; ?>">
-	    <meta name="author" content="bintangtanjungmadani">
-		<!-- Theme bintang tanjung madani -->
+	    <meta name="author" content="bintangtanjuangmadani">
+		<!-- Theme bintang tanjuang madani -->
 		
 		<link href="<?php echo base_url('assets/templates/btm/'); ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -106,7 +106,7 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
-              <h3>Koperasi Bintang Tanjung Madani</h3>
+              <h3>Koperasi Bintang tanjuang Madani</h3>
               <p>
                 A108 Adam Street <br>
                 NY 535022, USA<br><br>
@@ -160,7 +160,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Bintang Tanjung Madani</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Bintang tanjuang Madani</span></strong>. All Rights Reserved
       </div>
     </div>
   </footer><!-- End Footer -->

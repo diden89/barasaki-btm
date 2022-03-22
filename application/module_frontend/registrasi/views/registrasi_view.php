@@ -1,11 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 /*!
-  * @package Koperasi Bintang Tanjung Madani
-  * @copyright Koperasi Bintang Tanjung Madani
+  * @package Koperasi Bintang tanjuang Madani
+  * @copyright Koperasi Bintang tanjuang Madani
   * @author Algaza
   * @version 1.0
   * @access Public
-  * @path /bintangtanjungmadani/application/module_frontend/project/views/registrasi_view.php
+  * @path /bintangtanjuangmadani/application/module_frontend/project/views/registrasi_view.php
   */
   ?>
   <?php
@@ -16,7 +16,7 @@
 		<div class="container">
 
 			<div class="d-flex justify-content-between align-items-center">
-				<h2>Form Pendaftaran Anggota Koperasi Bintang Tanjung Madani</h2>
+				<h2>Form Pendaftaran Anggota Koperasi Bintang tanjuang Madani</h2>
 				<ol>
 					<li><a href="index.html">Home</a></li>
 					<li>Registrasi</li>
